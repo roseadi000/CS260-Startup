@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-This application allows creators to develop characters in a digital, organized space. It allows users to input information on their characters, an image of their characters, and share their characers with their friends.
+This application allows creators to develop characters in a digital, organized space. It allows users to input information on their characters, an image of their characters, and share their characters with their friends.
 
 > [!NOTE]
 > If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
@@ -16,8 +16,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [ ] Proper use of Markdown
 - [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -39,9 +39,10 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Create projects and folders for additional organization
+- Insert character information and images
+- Share your work with friends
+- Collaberate on a project with friends
 
 ### Technologies
 
