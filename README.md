@@ -12,11 +12,11 @@ This application allows creators to develop characters in a digital, organized s
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
 - [x] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 Do you love to tell stories? Do you need a place to organize your thoughts? The Character Detail Organizer allows creators to insert character details in an organized fashion. What to share your character with a friend? No problem. In this application, creators can share their projects with their friends and even work on a project together. With the Character Detail Organizer, the only limit on character development is your imagination.
@@ -24,9 +24,7 @@ Do you love to tell stories? Do you need a place to organize your thoughts? The 
 
 ### Design
 
-![Design image](placeholder.png)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+![Design image](website-sketch.png)
 
 <!-- ```mermaid
 sequenceDiagram
