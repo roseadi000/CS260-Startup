@@ -15,7 +15,7 @@ My IP address is: 34.203.11.120
 
 ## Caddy
 
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+Don't forget to edit the top line (where the :80 was). Otherwise, pretty easy.
 
 ## HTML
 
