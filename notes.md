@@ -10,8 +10,8 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 34.203.11.120
+.click seems to be the cheapest TLD, only $3 per year. I feel like the hardest part of renting a domain name was coming up with the domain name! Remember to add your DNS records so your domain name connects to your server. That's in the hosted domains section of Route 53.
 
 ## Caddy
 
