@@ -19,7 +19,7 @@ Don't forget to edit the top line (where the :80 was). Otherwise, pretty easy.
 
 ## HTML
 
-Don't forget to use the right element for links (href) and images (src). Also, the element goes in the tag (```<a href="link">Link</a>```).
+Don't forget to use the right element for links (href) and images (src). Also, the element goes in the tag (```<a href="link">Link</a>```). The input elements seem very useful, but there's no way I'll remember them all. This website has very useful information on the different elements and other HTML tags: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/. 
 
 ## CSS
 
