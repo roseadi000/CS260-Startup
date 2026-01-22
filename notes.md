@@ -19,7 +19,7 @@ Don't forget to edit the top line (where the :80 was). Otherwise, pretty easy.
 
 ## HTML
 
-Don't forget to use the right element for links (href) and images (src). Also, the element goes in the tag (<a href="link">Link</a>).
+Don't forget to use the right element for links (href) and images (src). Also, the element goes in the tag ('''<a href="link">Link</a>''').
 
 ## CSS
 
