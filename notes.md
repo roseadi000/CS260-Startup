@@ -19,9 +19,7 @@ Don't forget to edit the top line (where the :80 was). Otherwise, pretty easy.
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
-
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+Don't forget to use the right element for links (href) and images (src). Also, the element goes in the tag (```<a href="link">Link</a>```). The input elements seem very useful, but there's no way I'll remember them all. This website has very useful information on the different elements and other HTML tags: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/. 
 
 ## CSS
 
