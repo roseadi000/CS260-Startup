@@ -55,21 +55,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Server deployed and accessible with custom domain name** - [My server link](https://lorelegend.click/).
+- [x] **Server deployed and accessible with custom domain name** - [Lore Legend](https://lorelegend.click/).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created five html pages: the main login page, the projects page (shows all the user's projects), the characters page (shows all the user's characters in a project), an example of a character set up, and a friends page.
+- [x] **Proper HTML element usage** - I used header, footer, and main elements to keep content organized. I also used tables, input options like button and text, and div to keep things organized and formatting in my man body.
+- [x] **Links** - I added links connecting all my pages
+- [x] **Text** - I have text showing the user what character file or project they are in. The user will also be able to insert text to add infomatino about their characters.
+- [x] **3rd party API placeholder** - I added a placeholder for the avatar generator.
+- [x] **Images** - I added an image to act as a placeholder for the character image. The user will be able to change this image to an image they insert or an avatar generated.
+- [x] **Login placeholder** - I added a login placeholder.
+- [x] **DB data placeholder** - Login information and character information will be stored in the database.
+- [x] **WebSocket placeholder** - Users can connect with friends and see if they are online, which will be done through websockets.
 
 ## 🚀 CSS deliverable
 
