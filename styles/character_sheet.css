@@ -27,3 +27,12 @@
     grid-gap: 50px;
 
 }
+#headInfo {
+    background-color: green;
+}
+#mainInfo {
+    background-color: blue;
+}
+#additionalInfo {
+    background-color: purple;
+}
