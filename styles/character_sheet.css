@@ -23,16 +23,21 @@
 #Organizer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 5px;
     justify-content: center;
 
 }
+#mainOrganizer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    background-color: lightblue;
+}
 #headInfo {
-    background-color: green;
+    justify-content: center;
+    text-align: center;
 }
-#mainInfo {
-    background-color: blue;
-}
+/*#mainInfo {
+    background-color: lightblue;
+}*/
 #additionalInfo {
-    background-color: purple;
+    background-color: whitesmoke;
 }
