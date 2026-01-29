@@ -1,5 +1,5 @@
 /*header styles*/
-#Header {
+Header {
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -40,4 +40,12 @@
 }*/
 #additionalInfo {
     background-color: whitesmoke;
+}
+
+/*footer styles*/
+Footer{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    background-color: lightyellow;
 }
