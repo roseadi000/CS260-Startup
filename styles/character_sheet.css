@@ -44,8 +44,14 @@ Header {
 
 /*footer styles*/
 Footer{
-    display: flex;
-    flex-direction: row;
     width: 100vw;
     background-color: lightyellow;
+    text-align: center;
+    justify-content: center;
+}
+#myName {
+    padding-top: 18px;
+}
+#gitHub {
+    color: black;
 }
