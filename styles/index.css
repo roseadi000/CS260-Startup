@@ -7,3 +7,16 @@
 #Main {
     text-align: center;
 }
+
+/*footer styles*/
+#Footer{
+    width: 100vw;
+    background-color: lightyellow;
+    text-align: center;
+}
+#myName {
+    padding-top: 18px;
+}
+#gitHub {
+    color: black;
+}
