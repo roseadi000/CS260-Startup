@@ -7,6 +7,7 @@ Header {
     flex-direction: row;
     width: 100vw;
     background-color: khaki;
+    font-family: 'Times New Roman', Times, serif;
 }
 #Logo {
     flex: 1 1 80%;
@@ -26,6 +27,7 @@ Body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
 }
 Main {
     flex: 1;
@@ -37,6 +39,7 @@ Footer{
     background-color: khaki;
     text-align: center;
     justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 #myName {
     padding-top: 15px;
