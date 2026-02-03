@@ -1,67 +1,91 @@
 <html> <!--This informatino will be stored in the database-->
-    <body>
-        <head>
-            <meta charset="UTF-8" />
-            <title>Lore Legend</title>
-            <link rel="stylesheet" href="styles/character_sheet.css">
-            <link rel="stylesheet" href="styles/header_footer.css">
-        </head>
-        <header>
-             <div id="Logo"><h1>Lore Legend</h1></div>
-             <div  id="Menu"><a href="friends.html">Friends</a></div>
-             <div id="User">User</div>
-        </header>
 
-        <main>
-            <h3><span><a href="characters.html">Project Name2</a></span>- John</h3>
-            <div id="Organizer">
-                <div id="mainOrganizer">
-                    <div id="headInfo">
-                        <div id="imageBox">
-                            <img src="character_placeholder.png" width="200px">
-                        </div>
-                        <input type="file" accept=".png, .jpg, .jpeg" />
-                        <p>Or insert an avatar using third-pary API</p>
-                        <div id="nameBox"><h3>John</h3></div>
+<body>
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Lore Legend</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/character_sheet.css">
+        <link rel="stylesheet" href="styles/header_footer.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
+    <header>
+        <div id="Logo">
+            <h1>Lore Legend</h1>
+        </div>
+        <div id="Menu"><a href="friends.html">Friends</a></div>
+        <div id="User">User</div>
+    </header>
+
+    <main>
+        <h3><span><a href="characters.html">Project Name2</a></span>- John</h3>
+        <div id="Organizer">
+            <div id="mainOrganizer">
+                <div id="headInfo">
+                    <div id="imageBox">
+                        <img src="character_placeholder.png" width="200px">
                     </div>
-                    <div id="mainInfo">
-                        <lable for="fullName">Full Name: </lable>
-                        <input type="text" id="fullName" placeholder="Full Name" />
-                        <p></p>
-                        <lable for="age">Age: </lable>
-                        <input type="text" id="age" placeholder="Age" />
-                        <p></p>
-                        <lable for="gender">Gender: </lable>
-                        <input type="text" id="gender" placeholder="Gender" />
-                        <p></p>
-                        <lable for="height">Height: </lable>
-                        <input type="text" id="height" placeholder="Height" />
-                        <p></p>
-                        <lable for="birthday">Birthday: </lable>
-                        <input type="text" id="birthday" placeholder="Birthday" />
-                        <p></p>
-                        <lable for="species">Species: </lable>
-                        <input type="text" id="species" placeholder="Species" />
-                        <p></p>
-                        <input type="button" value="Edit" /> <!--Edit what information is displyed-->
+                    <input type="file" accept=".png, .jpg, .jpeg" />
+                    <p>Or insert an avatar using third-pary API</p>
+                    <div id="nameBox">
+                        <h3>John</h3>
                     </div>
                 </div>
-                <div id="additionalInfo">
+                <div id="mainInfo">
+                    <lable for="fullName">Full Name: </lable>
+                    <input type="text" id="fullName" placeholder="Full Name" />
+                    <p></p>
+                    <lable for="age">Age: </lable>
+                    <input type="text" id="age" placeholder="Age" />
+                    <p></p>
+                    <lable for="gender">Gender: </lable>
+                    <input type="text" id="gender" placeholder="Gender" />
+                    <p></p>
+                    <lable for="height">Height: </lable>
+                    <input type="text" id="height" placeholder="Height" />
+                    <p></p>
+                    <lable for="birthday">Birthday: </lable>
+                    <input type="text" id="birthday" placeholder="Birthday" />
+                    <p></p>
+                    <lable for="species">Species: </lable>
+                    <input type="text" id="species" placeholder="Species" />
+                    <p></p>
+                    <input type="button" value="Edit" /> <!--Edit what information is displyed-->
+                </div>
+            </div>
+            <div id="additionalInfo">
+                <div class="accordion" id="accordionInfo">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Personality
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+                        data-bs-target="#collapseOne">
+                        <div class="accordion-body"><input type="text" /></div>
+                        </div>
+                    </div>
+                </div>
                     <p>Personality</p>
-                    <input type="text" /> <!--This will be a box that can be expanded-->
+                    <input type="text" /> <!--This will be a box that can be expanded--> 
                     <p>Strenghts</p>
                     <input type="text" />
                     <p>Weaknesses</p>
                     <input type="text" />
                     <p></p>
-                    <input type="button" value="+"/> <!--Ability to add more categories-->
-                </div>
-           </div>
-        </main>
+                    <input type="button" value="+" /> <!--Ability to add more categories-->
+            </div>
+        </div>
+    </main>
 
-        <footer>
-            <div id="myName">Adilyn Rose</div>
-            <a href="https://github.com/roseadi000/CS260-Startup.git" id="gitHub">GitHub</a>
-        </footer>
-    </body>
+    <footer>
+        <div id="myName">Adilyn Rose</div>
+        <a href="https://github.com/roseadi000/CS260-Startup.git" id="gitHub">GitHub</a>
+    </footer>
+</body>
+
 </html>
