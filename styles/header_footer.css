@@ -14,6 +14,7 @@ Header {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
     font-size: 32px;
+    margin: 22px;
 }
 #Menu {
     flex: 1 1 10%;
