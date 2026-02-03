@@ -1,9 +1,12 @@
+html {
+    background-color: whitesmoke;
+}
 /*header styles*/
 Header {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    background-color: lightyellow;
+    background-color: khaki;
 }
 #Logo {
     flex: 1 1 80%;
@@ -18,7 +21,7 @@ Header {
     font-size: 18px;
     padding-top: 24px;
 }
-
+/*body styles*/
 Body {
     display: flex;
     flex-direction: column;
@@ -31,7 +34,7 @@ Main {
 /*footer styles*/
 Footer{
     width: 100vw;
-    background-color: lightyellow;
+    background-color: khaki;
     text-align: center;
     justify-content: center;
 }

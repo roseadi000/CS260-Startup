@@ -8,7 +8,7 @@
 #mainOrganizer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    background-color: lightblue;
+    background-color: lightgoldenrodyellow;
 }
 #headInfo {
     justify-content: center;
@@ -20,7 +20,7 @@
     height: 350px;
     justify-content: center;
     align-items: center;
-    background-color: yellow;
+    background-color: whitesmoke;
     border: solid;
     border-color: black;
 }
@@ -30,7 +30,7 @@
 #nameBox {
     width: 150px;
     height: 50px;
-    background-color: red;
+    background-color: silver;
     border: solid;
 }
 #additionalInfo {
