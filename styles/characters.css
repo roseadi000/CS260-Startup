@@ -1,12 +1,9 @@
-#projectOrganizer {
+#characterOrganizer {
     display: flex;
 }
-#Projects {
+#Characters {
     flex: 1 1 30%;
 }
 #Date {
-    flex: 1 1 30%;
-}
-#numCharacters {
     flex: 1 1 30%;
 }
