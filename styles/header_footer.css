@@ -11,16 +11,21 @@ Header {
 }
 #Logo {
     flex: 1 1 80%;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 32px;
 }
 #Menu {
     flex: 1 1 10%;
     font-size: 18px;
     padding-top: 24px;
+    font-family: 'Times New Roman', Times, serif;
 }
 #User {
     flex: 1 1 10%;
     font-size: 18px;
     padding-top: 24px;
+    font-family: 'Times New Roman', Times, serif;
 }
 /*body styles*/
 Body {

@@ -32,11 +32,10 @@
 #nameBox {
     width: 150px;
     height: 50px;
-    background-color: silver;
+    background-color: lightgray;
     border: solid;
 }
 #additionalInfo {
-    background-color: whitesmoke;
     padding-left: 15px;
     padding-top: 15px;
 }
