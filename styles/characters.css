@@ -1,5 +1,6 @@
 #characterOrganizer {
     display: flex;
+    padding: 5px;
 }
 #Characters {
     flex: 1 1 30%;

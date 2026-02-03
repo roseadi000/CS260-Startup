@@ -1,5 +1,6 @@
 #friendOrganizer {
     display: flex;
+    padding: 5px;
 }
 #Friends {
     flex: 1 1 30%;
