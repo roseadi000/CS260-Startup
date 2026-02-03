@@ -1,24 +1,3 @@
-/*header styles*/
-#Header {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    background-color: lightyellow;
-}
-#Logo {
-    flex: 1 1 80%;
-}
-#Friends {
-    flex: 1 1 10%;
-    font-size: 18px;
-    padding-top: 24px;
-}
-#User {
-    flex: 1 1 10%;
-    font-size: 18px;
-    padding-top: 24px;
-}
-
 /*Body styles*/
 #Organizer {
     display: grid;
@@ -56,18 +35,4 @@
 }
 #additionalInfo {
     background-color: whitesmoke;
-}
-
-/*footer styles*/
-Footer{
-    width: 100vw;
-    background-color: lightyellow;
-    text-align: center;
-    justify-content: center;
-}
-#myName {
-    padding-top: 18px;
-}
-#gitHub {
-    color: black;
 }
