@@ -1,0 +1,9 @@
+#friendOrganizer {
+    display: flex;
+}
+#Friends {
+    flex: 1 1 30%;
+}
+#Date {
+    flex: 1 1 60%;
+}
