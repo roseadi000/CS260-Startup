@@ -1,5 +1,5 @@
 /*header styles*/
-#Header {
+Header {
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -19,6 +19,15 @@
     padding-top: 24px;
 }
 
+Body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+Main {
+    flex: 1;
+}
+
 /*footer styles*/
 Footer{
     width: 100vw;
@@ -31,4 +40,5 @@ Footer{
 }
 #gitHub {
     color: black;
+    padding-bottom: 18px;
 }
