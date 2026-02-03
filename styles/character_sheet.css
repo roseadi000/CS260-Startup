@@ -8,7 +8,7 @@
 #mainOrganizer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    background-color: lightgoldenrodyellow;
+    background-color: #E7F1FF;
 }
 #headInfo {
     justify-content: center;

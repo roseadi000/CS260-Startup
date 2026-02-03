@@ -1,20 +1,23 @@
-html {
-    background-color: whitesmoke;
+@font-face {
+    font-family: 'Brush';
+    src: url('../CaveatBrush-Regular.ttf');
 }
+
 /*header styles*/
 Header {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    background-color: khaki;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: darkred;
+    font-family: 'Brush';
 }
 #Logo {
     flex: 1 1 80%;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 700;
-    font-size: 32px;
+    font-family: 'Brush';
+    font-weight: 400;
+    font-size: 40px;
     margin: 22px;
+    color: lightyellow;
 }
 #Menu {
     flex: 1 1 10%;
@@ -34,6 +37,8 @@ Body {
     flex-direction: column;
     height: 100vh;
     font-family: 'Times New Roman', Times, serif;
+    margin: 0px;
+    background-color: whitesmoke;
 }
 Main {
     flex: 1;
