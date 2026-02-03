@@ -13,6 +13,8 @@
 #headInfo {
     justify-content: center;
     text-align: center;
+    padding-top: 15px;
+    padding-left: 15px;
 }
 #imageBox{
     display: flex;
@@ -24,9 +26,9 @@
     border: solid;
     border-color: black;
 }
-/*#mainInfo {
-    background-color: lightblue;
-}*/
+#mainInfo {
+    padding-top: 15px;
+}
 #nameBox {
     width: 150px;
     height: 50px;
@@ -35,4 +37,6 @@
 }
 #additionalInfo {
     background-color: whitesmoke;
+    padding-left: 15px;
+    padding-top: 15px;
 }
