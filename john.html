@@ -55,27 +55,46 @@
                     <input type="button" value="Edit" /> <!--Edit what information is displyed-->
                 </div>
             </div>
+
             <div id="additionalInfo">
                 <div class="accordion" id="accordionInfo">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Personality
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" 
                         data-bs-target="#collapseOne">
                         <div class="accordion-body"><input type="text" /></div>
                         </div>
                     </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Strengths
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" 
+                        data-bs-target="#collapseTwo">
+                        <div class="accordion-body"><input type="text" /></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Weaknesses
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" 
+                        data-bs-target="#collapseThree">
+                        <div class="accordion-body"><input type="text" /></div>
+                        </div>
+                    </div>
                 </div>
-                    <p>Personality</p>
-                    <input type="text" /> <!--This will be a box that can be expanded--> 
-                    <p>Strenghts</p>
-                    <input type="text" />
-                    <p>Weaknesses</p>
-                    <input type="text" />
                     <p></p>
                     <input type="button" value="+" /> <!--Ability to add more categories-->
             </div>
