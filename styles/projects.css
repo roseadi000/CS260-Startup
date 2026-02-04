@@ -1,6 +1,7 @@
 #projectOrganizer {
     display: flex;
     padding: 5px;
+    margin-left: 8px;
 }
 #Projects {
     flex: 1 1 30%;
