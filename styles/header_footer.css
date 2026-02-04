@@ -8,11 +8,11 @@ Header {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    background-color: darkred;
+    background-color: #6A3E2E;
     font-family: 'Brush';
 }
 #Logo {
-    flex: 1 1 80%;
+    flex: 1 1 70%;
     font-family: 'Brush';
     font-weight: 400;
     font-size: 40px;
@@ -21,14 +21,17 @@ Header {
 }
 #Menu {
     flex: 1 1 10%;
-    font-size: 18px;
+    font-size: 20px;
     padding-top: 24px;
     font-family: 'Times New Roman', Times, serif;
     color: lightyellow;
 }
+#menuLink {
+    color: lightyellow;
+}
 #User {
     flex: 1 1 10%;
-    font-size: 18px;
+    font-size: 20px;
     padding-top: 24px;
     font-family: 'Times New Roman', Times, serif;
     color: lightyellow;
@@ -40,7 +43,7 @@ Body {
     height: 100vh;
     font-family: 'Times New Roman', Times, serif;
     margin: 0px;
-    background-color: whitesmoke;
+    background-color: #E8DCC2;
 }
 Main {
     flex: 1;
@@ -59,13 +62,14 @@ Main {
 /*footer styles*/
 Footer{
     width: 100vw;
-    background-color: darkred;
+    background-color: #6A3E2E;
     text-align: center;
     justify-content: center;
     font-family: 'Times New Roman', Times, serif;
 }
 #myName {
     padding-top: 15px;
+    color: lightyellow;
 }
 #gitHub {
     color: lightyellow;
