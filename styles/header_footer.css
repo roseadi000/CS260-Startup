@@ -24,12 +24,14 @@ Header {
     font-size: 18px;
     padding-top: 24px;
     font-family: 'Times New Roman', Times, serif;
+    color: lightyellow;
 }
 #User {
     flex: 1 1 10%;
     font-size: 18px;
     padding-top: 24px;
     font-family: 'Times New Roman', Times, serif;
+    color: lightyellow;
 }
 /*body styles*/
 Body {
@@ -47,7 +49,7 @@ Main {
 /*footer styles*/
 Footer{
     width: 100vw;
-    background-color: khaki;
+    background-color: darkred;
     text-align: center;
     justify-content: center;
     font-family: 'Times New Roman', Times, serif;
@@ -56,6 +58,6 @@ Footer{
     padding-top: 15px;
 }
 #gitHub {
-    color: black;
+    color: lightyellow;
     padding-bottom: 15px;
 }
