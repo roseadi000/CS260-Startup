@@ -78,9 +78,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
 - [x] **Use of a CSS framework** - I used Bootstrap to create an accordion.
 - [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - I used a flexbox and a grid for window resizing.
+- [x] **Use of a imported font** - I imported the font Caveat Brush from Google Fonts
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I have used element, class, and ID selectors.
 
 ## 🚀 React part 1: Routing deliverable
 
