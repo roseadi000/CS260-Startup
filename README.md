@@ -75,9 +75,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - Ensured the colors didn't clash and were easily readable and created a smooth layout. I used grids and flexboxes to help control overflow.
 - [x] **Use of a CSS framework** - I used Bootstrap to create an accordion.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
+- [x] **All visual elements styled using CSS** - I used CSS to style everything.
 - [x] **Responsive to window resizing using flexbox and/or grid display** - I used a flexbox and a grid for window resizing.
 - [x] **Use of a imported font** - I imported the font Caveat Brush from Google Fonts
 - [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I have used element, class, and ID selectors.

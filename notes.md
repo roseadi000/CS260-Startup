@@ -24,6 +24,7 @@ Don't forget to use the right element for links (href) and images (src). Also, t
 ## CSS
 
 CSS is a hole I can get stuck in. There is so much I can learn and so much I can do. I really like how easy Bootstrap made creating the accordion. This webiste shows more information about the accordion, which was interesting. It also has information on other Bootstrap elements. https://getbootstrap.com/docs/5.0/components/accordion/. I also asked AI to help me understand the code in the CodePen. It's response is in accordion.md. However, Bootstrap edited the fonts for my text only on the page that I used Bootstrap on. I have found that I can manually override these settings in my styles. 
+My sister told me about a [website](https://coolors.co/ffffe0-e8dcc2-90d7ff-6290c3-6a3e2e) that can help with color schemes. It was quite handy.
 
 ## React Part 1: Routing
 
