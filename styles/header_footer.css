@@ -45,6 +45,12 @@ Body {
 Main {
     flex: 1;
 }
+#fileHeaders {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 700;
+    
+}
 
 /*footer styles*/
 Footer{
