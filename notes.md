@@ -28,7 +28,7 @@ My sister told me about a [website](https://coolors.co/ffffe0-e8dcc2-90d7ff-6290
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Things in you css will change. If you have a style applied to your body, it will no longer be applied when you move to React. Shift that style to a class (but remember, class must be written as className in React) to apply the style.
 
 ## React Part 2: Reactivity
 
