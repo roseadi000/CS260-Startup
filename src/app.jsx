@@ -7,6 +7,8 @@ export default function App() {
     <div className="bodyDisplay">
         <header>
             <div id="Logo">Lore Legend</div>
+            <div id="Menu"><a href="friends.html" id="menuLink">Friends</a></div>
+            <div id="User">User</div>
         </header>
         
         <main id="Main">Stuff will go here later</main>
