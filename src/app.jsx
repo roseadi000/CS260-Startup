@@ -20,6 +20,11 @@ export default function App() {
             
             <main id="Main">Stuff will go here later</main>
 
+            <Routes>
+                <Route path='/' element={<Login />} exact />
+                <Route path='/friends' element={<Friends />} />
+            </Routes>
+
             <footer>
                 <div id="myName">Adilyn Rose</div>
                 <a href="https://github.com/roseadi000/CS260-Startup.git" id="gitHub">GitHub</a>
