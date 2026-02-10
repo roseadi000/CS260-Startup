@@ -37,7 +37,7 @@ Header {
     color: lightyellow;
 }
 /*body styles*/
-Body {
+.bodyDisplay {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -61,6 +61,7 @@ Main {
 
 /*footer styles*/
 Footer{
+    flex: 0 50px;
     width: 100vw;
     background-color: #6A3E2E;
     text-align: center;
