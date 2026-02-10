@@ -26,6 +26,8 @@ export default function App() {
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/characters' element={<Characters />} />
                 <Route path='/character_sheets' element={<Character_Sheets />} />
+                <Route path='*' element={<NotFound />} />
+
             </Routes>
 
             <footer>
@@ -35,4 +37,8 @@ export default function App() {
         </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Unknown address.</main>;
 }
