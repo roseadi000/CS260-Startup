@@ -23,6 +23,9 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Login />} exact />
                 <Route path='/friends' element={<Friends />} />
+                <Route path='/projects' element={<Projects />} />
+                <Route path='/characters' element={<Characters />} />
+                <Route path='/character_sheets' element={<Character_Sheets />} />
             </Routes>
 
             <footer>
