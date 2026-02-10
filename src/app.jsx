@@ -18,8 +18,6 @@ export default function App() {
                 <div id="User">User</div>
             </header>
             
-            <main id="Main">Stuff will go here later</main>
-
             <Routes>
                 <Route path='/' element={<Login />} exact />
                 <Route path='/friends' element={<Friends />} />
