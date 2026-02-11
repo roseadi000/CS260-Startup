@@ -8,7 +8,7 @@ import { Characters } from '../characters/characters';
 export function Character_Sheets() {
   return (
     <main>
-        <div id="fileHeaders"><span><a href="characters.html" id="fileLink">Project Name2</a></span>- John</div>
+        <div id="fileHeaders"><span><NavLink to="/characters" id="fileLink">Project Name2</NavLink></span>- John</div>
         <div id="Organizer">
             <div id="mainOrganizer">
                 <div id="headInfo">
@@ -74,11 +74,10 @@ export function Character_Sheets() {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <br></br>
                 <input type="button" value="+" />
             </div>
         </div>
-        <br></br>
+        <p></p>
     </main>
   );
 }
