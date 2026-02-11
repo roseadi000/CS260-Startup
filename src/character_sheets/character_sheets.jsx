@@ -1,4 +1,6 @@
 import React from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Characters } from '../characters/characters';
@@ -43,49 +45,49 @@ export function Character_Sheets() {
             </div>
 
             <div id="additionalInfo">
-                <div class="accordion" id="accordionInfo">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                <div className="accordion" id="accordionInfo">
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="headingOne">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Personality
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne"
                             data-bs-target="#collapseOne">
-                            <div class="accordion-body">
+                            <div className="accordion-body">
                                 <label for="personality"></label>
-                                <textarea id="personality" class="textAreaInfo"></textarea>
+                                <textarea id="personality" className="textAreaInfo"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="headingTwo">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Strengths
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-target="#collapseTwo">
-                            <div class="accordion-body">
+                            <div className="accordion-body">
                                 <label for="strengths"></label>
-                                <textarea id="strengths" class="textAreaInfo"></textarea>
+                                <textarea id="strengths" className="textAreaInfo"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="headingThree">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Weaknesses
                             </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
                             data-bs-target="#collapseThree">
-                            <div class="accordion-body">
+                            <div className="accordion-body">
                                 <label for="weaknesses"></label>
-                                <textarea id="weaknesses" class="textAreaInfo"></textarea>
+                                <textarea id="weaknesses" className="textAreaInfo"></textarea>
                             </div>
                         </div>
                     </div>
