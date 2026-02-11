@@ -45,22 +45,16 @@ export function Character_Sheets() {
             </div>
 
             <div id="additionalInfo">
-                <div Accordion id="accordionInfo">
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Personality
-                            </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-target="#collapseOne">
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Item>
+                        <Accordion.Header>Personality</Accordion.Header>
+                        <Accordion.Body>
                             <div className="accordion-body">
                                 <label for="personality"></label>
                                 <textarea id="personality" className="textAreaInfo"></textarea>
                             </div>
-                        </div>
-                    </div>
+                        </Accordion.Body>
+                    </Accordion.Item>
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse"
@@ -91,7 +85,7 @@ export function Character_Sheets() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Accordion>
                 <br></br>
                 <input type="button" value="+" />
             </div>
