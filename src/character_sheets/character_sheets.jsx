@@ -45,8 +45,8 @@ export function Character_Sheets() {
             </div>
 
             <div id="additionalInfo">
-                <Accordion defaultActiveKey="0">
-                    <Accordion.Item>
+                <Accordion>
+                    <Accordion.Item eventKey='0'>
                         <Accordion.Header>Personality</Accordion.Header>
                         <Accordion.Body>
                             <div className="accordion-body">
@@ -55,36 +55,24 @@ export function Character_Sheets() {
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingTwo">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Strengths
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-target="#collapseTwo">
+                    <Accordion.Item eventKey='1'>
+                        <Accordion.Header>Strengths</Accordion.Header>
+                        <Accordion.Body>
                             <div className="accordion-body">
                                 <label for="strengths"></label>
                                 <textarea id="strengths" className="textAreaInfo"></textarea>
                             </div>
-                        </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingThree">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Weaknesses
-                            </button>
-                        </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-target="#collapseThree">
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey='2'>
+                        <Accordion.Header>Weaknesses</Accordion.Header>
+                        <Accordion.Body>
                             <div className="accordion-body">
                                 <label for="weaknesses"></label>
                                 <textarea id="weaknesses" className="textAreaInfo"></textarea>
                             </div>
-                        </div>
-                    </div>
+                        </Accordion.Body>
+                    </Accordion.Item>
                 </Accordion>
                 <br></br>
                 <input type="button" value="+" />
