@@ -45,7 +45,7 @@ export function Character_Sheets() {
             </div>
 
             <div id="additionalInfo">
-                <div className="accordion" id="accordionInfo">
+                <div Accordion id="accordionInfo">
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                             <button className="accordion-button" type="button" data-bs-toggle="collapse"
