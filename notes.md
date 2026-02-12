@@ -29,6 +29,7 @@ My sister told me about a [website](https://coolors.co/ffffe0-e8dcc2-90d7ff-6290
 ## React Part 1: Routing
 
 Things in you css will change. If you have a style applied to your body, it will no longer be applied when you move to React. Shift that style to a class (but remember, class must be written as className in React) to apply the style.
+Shifting from HTML Bootstrap to React Bootstrap isn't too bad once you understand what is going on. The structure is mostly the same, but the tags may be different. I have some notes in [Accordion](accordion.md) about the differences. 
 
 ## React Part 2: Reactivity
 
