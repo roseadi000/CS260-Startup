@@ -6,6 +6,7 @@ import { Projects } from '../projects/projects';
 export function Friends() {
   return (
     <main>
+        <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
         <div id="friendOrganizer">
             <div id="Friends"><b>Name</b></div>
             <div id="Status"><b>Status</b></div>
