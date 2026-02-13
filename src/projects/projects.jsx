@@ -2,10 +2,16 @@ import React from 'react';
 import './projects.css';
 import { NavLink } from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { Popup } from '../scripts'
+import { Popup } from '../scripts';
+import { createProject} from '../service.js';
 
 export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
+    const [name, setName] = React.useState('Project Name');
+
+    function create() {
+        createProject(name);
+    }
 
   return (
     <main>
@@ -14,10 +20,11 @@ export function Projects() {
 
         <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
             <div id='fileHeaders'>Create New Project</div>
-            <input placeholder='Project Name'></input>
+            <input placeholder='Project Name' onChange={(e) => setName(e.target.value)}></input>
             <p></p>
-            <input type='button' value='Create'></input>
+            <input type='button' value='Create' onClick={create}></input>
         </Popup>
+
             <div id="projectOrganizer">
                 <div id="Projects"><b>Name</b></div>
                 <div id="Date"><b>Date Modified</b></div>
