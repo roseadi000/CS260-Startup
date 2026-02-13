@@ -1,5 +1,6 @@
 import React from 'react';
 import './characters.css';
+import { Sheet } from '../objects';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Character_Sheets } from '../character_sheets/character_sheets';
 import { Projects } from '../projects/projects';

@@ -7,7 +7,8 @@ export function Projects() {
   return (
     <main>
         <div id="fileHeaders">Projects</div>
-            <div id="projectOrganizer">
+        <input type='button'>New Project</input>
+\            <div id="projectOrganizer">
                 <div id="Projects"><b>Name</b></div>
                 <div id="Date"><b>Date Modified</b></div>
                 <div id="numCharacters"><b>Characters</b></div>
