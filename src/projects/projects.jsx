@@ -14,6 +14,7 @@ export function Projects() {
 
         <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
             <div id='fileHeaders'>Create New Project</div>
+            <div>Stuff</div>
         </Popup>
             <div id="projectOrganizer">
                 <div id="Projects"><b>Name</b></div>

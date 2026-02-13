@@ -7,8 +7,8 @@ export function Popup({isOpen, onClose, children}) {
     }
     
     return (
-        <div id='popupBackground'>
-            <div id='popupStyle'>
+        <div className='popupBackground'>
+            <div className='popupStyle'>
                 {children}
                 <input type='button' onClick={onClose} value='Close'></input>
             </div>

@@ -59,17 +59,23 @@ Main {
     color: black;
 }
 
-#popupBackground {
+.popupBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,5);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#popupStyle {
+.popupStyle {
     background-color: whitesmoke;
     padding: 20px;
     border-radius: 8px;
-    min-width: 300px;
+    min-width: 250px;
 }
 
 /*footer styles*/
