@@ -3,6 +3,12 @@ export function createProject(name) {
 
     const projects = JSON.parse((localStorage.getItem('projects') || '[]'));
 
-    projects.push({name});
+    const newProject = {
+        name,
+        date: '1/1/1111',
+        characters: [],
+    }
+
+    projects.push(newProject);
     localStorage.setItem('projects', JSON.stringify(projects));
 }
