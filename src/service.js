@@ -6,6 +6,7 @@ export function createProject(name) {
     const newProject = {
         name,
         date: '1/1/1111',
+        amount: '0',
         characters: [],
     }
 
