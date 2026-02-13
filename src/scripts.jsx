@@ -1,3 +1,4 @@
+import React from 'react';
 import './app.css';
 
 export function Popup({isOpen, onClose, children}) {

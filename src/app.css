@@ -65,8 +65,10 @@ Main {
     background-color: rgba(0,0,0,5);
 }
 
-popupStyle {
+#popupStyle {
     background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 8px;
     min-width: 300px;
 }
 

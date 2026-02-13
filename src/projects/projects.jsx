@@ -2,12 +2,19 @@ import React from 'react';
 import './projects.css';
 import { NavLink } from 'react-router-dom';
 import { Characters } from '../characters/characters';
+import { Popup } from '../scripts'
 
 export function Projects() {
+    const [isPopupOpen, setPopupOpen] = React.useState(false);
+
   return (
     <main>
         <div id="fileHeaders">Projects</div>
-        <input type='button' value='New Project'></input>
+        <input type='button' value='New Project' onClick={() => setPopupOpen(true)}></input>
+
+        <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+            <div id='fileHeaders'>Create New Project</div>
+        </Popup>
             <div id="projectOrganizer">
                 <div id="Projects"><b>Name</b></div>
                 <div id="Date"><b>Date Modified</b></div>
