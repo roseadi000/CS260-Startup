@@ -59,6 +59,17 @@ Main {
     color: black;
 }
 
+#popupBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,5);
+}
+
+popupStyle {
+    background-color: whitesmoke;
+    min-width: 300px;
+}
+
 /*footer styles*/
 Footer{
     flex: 0 50px;

@@ -33,26 +33,4 @@ Shifting from HTML Bootstrap to React Bootstrap isn't too bad once you understan
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
-
-Handling the toggling of the checkboxes was particularly interesting.
-
-```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
-```
+I asked AI to help me build a popup, and in doing so I learned about children. A children element in the attributes allow the function to take parameters in between the tags (Kind of like this: '''<p><b>Text</b></p>'''). I also learned how to make a popup, and it's reusable amoung many needs.
