@@ -4,10 +4,15 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Character_Sheets } from '../character_sheets/character_sheets';
 import { Projects } from '../projects/projects';
 import { Popup } from '../scripts';
+import { createCharacter } from '../service.js';
 
 export function Characters() {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [name, setName] = React.useState('Character Name');
+
+  function create() {
+    createCharacter(name);
+  }
 
   return (
     <main>
@@ -18,7 +23,7 @@ export function Characters() {
         <div id='fileHeaders'>Create New Character</div>
         <input placeholder='Name' onChange={(e) => setName(e.target.value)}></input>
         <p></p>
-        {/*<input type='button' value='Create' onClick={create}></input>*/}
+        <input type='button' value='Create' onClick={create}></input>
       </Popup>
 
       <div id="characterOrganizer">

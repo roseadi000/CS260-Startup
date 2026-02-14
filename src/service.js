@@ -6,7 +6,6 @@ export function createProject(name) {
     const newProject = {
         name,
         date: '1/1/1111',
-        amount: '0',
         characters: [],
     }
 
@@ -14,4 +13,18 @@ export function createProject(name) {
     localStorage.setItem('projects', JSON.stringify(projects));
 
     return newProject;
+}
+
+export function createCharacter(name) {
+    console.log('Creating Character');
+
+    const characters = JSON.parse((localStorage.getItem('characters') || '[]'));
+
+    const newCharacter = {
+        name,
+        date: '2/2/2222',
+    }
+
+    characters.push(newCharacter);
+    localStorage.setItem('characters', JSON.stringify(characters));
 }
