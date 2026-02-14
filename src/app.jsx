@@ -23,7 +23,7 @@ export default function App() {
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
-                <Route path='/character_sheets' element={<Character_Sheets />} />
+                <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />
                 <Route path='*' element={<NotFound />} />
 
             </Routes>

@@ -4,7 +4,7 @@ export function createProject(name) {
     const newProject = {
         name,
         date: '1/1/1111',
-        characters: [{name: "John", date: "2/2/2222"}],
+        characters: [],
     }
 
     projects.push(newProject);

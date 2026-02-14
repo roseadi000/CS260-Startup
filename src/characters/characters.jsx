@@ -37,7 +37,7 @@ export function Characters() {
       </div>
      {characterList.map(character => (
                  <div key={character.name} id='projectOrganizer'>
-                     <div id="Projects"><NavLink to={project.name} id='fileLink'>{character.name}</NavLink></div>
+                     <div id="Projects"><NavLink to={character.name} id='fileLink'>{character.name}</NavLink></div>
                      <div id="Date">{character.date}</div>
                  </div>
              ))}

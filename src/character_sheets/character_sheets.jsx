@@ -2,13 +2,15 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink, useParams} from 'react-router-dom';
 import { Characters } from '../characters/characters';
 
 export function Character_Sheets() {
+    const { projectName, characterName } = useParams();
+
   return (
     <main>
-        <div id="fileHeaders"><span><NavLink to="/characters" id="fileLink">Project Name2</NavLink></span>- John</div>
+        <div id="fileHeaders"><span><NavLink to={`/projects/${projectName}`} id="fileLink">Project Name2</NavLink></span>- John</div>
         <div id="Organizer">
             <div id="mainOrganizer">
                 <div id="headInfo">
