@@ -33,4 +33,5 @@ Shifting from HTML Bootstrap to React Bootstrap isn't too bad once you understan
 
 ## React Part 2: Reactivity
 
-I asked AI to help me build a popup, and in doing so I learned about children. A children element in the attributes allow the function to take parameters in between the tags (Kind of like this: '''<p><b>Text</b></p>'''). I also learned how to make a popup, and it's reusable amoung many needs.
+I asked AI to help me build a popup, and in doing so I learned about children. A children element in the attributes allow the function to take parameters in between the tags (Kind of like this: '''<p><b>Text</b></p>'''). I also learned how to make a popup, and it's reusable amoung many needs. I also learned what ... means. When you have an array and need to add a new value to the array, you have to make a new array. ... makes it so you can easily add the items of the old array to a new array that has the new value.
+If you put : in front of a variable for the route path, it means it's a variable. This is useful for doing something like domain.click/projects/projectName.

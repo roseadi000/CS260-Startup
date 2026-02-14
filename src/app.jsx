@@ -22,7 +22,7 @@ export default function App() {
                 <Route path='/' element={<Login />} exact />
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/projects' element={<Projects />} />
-                <Route path='/characters' element={<Characters />} />
+                <Route path='/projects/:projectName' element={<Characters />} />
                 <Route path='/character_sheets' element={<Character_Sheets />} />
                 <Route path='*' element={<NotFound />} />
 

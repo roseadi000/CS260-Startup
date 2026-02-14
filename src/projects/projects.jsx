@@ -3,7 +3,7 @@ import './projects.css';
 import { NavLink } from 'react-router-dom';
 import { Characters } from '../characters/characters';
 import { Popup } from '../scripts';
-import { createProject} from '../service.js';
+import { createProject } from '../service.js';
 
 export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
@@ -41,7 +41,7 @@ export function Projects() {
         </div>
         {projects.map(project => (
             <div key={project.name} id='projectOrganizer'>
-                <div id="Projects"><NavLink to='/characters' id='fileLink'>{project.name}</NavLink></div>
+                <div id="Projects"><NavLink to={project.name} id='fileLink'>{project.name}</NavLink></div>
                 <div id="Date">{project.date}</div>
                 <div id="numCharacters">{project.characters.length} Characters</div>
             </div>
