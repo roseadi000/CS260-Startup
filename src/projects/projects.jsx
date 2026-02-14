@@ -12,6 +12,8 @@ export function Projects() {
 
     function create() {
         createProject(name);
+        setPopupOpen(false);
+        
     }
 
     useEffect(() => {
