@@ -41,7 +41,7 @@ export function Projects() {
         </div>
         {projects.map(project => (
             <div key={project.name} id='projectOrganizer'>
-                <div id="Projects"><NavLink to='/characters'>{project.name}</NavLink></div>
+                <div id="Projects"><NavLink to='/characters' id='fileLink'>{project.name}</NavLink></div>
                 <div id="Date">{project.date}</div>
                 <div id="numCharacters">{project.characters.length} Characters</div>
             </div>
