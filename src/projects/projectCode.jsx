@@ -12,4 +12,8 @@
                 <div id="Projects"><NavLink to="/characters" id="fileLink">Project Name2</NavLink></div>
                 <div id="Date">1/26/26</div>
                 <div id="numCharacters">1 Character</div>
-</div>*/}
+</div>
+ <div id="characterOrganizer">
+        <div id="Characters"><NavLink to="/character_sheets" id="fileLink">John</NavLink></div>
+        <div id="Date">1/26/26</div>
+      </div>*/}

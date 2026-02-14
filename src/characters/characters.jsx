@@ -35,10 +35,12 @@ export function Characters() {
         <div id="Characters"><b>Name</b></div>
         <div id="Date"><b>Date Modified</b></div>
       </div>
-      <div id="characterOrganizer">
-        <div id="Characters"><NavLink to="/character_sheets" id="fileLink">John</NavLink></div>
-        <div id="Date">1/26/26</div>
-      </div>
+     {characterList.map(character => (
+                 <div key={character.name} id='projectOrganizer'>
+                     <div id="Projects"><NavLink to={project.name} id='fileLink'>{character.name}</NavLink></div>
+                     <div id="Date">{character.date}</div>
+                 </div>
+             ))}
     </main>
   );
 }
