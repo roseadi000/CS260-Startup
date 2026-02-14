@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './projects.css';
 import { NavLink } from 'react-router-dom';
 import { Characters } from '../characters/characters';
@@ -8,10 +8,16 @@ import { createProject} from '../service.js';
 export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [name, setName] = React.useState('Project Name');
+    const [projects, setProjects] = React.useState([]);
 
     function create() {
         createProject(name);
     }
+
+    useEffect(() => {
+        const savedProjets = JSON.parse(localStorage.getItem("projects") || '[]');
+        setProjects(savedProjets);
+    }, []);
 
   return (
     <main>
@@ -24,22 +30,19 @@ export function Projects() {
             <p></p>
             <input type='button' value='Create' onClick={create}></input>
         </Popup>
-
-            <div id="projectOrganizer">
-                <div id="Projects"><b>Name</b></div>
-                <div id="Date"><b>Date Modified</b></div>
-                <div id="numCharacters"><b>Characters</b></div>
+        
+        <div id="projectOrganizer">
+            <div id="Projects"><b>Name</b></div>
+            <div id="Date"><b>Date Modified</b></div>
+            <div id="numCharacters"><b>Characters</b></div>
+        </div>
+        {projects.map(project => (
+            <div key={project.name} id='projectOrganizer'>
+                <div id="Projects">{project.name}</div>
+                <div id="Date">{project.date}</div>
+                <div id="numCharacters">{project.characters.length} Characters</div>
             </div>
-            <div id="projectOrganizer">
-                <div id="Projects">Project Name1</div>
-                <div id="Date">1/15/26</div>
-                <div id="numCharacters">8 Charactes</div>
-            </div>
-            <div id="projectOrganizer">
-                <div id="Projects"><NavLink to="/characters" id="fileLink">Project Name2</NavLink></div>
-                <div id="Date">1/26/26</div>
-                <div id="numCharacters">1 Character</div>
-            </div>
+        ))}
     </main>
   );
 }
