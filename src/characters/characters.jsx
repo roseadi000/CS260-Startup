@@ -10,10 +10,12 @@ export function Characters() {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [name, setName] = React.useState('Character Name');
   const { projectName } = useParams();
-  console.log(projectName);
+  const projects = JSON.parse(localStorage.getItem('projects'));
+  const project = projects.find(p => p.name === projectName);
+  const characterList = project.characters;
 
   function create() {
-    createCharacter(name);
+    createCharacter(name, characterList);
     setPopupOpen(false);
   }
 

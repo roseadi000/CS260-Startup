@@ -4,7 +4,7 @@ export function createProject(name) {
     const newProject = {
         name,
         date: '1/1/1111',
-        characters: [],
+        characters: ['John'],
     }
 
     projects.push(newProject);
@@ -13,16 +13,14 @@ export function createProject(name) {
     return newProject;
 }
 
-export function createCharacter(name) {
-    const characters = JSON.parse((localStorage.getItem('characters') || '[]'));
+export function createCharacter(name, characterList) {
 
     const newCharacter = {
         name,
         date: '2/2/2222',
     }
 
-    characters.push(newCharacter);
-    localStorage.setItem('characters', JSON.stringify(characters));
-
+    characterList.push(newCharacter);
+    console.log(characterList);
     return newCharacter;
 }
