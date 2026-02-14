@@ -13,14 +13,15 @@ export function createProject(name) {
     return newProject;
 }
 
-export function createCharacter(name, characterList) {
+export function createCharacter(name, projects, project) {
 
     const newCharacter = {
         name,
         date: '2/2/2222',
     }
 
-    characterList.push(newCharacter);
-    console.log(characterList);
+    project.characters.push(newCharacter);
+    localStorage.setItem('projects', JSON.stringify(projects))
+    
     return newCharacter;
 }

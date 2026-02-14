@@ -15,7 +15,7 @@ export function Characters() {
   const characterList = project.characters;
 
   function create() {
-    createCharacter(name, characterList);
+    createCharacter(name, projects, project);
     setPopupOpen(false);
   }
 
