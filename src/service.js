@@ -1,6 +1,4 @@
 export function createProject(name) {
-    console.log('Creating Project')
-
     const projects = JSON.parse((localStorage.getItem('projects') || '[]'));
 
     const newProject = {
@@ -16,8 +14,6 @@ export function createProject(name) {
 }
 
 export function createCharacter(name) {
-    console.log('Creating Character');
-
     const characters = JSON.parse((localStorage.getItem('characters') || '[]'));
 
     const newCharacter = {
@@ -27,4 +23,6 @@ export function createCharacter(name) {
 
     characters.push(newCharacter);
     localStorage.setItem('characters', JSON.stringify(characters));
+
+    return newCharacter;
 }

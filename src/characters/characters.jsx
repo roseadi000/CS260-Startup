@@ -12,6 +12,7 @@ export function Characters() {
 
   function create() {
     createCharacter(name);
+    setPopupOpen(false);
   }
 
   return (
