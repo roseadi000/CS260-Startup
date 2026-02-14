@@ -11,7 +11,8 @@ export function Projects() {
     const [projects, setProjects] = React.useState([]);
 
     function create() {
-        createProject(name);
+        const newProject = createProject(name);
+        setProjects([...projects, newProject]);
         setPopupOpen(false);
         
     }
