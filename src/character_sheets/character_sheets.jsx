@@ -10,17 +10,17 @@ export function Character_Sheets() {
 
   return (
     <main>
-        <div id="fileHeaders"><span><NavLink to={`/projects/${projectName}`} id="fileLink">Project Name2</NavLink></span>- John</div>
+        <div id="fileHeaders"><span><NavLink to={`/projects/${projectName}`} id="fileLink">{projectName}</NavLink></span>- {characterName}</div>
         <div id="Organizer">
             <div id="mainOrganizer">
                 <div id="headInfo">
                     <div id="imageBox">
-                        <img src="character_placeholder.png" width="200px"></img>
+                        <img src="/character_placeholder.png" width="200px"></img>
                     </div>
                     <input type="file" accept=".png, .jpg, .jpeg" />
                     <p>Or insert an avatar using third-pary API</p>
                     <div id="nameBox">
-                        <h3>John</h3>
+                        <div id='nameTextBox'>{characterName}</div>
                     </div>
                 </div>
                 <div id="mainInfo">
