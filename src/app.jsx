@@ -25,7 +25,6 @@ export default function App() {
                 <Route path='/projects/:projectName' element={<Characters />} />
                 <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />
                 <Route path='*' element={<NotFound />} />
-
             </Routes>
 
             <footer>
