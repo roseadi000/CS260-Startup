@@ -1,3 +1,10 @@
+export function registerUser(username, password) {
+    const users = JSON.parse((localStorage.getItem('users') || '[]'));
+
+    users.push({username, password})
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
 export function createProject(name) {
     const projects = JSON.parse((localStorage.getItem('projects') || '[]'));
 
