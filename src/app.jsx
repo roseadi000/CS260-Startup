@@ -9,6 +9,8 @@ import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
 
 export default function App() {
+    const [user, setUser] = React.useState(null);
+
   return (
     <BrowserRouter>
         <div className="bodyDisplay">
@@ -19,7 +21,7 @@ export default function App() {
             </header>
             
             <Routes>
-                <Route path='/' element={<Login />} exact />
+                <Route path='/' element={<Login user={user} setUser={setUser}/>} exact />
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />

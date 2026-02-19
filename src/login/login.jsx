@@ -1,15 +1,14 @@
 import React from 'react';
 import './login.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 import { registerUser, checkLogin } from '../service.js';
 import { Popup } from '../scripts';
 
-export function Login() {
+export function Login({ user, setUser }) {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [user, setUser] = React.useState('');
   const [username, setUsername] = React.useState('');
 
   function register() {
@@ -17,7 +16,13 @@ export function Login() {
   }
   function login() {
     setUser(checkLogin(email, password));
-    console.log(user);
+    
+    if (user !== 'Failed') {
+      console.log("Success!");
+    }
+    else {
+      alert("Incorrect Username or Password");
+    }
   }
 
   return (
