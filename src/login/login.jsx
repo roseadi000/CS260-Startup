@@ -12,13 +12,15 @@ export function Login({ user, setUser }) {
   const [username, setUsername] = React.useState('');
   const navigate = useNavigate();
 
-  function register() {
+  function register(event) {
+    event.preventDefault();
     registerUser(email, password, username);
   }
   function login() {
-    setUser(checkLogin(email, password));
+    const foundUser = checkLogin(email, password);
     
-    if (user !== 'Failed') {
+    if (foundUser) {
+      setUser(foundUser);
       console.log("Success!");
       navigate('/projects');
     }

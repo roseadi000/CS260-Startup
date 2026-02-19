@@ -10,7 +10,7 @@ export function checkLogin(email, password) {
     const textStorage = localStorage.getItem('users') || '[]';
     const users = JSON.parse(textStorage);
 
-    const findUser = users.find(u => u.email === email && u.password === password);
+    const findUser = users.find((u) => u.email === email && u.password === password);
 
     if (findUser) {
         const user = {
@@ -21,7 +21,7 @@ export function checkLogin(email, password) {
 
         return user;
     }
-    else {return 'Failed'};
+    //else {return 'Failed'};
 }
 
 //Projects Service
