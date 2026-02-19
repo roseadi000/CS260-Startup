@@ -12,13 +12,16 @@ export function checkLogin(email, password) {
 
     const findUser = users.find(u => u.email === email && u.password === password);
 
-    const user = {
-        email: findUser.email,
-        password: findUser.password,
-        username: findUser.username,
-    }
+    if (findUser) {
+        const user = {
+            email: findUser.email,
+            password: findUser.password,
+            username: findUser.username,
+        }
 
-    return user;
+        return user;
+    }
+    else {return 'Failed'};
 }
 
 //Projects Service
