@@ -1,7 +1,7 @@
-export function registerUser(username, password) {
+export function registerUser(email, password, username) {
     const users = JSON.parse((localStorage.getItem('users') || '[]'));
 
-    users.push({username, password})
+    users.push({email, password, username})
     localStorage.setItem('users', JSON.stringify(users));
 }
 
