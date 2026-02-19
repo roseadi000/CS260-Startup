@@ -10,6 +10,7 @@ export function Login({ user, setUser }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [username, setUsername] = React.useState('');
+  const navigate = useNavigate();
 
   function register() {
     registerUser(email, password, username);
@@ -19,6 +20,7 @@ export function Login({ user, setUser }) {
     
     if (user !== 'Failed') {
       console.log("Success!");
+      navigate('/projects');
     }
     else {
       alert("Incorrect Username or Password");
