@@ -1,3 +1,4 @@
+//Login Services
 export function registerUser(email, password, username) {
     const users = JSON.parse((localStorage.getItem('users') || '[]'));
 
@@ -5,6 +6,22 @@ export function registerUser(email, password, username) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
+export function checkLogin(email, password) {
+    const textStorage = localStorage.getItem('users') || '[]';
+    const users = JSON.parse(textStorage);
+
+    const findUser = users.find(u => u.email === email && u.password === password);
+
+    const user = {
+        email: findUser.email,
+        password: findUser.password,
+        username: findUser.username,
+    }
+
+    return user;
+}
+
+//Projects Service
 export function createProject(name) {
     const projects = JSON.parse((localStorage.getItem('projects') || '[]'));
 
@@ -20,6 +37,7 @@ export function createProject(name) {
     return newProject;
 }
 
+//Character Service
 export function createCharacter(name, projects, project) {
 
     const newCharacter = {

@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
-import { registerUser } from '../service.js';
+import { registerUser, checkLogin } from '../service.js';
 import { Popup } from '../scripts';
 
 export function Login() {
@@ -17,6 +17,7 @@ export function Login() {
   }
   function login() {
     setUser(checkLogin(email, password));
+    console.log(user);
   }
 
   return (
@@ -27,7 +28,7 @@ export function Login() {
             <p></p>
             <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             <p></p>
-            <input type='button' value='Login'></input>
+            <input type='button' value='Login' onClick={login}></input>
             <input type='button' value='Sign Up' onClick={() => setPopupOpen(true)}></input>
             <NavLink to="projects">Login</NavLink>
 
