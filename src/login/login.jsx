@@ -6,6 +6,7 @@ import { registerUser, checkLogin } from '../service.js';
 import { Popup } from '../scripts';
 
 export function Login({ user, setUser }) {
+  localStorage.removeItem('currentUser');
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -19,6 +20,7 @@ export function Login({ user, setUser }) {
   function login() {
     checkLogin(email, password);
     const foundUser = localStorage.getItem('currentUser') || null;
+    console.log(foundUser);
 
     if (foundUser) {
       setUser(foundUser);

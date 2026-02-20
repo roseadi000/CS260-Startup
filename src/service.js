@@ -2,7 +2,15 @@
 export function registerUser(email, password, username) {
     const users = JSON.parse((localStorage.getItem('users') || '[]'));
 
-    users.push({email, password, username})
+    const newUser = {
+        email: email,
+        password: password,
+        username: username,
+        projects: [],
+        friends: [],
+    }
+
+    users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
 }
 
@@ -11,9 +19,14 @@ export function checkLogin(email, password) {
     const users = JSON.parse(textStorage);
 
     const findUser = users.find((u) => u.email === email && u.password === password);
+    console.log(findUser);
 
     if (findUser) {
-        const user = findUser.username;
+        const user = {
+            username: findUser.username,
+            projects: findUser.projects,
+            friends: findUser.friends,
+        }
         localStorage.setItem('currentUser', JSON.stringify(user));
     }
 }
