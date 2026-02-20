@@ -24,16 +24,16 @@ export function checkLogin(email, password) {
     if (findUser) {
         const user = {
             username: findUser.username,
-            projects: findUser.projects,
-            friends: findUser.friends,
         }
         localStorage.setItem('currentUser', JSON.stringify(user));
     }
 }
 
 //Projects Service
-export function createProject(name) {
-    const projects = JSON.parse((localStorage.getItem('projects') || '[]'));
+export function createProject(name, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const projects = user.projects;
 
     const newProject = {
         name,
@@ -42,7 +42,7 @@ export function createProject(name) {
     }
 
     projects.push(newProject);
-    localStorage.setItem('projects', JSON.stringify(projects));
+    localStorage.setItem('users', JSON.stringify(users));
 
     return newProject;
 }

@@ -8,10 +8,11 @@ import { createProject } from '../service.js';
 export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [name, setName] = React.useState('Project Name');
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const [projects, setProjects] = React.useState([]);
 
     function create() {
-        const newProject = createProject(name);
+        const newProject = createProject(name, currentUser);
         setProjects([...projects, newProject]);
         setPopupOpen(false);
         
