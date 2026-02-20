@@ -9,19 +9,15 @@ export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [name, setName] = React.useState('Project Name');
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const [projects, setProjects] = React.useState([]);
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const projects = user.projects;
 
     function create() {
         const newProject = createProject(name, currentUser);
-        setProjects([...projects, newProject]);
         setPopupOpen(false);
         
     }
-
-    useEffect(() => {
-        const savedProjets = JSON.parse(localStorage.getItem("projects") || '[]');
-        setProjects(savedProjets);
-    }, []);
 
   return (
     <main>
