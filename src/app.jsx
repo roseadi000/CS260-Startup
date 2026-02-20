@@ -22,7 +22,7 @@ export default function App() {
             </header>
             
             <Routes>
-                <Route path='/' element={<Login user={user} setUser={setUser}/>} exact />
+                <Route path='/' element={currentUser ? <Projects /> : <Login user={user} setUser={setUser}/>} exact />
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
