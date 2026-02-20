@@ -13,15 +13,9 @@ export function checkLogin(email, password) {
     const findUser = users.find((u) => u.email === email && u.password === password);
 
     if (findUser) {
-        const user = {
-            email: findUser.email,
-            password: findUser.password,
-            username: findUser.username,
-        }
-
-        return user;
+        const user = findUser.username;
+        localStorage.setItem('currentUser', JSON.stringify(user));
     }
-    //else {return 'Failed'};
 }
 
 //Projects Service

@@ -17,11 +17,11 @@ export function Login({ user, setUser }) {
     registerUser(email, password, username);
   }
   function login() {
-    const foundUser = checkLogin(email, password);
-    
+    checkLogin(email, password);
+    const foundUser = localStorage.getItem('currentUser') || null;
+
     if (foundUser) {
       setUser(foundUser);
-      console.log("Success!");
       navigate('/projects');
     }
     else {
