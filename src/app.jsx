@@ -7,14 +7,13 @@ import { Projects } from './projects/projects';
 import { Characters } from './characters/characters';
 import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
+import { Popup } from './scripts';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
-    const [currentUser, setCurrentUser] = React.useState(null);
+    const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
+    const [isPopupOpen, setPopupOpen] = React.useState(false);
     
-    React.useEffect(() => {
-        setCurrentUser(JSON.parse((localStorage.getItem('currentUser') || null)));
-    }, [])
     console.log(currentUser);
 
   return (
@@ -23,8 +22,15 @@ export default function App() {
             <header>
                 <div id="Logo">Lore Legend</div>
                 <div id="Menu"><NavLink to="friends" id="menuLink">Friends</NavLink></div>
-                <div id="User">{currentUser ? `${currentUser.username}` : 'Please log in'}</div>
+                <div id="User"><input type='button' id='userButton' value={currentUser ? `${currentUser.username}` : 'Please log in'} onClick={() => setPopupOpen(true)}/></div>
             </header>
+
+            <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+                        <div id='fileHeaders'>Create New Project</div>
+                        <input placeholder='Project Name' onChange={(e) => setName(e.target.value)}></input>
+                        <p></p>
+                        <input type='button' value='Create'></input>
+            </Popup>
             
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
