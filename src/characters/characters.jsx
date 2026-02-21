@@ -10,12 +10,14 @@ export function Characters() {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [name, setName] = React.useState('Character Name');
   const { projectName } = useParams();
-  const projects = JSON.parse(localStorage.getItem('projects'));
-  const project = projects.find(p => p.name === projectName);
+  const users = JSON.parse(localStorage.getItem('users'));
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const user = users.find((u) => u.username === currentUser.username);
+  const project = user.projects.find(p => p.name === projectName);
   const characterList = project.characters;
 
   function create() {
-    createCharacter(name, projects, project);
+    createCharacter(name, user.projects, project);
     setPopupOpen(false);
   }
 

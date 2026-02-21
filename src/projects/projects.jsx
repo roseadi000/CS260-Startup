@@ -15,8 +15,7 @@ export function Projects() {
 
     function create() {
         const newProject = createProject(name, currentUser);
-        setPopupOpen(false);
-        
+        setPopupOpen(false);  
     }
 
   return (

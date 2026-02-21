@@ -48,15 +48,19 @@ export function createProject(name, currentUser) {
 }
 
 //Character Service
-export function createCharacter(name, projects, project) {
+export function createCharacter(name, projects, project, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const characters = user.project.characters;
+
 
     const newCharacter = {
         name,
         date: '2/2/2222',
     }
 
-    project.characters.push(newCharacter);
-    localStorage.setItem('projects', JSON.stringify(projects))
+    characters.push(newCharacter);
+    localStorage.setItem('users', JSON.stringify(users));
     
     return newCharacter;
 }
