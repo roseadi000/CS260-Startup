@@ -10,7 +10,12 @@ import { Friends } from './friends/friends';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
-    const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
+    const [currentUser, setCurrentUser] = React.useState(null);
+    
+    React.useEffect(() => {
+        setCurrentUser(JSON.parse((localStorage.getItem('currentUser') || null)));
+    }, [])
+    console.log(currentUser);
 
   return (
     <BrowserRouter>
@@ -22,7 +27,7 @@ export default function App() {
             </header>
             
             <Routes>
-                <Route path='/' element={currentUser ? <Projects /> : <Login setUser={setUser}/>} exact />
+                <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
