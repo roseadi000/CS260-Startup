@@ -53,7 +53,6 @@ export function createCharacter(name, projectName, currentUser) {
     const user = users.find((u) => u.username === currentUser.username);
     const project = user.projects.find(p => p.name === projectName);
     const characters = project.characters;
-    console.log(`${project.name} - ${project.characters}`);
 
     const newCharacter = {
         name,

@@ -12,11 +12,9 @@ export function Characters() {
   const { projectName } = useParams();
   const users = JSON.parse(localStorage.getItem('users'));
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  console.log(`1- ${currentUser.username}`);
   const user = users.find((u) => u.username === currentUser.username);
   const project = user.projects.find(p => p.name === projectName);
   const characterList = project.characters;
-  console.log(characterList);
 
   function create() {
     createCharacter(name, projectName, currentUser);
@@ -25,7 +23,7 @@ export function Characters() {
 
   return (
     <main>
-      <div id="fileHeaders"><span><NavLink to="/projects" id="fileLink">Projects</NavLink></span>- Project Name2</div>
+      <div id="fileHeaders"><span><NavLink to="/projects" id="fileLink">Projects</NavLink></span>- {projectName}</div>
       <input type='button' value='New Character' onClick={() => setPopupOpen(true)}></input>
 
       <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>

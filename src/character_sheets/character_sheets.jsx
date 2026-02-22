@@ -42,7 +42,6 @@ export function Character_Sheets() {
                     <lable for="species">Species: </lable>
                     <input type="text" id="species" placeholder="Species" />
                     <p></p>
-                    <input type="button" value="Edit" />
                 </div>
             </div>
 
@@ -76,7 +75,6 @@ export function Character_Sheets() {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <input type="button" value="+" />
             </div>
         </div>
         <p></p>
