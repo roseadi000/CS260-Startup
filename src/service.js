@@ -57,6 +57,15 @@ export function createCharacter(name, projectName, currentUser) {
     const newCharacter = {
         name,
         date: '2/2/2222',
+        fullName: '',
+        age: '',
+        gender: '',
+        height: '',
+        birthday: '',
+        species: '',
+        personality: '',
+        strenghts: '',
+        weaknesses: '',
     }
 
     characters.push(newCharacter);

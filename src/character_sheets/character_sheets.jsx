@@ -25,22 +25,22 @@ export function Character_Sheets() {
                 </div>
                 <div id="mainInfo">
                     <lable for="fullName">Full Name: </lable>
-                    <input type="text" id="fullName" placeholder="Full Name" />
+                    <input type="text" id="fullName" className='textStyle' placeholder="Full Name" />
                     <p></p>
                     <lable for="age">Age: </lable>
-                    <input type="text" id="age" placeholder="Age" />
+                    <input type="text" id="age" className='textStyle' placeholder="Age" />
                     <p></p>
                     <lable for="gender">Gender: </lable>
-                    <input type="text" id="gender" placeholder="Gender" />
+                    <input type="text" id="gender" className='textStyle' placeholder="Gender" />
                     <p></p>
                     <lable for="height">Height: </lable>
-                    <input type="text" id="height" placeholder="Height" />
+                    <input type="text" id="height" className='textStyle' placeholder="Height" />
                     <p></p>
                     <lable for="birthday">Birthday: </lable>
-                    <input type="text" id="birthday" placeholder="Birthday" />
+                    <input type="text" id="birthday" className='textStyle' placeholder="Birthday" />
                     <p></p>
                     <lable for="species">Species: </lable>
-                    <input type="text" id="species" placeholder="Species" />
+                    <input type="text" id="species" className='textStyle' placeholder="Species" />
                     <p></p>
                 </div>
             </div>

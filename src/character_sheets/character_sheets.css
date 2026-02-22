@@ -29,6 +29,10 @@
 #mainInfo {
     padding-top: 15px;
 }
+.textStyle{
+    background: none;
+    border: none;
+}
 #nameBox {
     width: 150px;
     height: 50px;
