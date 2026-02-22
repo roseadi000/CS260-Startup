@@ -12,12 +12,14 @@ export function Characters() {
   const { projectName } = useParams();
   const users = JSON.parse(localStorage.getItem('users'));
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  console.log(`1- ${currentUser.username}`);
   const user = users.find((u) => u.username === currentUser.username);
   const project = user.projects.find(p => p.name === projectName);
   const characterList = project.characters;
+  console.log(characterList);
 
   function create() {
-    createCharacter(name, user.projects, project);
+    createCharacter(name, projectName, currentUser);
     setPopupOpen(false);
   }
 

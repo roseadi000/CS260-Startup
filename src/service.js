@@ -48,11 +48,12 @@ export function createProject(name, currentUser) {
 }
 
 //Character Service
-export function createCharacter(name, projects, project, currentUser) {
+export function createCharacter(name, projectName, currentUser) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const characters = user.project.characters;
-
+    const project = user.projects.find(p => p.name === projectName);
+    const characters = project.characters;
+    console.log(`${project.name} - ${project.characters}`);
 
     const newCharacter = {
         name,
