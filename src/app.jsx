@@ -13,13 +13,6 @@ export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
 
-    function logout () {
-        localStorage.removeItem('currentUser');
-        setPopupOpen(false);  
-        currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
-    }
-
-
   return (
     <BrowserRouter>
         <div className="bodyDisplay">

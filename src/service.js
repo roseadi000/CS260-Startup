@@ -22,7 +22,6 @@ export function checkLogin(email, password) {
     console.log(findUser);
 
     if (findUser) {
-        console.log('Worked');
         const user = {
             username: findUser.username,
         }

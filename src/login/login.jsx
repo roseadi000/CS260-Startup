@@ -6,15 +6,12 @@ import { registerUser, checkLogin } from '../service.js';
 import { Popup } from '../scripts';
 
 export function Login({ setUser }) {
+  localStorage.removeItem('currentUser'); //Temporary logout
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [username, setUsername] = React.useState('');
   const navigate = useNavigate();
-
-  React.useEffect(() => {
-    localStorage.removeItem('currentUser'); //Temporary logout
-  }, [])
 
   function register(event) {
     event.preventDefault();
