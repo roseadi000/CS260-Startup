@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Projects } from './projects/projects';
 import { Characters } from './characters/characters';
@@ -12,9 +12,13 @@ import { Popup } from './scripts';
 export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
-    const [isPopupOpen, setPopupOpen] = React.useState(false);
-    
-    console.log(currentUser);
+
+    function logout () {
+        localStorage.removeItem('currentUser');
+        setPopupOpen(false);  
+        currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
+    }
+
 
   return (
     <BrowserRouter>
@@ -22,15 +26,8 @@ export default function App() {
             <header>
                 <div id="Logo">Lore Legend</div>
                 <div id="Menu"><NavLink to="friends" id="menuLink">Friends</NavLink></div>
-                <div id="User"><input type='button' id='userButton' value={currentUser ? `${currentUser.username}` : 'Please log in'} onClick={() => setPopupOpen(true)}/></div>
+                <div id="User"><NavLink to='/' id='userButton'>{currentUser ? `${currentUser.username}` : 'Please log in'}</NavLink></div>
             </header>
-
-            <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-                        <div id='fileHeaders'>Create New Project</div>
-                        <input placeholder='Project Name' onChange={(e) => setName(e.target.value)}></input>
-                        <p></p>
-                        <input type='button' value='Create'></input>
-            </Popup>
             
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
