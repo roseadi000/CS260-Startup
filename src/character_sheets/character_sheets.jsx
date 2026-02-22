@@ -10,7 +10,7 @@ export function Character_Sheets() {
 
   return (
     <main>
-        <div id="fileHeaders"><span><NavLink to={`/projects/${projectName}`} id="fileLink">{projectName}</NavLink></span>- {characterName}</div>
+        <div id="fileHeaders"><span><NavLink to='/projects' id='fileLink'>Projects</NavLink></span>- <span><NavLink to={`/projects/${projectName}`} id="fileLink">{projectName}</NavLink></span>- {characterName}</div>
         <div id="Organizer">
             <div id="mainOrganizer">
                 <div id="headInfo">
