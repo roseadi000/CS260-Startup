@@ -34,10 +34,6 @@ Header {
     font-size: 20px;
     padding-top: 24px;
     font-family: 'Times New Roman', Times, serif;
-}
-#userButton {
-    background: none; 
-    border: none; 
     color: lightyellow;
 }
 /*body styles*/

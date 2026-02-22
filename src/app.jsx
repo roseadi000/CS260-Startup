@@ -19,9 +19,9 @@ export default function App() {
             <header>
                 <div id="Logo">Lore Legend</div>
                 <div id="Menu"><NavLink to="friends" id="menuLink">Friends</NavLink></div>
-                <div id="User"><NavLink to='/' id='userButton'>{currentUser ? `${currentUser.username}` : 'Please log in'}</NavLink></div>
+                <div id="User">{currentUser ? `${currentUser.username}` : 'Please log in'}</div>           
             </header>
-            
+
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
