@@ -104,3 +104,24 @@ export function saveGender(value, projectName, characterName, currentUser){
     character.gender = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function saveHeight(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.height = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveBirthday(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.birthday = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveSpecies(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.species = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams} from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { saveFullName, saveAge, saveGender } from '../service.js';
+import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies } from '../service.js';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
@@ -17,6 +17,9 @@ export function Character_Sheets() {
     const [fullName, setFullName] = React.useState(character.fullName);
     const [age, setAge] = React.useState(character.age);
     const [gender, setGender] = React.useState(character.gender);
+    const [height, setHeight] = React.useState(character.height);
+    const [birthday, setBirthday] = React.useState(character.birthday);
+    const [species, setSpecies] = React.useState(character.species);
 
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
@@ -47,14 +50,14 @@ export function Character_Sheets() {
                     <lable for="genderBox">Gender: </lable>
                     <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={saveInfo(gender, saveGender)}/>
                     <p></p>
-                    <lable for="height">Height: </lable>
-                    <input type="text" id="height" className='textStyle' placeholder="Height" />
+                    <lable for="heightBox">Height: </lable>
+                    <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={saveInfo(height, saveHeight)}/>
                     <p></p>
                     <lable for="birthday">Birthday: </lable>
-                    <input type="text" id="birthday" className='textStyle' placeholder="Birthday" />
+                    <input type="text" id="birthday" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={saveInfo(birthday, saveBirthday)}/>
                     <p></p>
                     <lable for="species">Species: </lable>
-                    <input type="text" id="species" className='textStyle' placeholder="Species" />
+                    <input type="text" id="species" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={saveInfo(species, saveSpecies)}/>
                     <p></p>
                 </div>
             </div>
