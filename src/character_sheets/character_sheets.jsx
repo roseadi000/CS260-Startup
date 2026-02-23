@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams} from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies } from '../service.js';
+import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality } from '../service.js';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
@@ -20,6 +20,8 @@ export function Character_Sheets() {
     const [height, setHeight] = React.useState(character.height);
     const [birthday, setBirthday] = React.useState(character.birthday);
     const [species, setSpecies] = React.useState(character.species);
+
+    const [personality, setPersonality] = React.useState(character.personality);
 
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
@@ -68,8 +70,8 @@ export function Character_Sheets() {
                         <Accordion.Header>Personality</Accordion.Header>
                         <Accordion.Body>
                             <div className="accordion-body">
-                                <label for="personality"></label>
-                                <textarea id="personality" className="textAreaInfo"></textarea>
+                                <label for="personalityBox"></label>
+                                <textarea id="personalityBox" className="textAreaInfo" value={personality} onChange={(e) => setPersonality(e.target.value)} onBlur={saveInfo(personality, savePersonality)}></textarea>
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
@@ -77,8 +79,8 @@ export function Character_Sheets() {
                         <Accordion.Header>Strengths</Accordion.Header>
                         <Accordion.Body>
                             <div className="accordion-body">
-                                <label for="strengths"></label>
-                                <textarea id="strengths" className="textAreaInfo"></textarea>
+                                <label for="strengthsBox"></label>
+                                <textarea id="strengthsBox" className="textAreaInfo"></textarea>
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
@@ -86,8 +88,8 @@ export function Character_Sheets() {
                         <Accordion.Header>Weaknesses</Accordion.Header>
                         <Accordion.Body>
                             <div className="accordion-body">
-                                <label for="weaknesses"></label>
-                                <textarea id="weaknesses" className="textAreaInfo"></textarea>
+                                <label for="weaknessesBox"></label>
+                                <textarea id="weaknessesBox" className="textAreaInfo"></textarea>
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>

@@ -125,3 +125,10 @@ export function saveSpecies(value, projectName, characterName, currentUser){
     character.species = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function savePersonality(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.personality = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
