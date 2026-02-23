@@ -53,11 +53,11 @@ export function Character_Sheets() {
                     <lable for="heightBox">Height: </lable>
                     <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={saveInfo(height, saveHeight)}/>
                     <p></p>
-                    <lable for="birthday">Birthday: </lable>
-                    <input type="text" id="birthday" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={saveInfo(birthday, saveBirthday)}/>
+                    <lable for="birthdayBox">Birthday: </lable>
+                    <input type="text" id="birthdayBox" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={saveInfo(birthday, saveBirthday)}/>
                     <p></p>
-                    <lable for="species">Species: </lable>
-                    <input type="text" id="species" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={saveInfo(species, saveSpecies)}/>
+                    <lable for="speciesBox">Species: </lable>
+                    <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={saveInfo(species, saveSpecies)}/>
                     <p></p>
                 </div>
             </div>
