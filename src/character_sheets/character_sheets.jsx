@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams} from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { saveFullName } from '../service.js';
+import { saveFullName, saveAge, saveGender } from '../service.js';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
@@ -15,6 +15,8 @@ export function Character_Sheets() {
     const character = project.characters.find(c => c.name === characterName);
 
     const [fullName, setFullName] = React.useState(character.fullName);
+    const [age, setAge] = React.useState(character.age);
+    const [gender, setGender] = React.useState(character.gender);
 
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
@@ -40,10 +42,10 @@ export function Character_Sheets() {
                     <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={saveInfo(fullName, saveFullName)}/>
                     <p></p>
                     <lable for="ageBox">Age: </lable>
-                    <input type="text" id="ageBox" className='textStyle' placeholder="Age" />
+                    <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={saveInfo(age, saveAge)}/>
                     <p></p>
-                    <lable for="gender">Gender: </lable>
-                    <input type="text" id="gender" className='textStyle' placeholder="Gender" />
+                    <lable for="genderBox">Gender: </lable>
+                    <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={saveInfo(gender, saveGender)}/>
                     <p></p>
                     <lable for="height">Height: </lable>
                     <input type="text" id="height" className='textStyle' placeholder="Height" />

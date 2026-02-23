@@ -75,12 +75,32 @@ export function createCharacter(name, projectName, currentUser) {
 }
 
 //Character Sheets Service
-export function saveFullName(value, projectName, characterName, currentUser){
-    const users = JSON.parse(localStorage.getItem('users'));
+function findCharacter(users, projectName, characterName, currentUser){
     const user = users.find((u) => u.username === currentUser.username);
     const project = user.projects.find(p => p.name === projectName);
     const character = project.characters.find(c => c.name === characterName);
 
+    return character;
+}
+
+export function saveFullName(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
     character.fullName = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveAge(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.age = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveGender(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.gender = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
