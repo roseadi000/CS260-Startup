@@ -4,9 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams} from 'react-router-dom';
 import { Characters } from '../characters/characters';
+import { saveFullName } from '../service.js';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
+    const users = JSON.parse(localStorage.getItem('users'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const project = user.projects.find(p => p.name === projectName);
+    const character = project.characters.find(c => c.name === characterName);
+
+    const [fullName, setFullName] = React.useState(character.fullName);
+
+    function saveInfo(text, infoFunc) {
+        infoFunc(text, projectName, characterName, currentUser);
+    }
 
   return (
     <main>
@@ -24,11 +36,11 @@ export function Character_Sheets() {
                     </div>
                 </div>
                 <div id="mainInfo">
-                    <lable for="fullName">Full Name: </lable>
-                    <input type="text" id="fullName" className='textStyle' placeholder="Full Name" />
+                    <lable for="fullNameBox">Full Name: </lable>
+                    <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={saveInfo(fullName, saveFullName)}/>
                     <p></p>
-                    <lable for="age">Age: </lable>
-                    <input type="text" id="age" className='textStyle' placeholder="Age" />
+                    <lable for="ageBox">Age: </lable>
+                    <input type="text" id="ageBox" className='textStyle' placeholder="Age" />
                     <p></p>
                     <lable for="gender">Gender: </lable>
                     <input type="text" id="gender" className='textStyle' placeholder="Gender" />

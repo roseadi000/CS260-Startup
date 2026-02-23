@@ -73,3 +73,14 @@ export function createCharacter(name, projectName, currentUser) {
     
     return newCharacter;
 }
+
+//Character Sheets Service
+export function saveFullName(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const project = user.projects.find(p => p.name === projectName);
+    const character = project.characters.find(c => c.name === characterName);
+
+    character.fullName = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
