@@ -146,3 +146,21 @@ export function saveWeaknesses(value, projectName, characterName, currentUser){
     character.weaknesses = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
+
+//Friends Service
+/*const messages = ['Carl sent you a friend request', 'David is online', 'Jenna sent you a friend request', 
+    'Claire is online', 'Ben sent you a friend request', 'David is online', 'Claire is online'];
+const names = ['Carl', 'Debra', 'John', 'Jenna', 'Grace', 'Megan', 'Jack', 'Dave', 'Logan', 'Ariel', 'Kamay'];
+
+export function getRandomName() {
+    const num = Math.floor(Math.random() * names.length);
+    const name = names[num];
+
+    return name;
+}
+
+export function friendRequest() {
+    const name = getRandomName();
+
+    this.broadcastEvent('friendRequest', {from: name});
+}*/

@@ -4,6 +4,18 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 
 export function Friends() {
+    const [status, setStatus] = React.useState('Offline');
+
+    setInterval(() => {
+        if (status === 'Online') {
+            setStatus('Offline');
+        }
+        else {
+            setStatus('Online');
+        }
+        
+    }, 5000);
+
   return (
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
@@ -12,12 +24,12 @@ export function Friends() {
             <div id="Status"><b>Status</b></div>
         </div>
         <div id="friendOrganizer">
-            <div id="Friends">Friend1</div>
-            <div id="Status">Online</div>
+            <div id="Friends">David</div>
+            <div id="Status">{status}</div>
         </div>
         <div id="friendOrganizer">
-            <div id="Friends">Friend2</div>
-            <div id="Status">Offline</div>
+            <div id="Friends">Claire</div>
+            <div id="Status">{status}</div>
         </div>
     </main>
   );
