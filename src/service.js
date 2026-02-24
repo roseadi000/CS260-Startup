@@ -64,7 +64,7 @@ export function createCharacter(name, projectName, currentUser) {
         birthday: '',
         species: '',
         personality: '',
-        strenghts: '',
+        strengths: '',
         weaknesses: '',
     }
 
@@ -130,5 +130,19 @@ export function savePersonality(value, projectName, characterName, currentUser){
     const character = findCharacter(users, projectName, characterName, currentUser);
 
     character.personality = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveStrengths(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.strengths = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+export function saveWeaknesses(value, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.weaknesses = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
