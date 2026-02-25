@@ -189,3 +189,10 @@ export function updateUsername(value, currentUser) {
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }
+export function updateEmail(value, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+
+    user.email = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}

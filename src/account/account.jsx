@@ -1,7 +1,7 @@
 import React from 'react';
 import './account.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { updateUsername } from '../service.js';
+import { updateUsername, updateEmail } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Account() {
@@ -11,10 +11,13 @@ export function Account() {
 
   const [newUsername, setNewUsername] = React.useState(user.username);
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
+  const [newEmail, setNewEmail] = React.useState(user.email);
+  const [isPopupOpenEmail, setPopupOpenEmail] = React.useState(false);
   
 
   function updateInfo(text, infoFunc) {
     infoFunc(text, currentUser);
+    setPopupOpen(false);
   }
 
   return (
@@ -27,7 +30,7 @@ export function Account() {
       <div id="accountType"><b>Email</b></div>
       <div id="projectOrganizer">
         <div id='accountValue'>{user.email}</div>
-        <input type='button' value='Change' id="changeButton"></input>
+        <input type='button' value='Change' id="changeButton" onClick={() => setPopupOpenEmail(true)}></input>
       </div>
       <div id="accountType"><b>Password</b></div>
       <div id="projectOrganizer">
@@ -42,8 +45,15 @@ export function Account() {
         <lable for="usernameBox">New Username: </lable>
         <input type="text" id="usernameBox" onChange={(e) => setNewUsername(e.target.value)} />
         <p></p>
-        <input type='button' onClick={updateInfo(newUsername, updateUsername)} />
-        </Popup>
+        <input type='button' value='Update' onClick={updateInfo(newUsername, updateUsername)} />
+      </Popup>
+      <Popup isOpen={isPopupOpenEmail} onClose={() => setPopupOpenEmail(false)}>
+        <div id='fileHeaders'>Update Email</div>
+        <lable for="emailBox">New Email: </lable>
+        <input type="text" id="emailBox" onChange={(e) => setNewEmail(e.target.value)} />
+        <p></p>
+        <input type='button' value='Update' onClick={updateInfo(newEmail, updateEmail)} />
+      </Popup>
     </main>
   );
 }
