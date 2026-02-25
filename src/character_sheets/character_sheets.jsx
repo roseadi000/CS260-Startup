@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses } from '../service.js';
+import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses, getRandomName } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
@@ -28,10 +28,26 @@ export function Character_Sheets() {
 
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [randomNameGender, setRandomNameGender] = React.useState('');
+    const [randomName, setRandomName] = React.useState('');
     
 
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
+    }
+
+    function generateName() {
+        getGender();
+        setFullName(getRandomName(randomNameGender));
+    }
+
+    function getGender() {
+        const options = document.getElementsByName('nameGender');
+
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                setRandomNameGender(options[i].value);
+            }
+        }
     }
 
     return (
@@ -112,7 +128,7 @@ export function Character_Sheets() {
                 <div><label><input type='radio' name='nameGender' value='female' checked={randomNameGender === 'female'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Female</label></div>
                 <div><label><input type='radio' name='nameGender' value='any' checked={randomNameGender === 'any'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Any</label></div>
                 <p></p>
-                <input type='button' value='Generate'></input>
+                <input type='button' value='Generate' onClick={generateName}></input>
             </Popup>
         </main>
     );

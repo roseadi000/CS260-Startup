@@ -148,19 +148,24 @@ export function saveWeaknesses(value, projectName, characterName, currentUser){
 }
 
 //Friends Service
-/*const messages = ['Carl sent you a friend request', 'David is online', 'Jenna sent you a friend request', 
-    'Claire is online', 'Ben sent you a friend request', 'David is online', 'Claire is online'];
-const names = ['Carl', 'Debra', 'John', 'Jenna', 'Grace', 'Megan', 'Jack', 'Dave', 'Logan', 'Ariel', 'Kamay'];
+const names = [['Carl', 'John', 'Jack', 'Dave', 'Logan', 'Bob', 'John', 'Anthony'], ['Debra', 'Jenna', 'Grace', 'Megan', 'Ariel', 'Kamay', 'Charlotte']];
 
-export function getRandomName() {
-    const num = Math.floor(Math.random() * names.length);
-    const name = names[num];
+export function getRandomName(gender) {
+   let name = '';
+
+    if (gender === 'male') {
+        const num = Math.floor(Math.random() * names[0].length);
+        name = names[0][num];
+    }
+    else if (gender === 'female') {
+        const num = Math.floor(Math.random() * names[1].length);
+        name = names[1][num];
+    }
+    else {
+        const list =  Math.round(Math.random());
+        const num = Math.floor(Math.random() * names[list].length);
+        name = names[list][num];
+    }
 
     return name;
 }
-
-export function friendRequest() {
-    const name = getRandomName();
-
-    this.broadcastEvent('friendRequest', {from: name});
-}*/
