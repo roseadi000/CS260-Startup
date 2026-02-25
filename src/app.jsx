@@ -7,7 +7,7 @@ import { Projects } from './projects/projects';
 import { Characters } from './characters/characters';
 import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
-import { Popup } from './scripts';
+import { Account } from './account/account';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
@@ -25,6 +25,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
+                <Route path='/account' element={<Account />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
                 <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />
