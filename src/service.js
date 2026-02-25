@@ -63,6 +63,7 @@ export function createCharacter(name, projectName, currentUser) {
         height: '',
         birthday: '',
         species: '',
+        imageURL: '/character_placeholder.png',
         personality: '',
         strengths: '',
         weaknesses: '',
@@ -75,6 +76,9 @@ export function createCharacter(name, projectName, currentUser) {
 }
 
 //Character Sheets Service
+const names = [['Carl', 'John', 'Jack', 'Dave', 'Logan', 'Bob', 'John', 'Anthony'], ['Debra', 'Jenna', 'Grace', 'Megan', 'Ariel', 'Kamay', 'Charlotte']];
+
+
 function findCharacter(users, projectName, characterName, currentUser){
     const user = users.find((u) => u.username === currentUser.username);
     const project = user.projects.find(p => p.name === projectName);
@@ -147,9 +151,6 @@ export function saveWeaknesses(value, projectName, characterName, currentUser){
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-//Friends Service
-const names = [['Carl', 'John', 'Jack', 'Dave', 'Logan', 'Bob', 'John', 'Anthony'], ['Debra', 'Jenna', 'Grace', 'Megan', 'Ariel', 'Kamay', 'Charlotte']];
-
 export function getRandomName(gender) {
    let name = '';
 
@@ -168,4 +169,12 @@ export function getRandomName(gender) {
     }
 
     return name;
+}
+
+export function saveImage(url, projectName, characterName, currentUser){
+    const users = JSON.parse(localStorage.getItem('users'));
+    const character = findCharacter(users, projectName, characterName, currentUser);
+
+    character.imageURL = url;
+    localStorage.setItem('users', JSON.stringify(users));
 }

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { Characters } from '../characters/characters';
-import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses, getRandomName } from '../service.js';
+import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses, getRandomName, saveImage } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
@@ -21,7 +21,7 @@ export function Character_Sheets() {
     const [height, setHeight] = React.useState(character.height);
     const [birthday, setBirthday] = React.useState(character.birthday);
     const [species, setSpecies] = React.useState(character.species);
-    const [image, setImage] = React.useState('/character_placeholder.png');
+    const [image, setImage] = React.useState(character.imageURL);
 
     const [personality, setPersonality] = React.useState(character.personality);
     const [strengths, setStrengths] = React.useState(character.strengths);
@@ -34,8 +34,12 @@ export function Character_Sheets() {
         const file = e.target.files[0];
         if (!file) return;
 
-        const url = URL.createObjectURL(file);
-        setImage(url);
+        const reader = new FileReader();
+        reader.onload = () => {setImage(reader.result)
+            saveImage(reader.result, projectName, characterName, currentUser);
+        };
+        
+        reader.readAsDataURL(file);
     }
 
     function saveInfo(text, infoFunc) {
