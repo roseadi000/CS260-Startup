@@ -47,7 +47,7 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Uses HTML to structure the website
 - **CSS** - Uses CSS to design the website. It will organize character information like name, age, height, and more 
 - **React** - Uses React to add interactivity so users can switch among multiple characters or projects and interact with friends' projects
-- **Service** - Uses Services for storing and retrieving user character data, connecting with friends, and use https://avatars.dicebear.com/ for character design ideas     
+- **Service** - Uses Services for storing and retrieving user character data, connecting with friends, and use https://randomuser.me/documentation for random name generation.    
 - **DB/Login** - Uses databases to hold login information and character information
 - **WebSocket** - Uses WebSocket to allow friends to edits characters together
 
