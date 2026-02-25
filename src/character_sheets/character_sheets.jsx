@@ -21,15 +21,22 @@ export function Character_Sheets() {
     const [height, setHeight] = React.useState(character.height);
     const [birthday, setBirthday] = React.useState(character.birthday);
     const [species, setSpecies] = React.useState(character.species);
+    const [image, setImage] = React.useState('/character_placeholder.png');
 
     const [personality, setPersonality] = React.useState(character.personality);
     const [strengths, setStrengths] = React.useState(character.strengths);
     const [weaknesses, setWeaknesses] = React.useState(character.weaknesses);
 
     const [isPopupOpen, setPopupOpen] = React.useState(false);
-    const [randomNameGender, setRandomNameGender] = React.useState('');
-    const [randomName, setRandomName] = React.useState('');
-    
+    const [randomNameGender, setRandomNameGender] = React.useState('');    
+
+    function convertImage(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const url = URL.createObjectURL(file);
+        setImage(url);
+    }
 
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
@@ -57,9 +64,9 @@ export function Character_Sheets() {
                 <div id="mainOrganizer">
                     <div id="headInfo">
                         <div id="imageBox">
-                            <img src="/character_placeholder.png" width="200px"></img>
+                            <img src={image} width="200px"></img>
                         </div>
-                        <input type="file" accept=".png, .jpg, .jpeg" />
+                        <input type="file" accept=".image/*" onChange={convertImage}/>
                         <div id="nameBox">
                             <div id='nameTextBox'>{characterName}</div>
                         </div>
