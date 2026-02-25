@@ -108,9 +108,9 @@ export function Character_Sheets() {
 
             <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
                 <div id='fileHeaders'>Generate Random Name</div>
-                <label><input type='radio' name='nameGender' value='Male' checked={randomNameGender === 'Male'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Male</label>
-                <label><input type='radio' name='nameGender' value='Femal' checked={randomNameGender === 'Female'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Female</label>
-                <label><input type='radio' name='nameGender' value='Any' checked={randomNameGender === 'Any'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Any</label>
+                <label><input type='radio' name='nameGender' value='male' checked={randomNameGender === 'male'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Male</label>
+                <div><label><input type='radio' name='nameGender' value='female' checked={randomNameGender === 'female'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Female</label></div>
+                <div><label><input type='radio' name='nameGender' value='any' checked={randomNameGender === 'any'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Any</label></div>
                 <p></p>
                 <input type='button' value='Generate'></input>
             </Popup>
