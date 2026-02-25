@@ -11,9 +11,17 @@ export function Account() {
   return (
     <main>
       <div id='fileHeaders'>Account</div>
-      <div>Username: {user.username} <input type='button' value='Change'></input></div>
-      <div>Email: {user.email} <input type='button' value='Change'></input></div>
-      <div>Password: **** <input type='button' value='Change'></input></div>
+      <div>Username</div>
+      <div>{user.username} <input type='button' value='Change'></input></div>
+      <p></p>
+      <div>Email</div>
+      <div>{user.email} <input type='button' value='Change'></input></div>
+      <p></p>
+      <div>Password</div>
+      <input type='button' value='Change'></input>
+      <p></p>
+      <p></p>
+      <input type='button' value='Logout'></input>
     </main>
   );
 }
