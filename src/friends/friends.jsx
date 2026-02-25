@@ -6,15 +6,15 @@ import { Projects } from '../projects/projects';
 export function Friends() {
     const [status, setStatus] = React.useState('Offline');
 
-    setInterval(() => {
-        if (status === 'Online') {
-            setStatus('Offline');
-        }
-        else {
-            setStatus('Online');
-        }
-        
-    }, 5000);
+        setInterval(() => {
+            if (status === 'Online') {
+                setStatus('Offline');
+            }
+            else {
+                setStatus('Online');
+            }
+            
+        }, Math.floor(Math.random() * 60000));
 
   return (
     <main>
