@@ -196,3 +196,10 @@ export function updateEmail(value, currentUser) {
     user.email = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function updatePassword(value, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+
+    user.password = value;
+    localStorage.setItem('users', JSON.stringify(users));
+}

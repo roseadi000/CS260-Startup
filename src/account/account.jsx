@@ -1,7 +1,7 @@
 import React from 'react';
 import './account.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { updateUsername, updateEmail } from '../service.js';
+import { updateUsername, updateEmail, updatePassword } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Account() {
@@ -13,11 +13,14 @@ export function Account() {
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
   const [newEmail, setNewEmail] = React.useState(user.email);
   const [isPopupOpenEmail, setPopupOpenEmail] = React.useState(false);
+  const [password, setPassword] = React.useState('');
+  const [newPassword, setNewPassword] = React.useState(user.password);
+  const [isPopupOpenPassword, setPopupOpenPassword] = React.useState(false);
   
 
-  function updateInfo(text, infoFunc) {
+  function updateInfo(text, infoFunc, closePopup) {
     infoFunc(text, currentUser);
-    setPopupOpen(false);
+    closePopup(false);
   }
 
   return (
@@ -35,7 +38,7 @@ export function Account() {
       <div id="accountType"><b>Password</b></div>
       <div id="projectOrganizer">
         <div id='accountValue'>****</div>
-        <input type='button' value='Change' id="changeButton"></input>
+        <input type='button' value='Change' id="changeButton" onClick={() => setPopupOpenPassword(true)}></input>
       </div>
       <p></p>
       <input type='button' value='Logout'></input>
@@ -45,14 +48,23 @@ export function Account() {
         <lable for="usernameBox">New Username: </lable>
         <input type="text" id="usernameBox" onChange={(e) => setNewUsername(e.target.value)} />
         <p></p>
-        <input type='button' value='Update' onClick={updateInfo(newUsername, updateUsername)} />
+        <input type='button' value='Update' onClick={() => updateInfo(newUsername, updateUsername, setPopupOpenUsername)} />
       </Popup>
       <Popup isOpen={isPopupOpenEmail} onClose={() => setPopupOpenEmail(false)}>
         <div id='fileHeaders'>Update Email</div>
         <lable for="emailBox">New Email: </lable>
         <input type="text" id="emailBox" onChange={(e) => setNewEmail(e.target.value)} />
         <p></p>
-        <input type='button' value='Update' onClick={updateInfo(newEmail, updateEmail)} />
+        <input type='button' value='Update' onClick={() => updateInfo(newEmail, updateEmail, setPopupOpenEmail)} />
+      </Popup>
+      <Popup isOpen={isPopupOpenPassword} onClose={() => setPopupOpenPassword(false)}>
+        <div id='fileHeaders'>Update Password</div>
+        <lable for="cPasswordBox">Current Password: </lable>
+        <input type="password" id="cPassowrdlBox" onChange={(e) => setPassword(e.target.value)} />
+        <lable for="nPasswordBox">New Password: </lable>
+        <input type="text" id="nPasswordBox" onChange={(e) => setNewPassword(e.target.value)} />
+        <p></p>
+        <input type='button' value='Update' onClick={() => updateInfo(newPassword, updatePassword, setPopupOpenPassword)} />
       </Popup>
     </main>
   );
