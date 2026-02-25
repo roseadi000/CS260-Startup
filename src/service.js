@@ -178,3 +178,14 @@ export function saveImage(url, projectName, characterName, currentUser){
     character.imageURL = url;
     localStorage.setItem('users', JSON.stringify(users));
 }
+
+//Account Services
+export function updateUsername(value, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+
+    user.username = value;
+    currentUser.username = value;
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+}

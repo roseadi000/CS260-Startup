@@ -78,22 +78,22 @@ export function Character_Sheets() {
                     </div>
                     <div id="mainInfo">
                         <lable for="fullNameBox">Full Name: </lable>
-                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={saveInfo(fullName, saveFullName)} />
+                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={() => saveInfo(fullName, saveFullName)} />
                         <p></p>
                         <lable for="ageBox">Age: </lable>
-                        <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={saveInfo(age, saveAge)} />
+                        <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={() => saveInfo(age, saveAge)} />
                         <p></p>
                         <lable for="genderBox">Gender: </lable>
-                        <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={saveInfo(gender, saveGender)} />
+                        <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={() => saveInfo(gender, saveGender)} />
                         <p></p>
                         <lable for="heightBox">Height: </lable>
-                        <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={saveInfo(height, saveHeight)} />
+                        <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={() => saveInfo(height, saveHeight)} />
                         <p></p>
                         <lable for="birthdayBox">Birthday: </lable>
-                        <input type="text" id="birthdayBox" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={saveInfo(birthday, saveBirthday)} />
+                        <input type="text" id="birthdayBox" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={() => saveInfo(birthday, saveBirthday)} />
                         <p></p>
                         <lable for="speciesBox">Species: </lable>
-                        <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={saveInfo(species, saveSpecies)} />
+                        <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={() => saveInfo(species, saveSpecies)} />
                         <p></p>
                         <p></p>
                         <div>Need help with a name? <input type='button' value='Generate Random Name' onClick={() => setPopupOpen(true)} ></input></div>
