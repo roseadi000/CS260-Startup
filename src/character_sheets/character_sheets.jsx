@@ -5,6 +5,7 @@ import './character_sheets.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { Characters } from '../characters/characters';
 import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses } from '../service.js';
+import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
@@ -25,6 +26,10 @@ export function Character_Sheets() {
     const [strengths, setStrengths] = React.useState(character.strengths);
     const [weaknesses, setWeaknesses] = React.useState(character.weaknesses);
 
+    const [isPopupOpen, setPopupOpen] = React.useState(false);
+    const [randomNameGender, setRandomNameGender] = React.useState('');
+    
+
     function saveInfo(text, infoFunc) {
         infoFunc(text, projectName, characterName, currentUser);
     }
@@ -39,7 +44,6 @@ export function Character_Sheets() {
                             <img src="/character_placeholder.png" width="200px"></img>
                         </div>
                         <input type="file" accept=".png, .jpg, .jpeg" />
-                        <p>Or insert an avatar using third-pary API</p>
                         <div id="nameBox">
                             <div id='nameTextBox'>{characterName}</div>
                         </div>
@@ -63,6 +67,8 @@ export function Character_Sheets() {
                         <lable for="speciesBox">Species: </lable>
                         <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={saveInfo(species, saveSpecies)} />
                         <p></p>
+                        <p></p>
+                        <div>Need help with a name? <input type='button' value='Generate Random Name' onClick={() => setPopupOpen(true)} ></input></div>
                     </div>
                 </div>
 
@@ -99,6 +105,15 @@ export function Character_Sheets() {
                 </div>
             </div>
             <p></p>
+
+            <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+                <div id='fileHeaders'>Generate Random Name</div>
+                <label><input type='radio' name='nameGender' value='Male' checked={randomNameGender === 'Male'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Male</label>
+                <label><input type='radio' name='nameGender' value='Femal' checked={randomNameGender === 'Female'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Female</label>
+                <label><input type='radio' name='nameGender' value='Any' checked={randomNameGender === 'Any'} onChange={(e) => setRandomNameGender(e.target.value)}></input>Any</label>
+                <p></p>
+                <input type='button' value='Generate'></input>
+            </Popup>
         </main>
     );
 }
