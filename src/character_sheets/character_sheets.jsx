@@ -49,6 +49,7 @@ export function Character_Sheets() {
     function generateName() {
         getGender();
         setFullName(getRandomName(randomNameGender));
+        setPopupOpen(false);
     }
 
     function getGender() {

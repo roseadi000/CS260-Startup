@@ -19,6 +19,8 @@ export function Login({ setUser }) {
   function register(event) {
     event.preventDefault();
     registerUser(email, password, username);
+    setPopupOpen(false);
+    login();
   }
   function login() {
     checkLogin(email, password);
@@ -43,7 +45,6 @@ export function Login({ setUser }) {
             <p></p>
             <input type='button' value='Login' onClick={login}></input>
             <input type='button' value='Sign Up' onClick={() => setPopupOpen(true)}></input>
-            <NavLink to="projects">Login</NavLink>
 
             <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
               <div id='fileHeaders'>Create New Account</div>
