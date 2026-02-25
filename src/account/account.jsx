@@ -1,4 +1,5 @@
 import React from 'react';
+import './account.css';
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 import { registerUser, checkLogin } from '../service.js';
@@ -10,18 +11,21 @@ export function Account() {
 
   return (
     <main>
-      <div id='fileHeaders'>Account</div>
-      <div>Username</div>
-      <div>{user.username} <input type='button' value='Change'></input></div>
-      <p></p>
-      <div>Email</div>
-      <div>{user.email} <input type='button' value='Change'></input></div>
-      <p></p>
-      <div>Password</div>
-      <input type='button' value='Change'></input>
-      <p></p>
-      <p></p>
-      <input type='button' value='Logout'></input>
+      <div id="accountType"><b>Username</b></div>
+      <div id="projectOrganizer">
+        <div id='accountValue'>{user.username}</div>
+        <input type='button' value='Change' id="changeButton"></input>
+      </div>
+      <div id="accountType"><b>Email</b></div>
+      <div id="projectOrganizer">
+        <div id='accountValue'>{user.email}</div>
+        <input type='button' value='Change' id="changeButton"></input>
+      </div>
+      <div id="accountType"><b>Password</b></div>
+      <div id="projectOrganizer">
+        <div id='accountValue'>****</div>
+        <input type='button' value='Change' id="changeButton"></input>
+      </div>
     </main>
   );
 }

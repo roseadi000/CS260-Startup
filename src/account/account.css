@@ -1,0 +1,14 @@
+#accountInfo {
+    display: flex;
+    padding: 5px;
+    margin-left: 8px;
+}
+#accountType {
+    margin-left: 8px;
+}
+#changeButton {
+    flex: 0;
+}
+#accountValue {
+    flex: 0 0 20%;
+}
