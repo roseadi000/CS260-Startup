@@ -2,6 +2,7 @@ import React from 'react';
 import './friends.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
+import { Popup } from '../scripts';
 
 export function Friends() {
     const [status, setStatus] = React.useState('Offline');
@@ -9,6 +10,10 @@ export function Friends() {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
     const friends = user.friends;
+
+    const [isPopupOpen, setPopupOpen] = React.useState(false);
+    const [searchName, setSearchName] = React.useState('');
+    
 
         setInterval(() => {
             if (status === 'Online') {
@@ -20,14 +25,26 @@ export function Friends() {
             
         }, Math.floor(Math.random() * 60000));
 
+    function search(name) {
+        checkUsername(name);
+    }
+
   return (
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
         <p></p>
         <div id='linkOrganizer'>
             <div id='friend-request'><b>Friends</b> | <NavLink to='/friend_requests' id='fileLink'>Requests</NavLink></div>
-            <div id='findFriends'>Find Friends</div>
+            <div id='findFriends' onClick={() => setPopupOpen(true)}>Find Friends</div>
         </div>
+
+        <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+            <div id='fileHeaders'>Find Friends</div>
+            <input type ='text' placeholder='Search' onChange={(e) => setSearchName(e.target.value)}></input>
+            <p></p>
+            <input type='button' value='Create'></input>
+        </Popup>
+
         <div id="friendOrganizer">
             <div id="Friends"><b>Name</b></div>
             <div id="Status"><b>Status</b></div>
