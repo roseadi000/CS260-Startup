@@ -2,7 +2,7 @@ import React from 'react';
 import './friend_requests.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
-import { addFriend } from '../service';
+import { addFriend, removeRequest } from '../service';
 
 export function Friend_Requests() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -13,6 +13,15 @@ export function Friend_Requests() {
     
     function accept(request) {
         addFriend(request, currentUser);
+
+        const updatedUsers = JSON.parse(localStorage.getItem('users'));
+        const updatedUser = updatedUsers.find((u) => u.username === currentUser.username);
+
+        setFriendRequests(updatedUser.friendRequests);
+    }
+    
+    function decline(request) {
+        removeRequest(request, currentUser);
 
         const updatedUsers = JSON.parse(localStorage.getItem('users'));
         const updatedUser = updatedUsers.find((u) => u.username === currentUser.username);
@@ -34,7 +43,7 @@ export function Friend_Requests() {
                         <div id="requestName">{request.from}</div>
                         <div id="requestDate">{request.time}</div>
                         <input type='button' value='Accept' onClick={() => accept(request)}/>
-                        <input type='button' value='Decline' />
+                        <input type='button' value='Decline' onClick={() => decline(request)}/>
                     </div>
                 ))}
     </main>

@@ -230,3 +230,11 @@ export function addFriend(request, currentUser) {
     user.friendRequests = updateRequests;
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function removeRequest(request, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+
+    const updateRequests = user.friendRequests.filter((r) => r.id !== request.id); 
+    user.friendRequests = updateRequests;
+    localStorage.setItem('users', JSON.stringify(users));
+}
