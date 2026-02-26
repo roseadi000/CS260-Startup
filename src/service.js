@@ -180,7 +180,7 @@ export function saveImage(url, projectName, characterName, currentUser){
 }
 
 //Account Services
-export function updateUsername(value, currentUser) {
+export function updateUsername(value, currentUser, password) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
 
@@ -189,17 +189,22 @@ export function updateUsername(value, currentUser) {
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }
-export function updateEmail(value, currentUser) {
+export function updateEmail(value, currentUser, password) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
 
     user.email = value;
     localStorage.setItem('users', JSON.stringify(users));
 }
-export function updatePassword(value, currentUser) {
+export function updatePassword(value, currentUser, password) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
 
-    user.password = value;
-    localStorage.setItem('users', JSON.stringify(users));
+    if (user.password === password) {
+        user.password = value;
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    else {
+        alert('Incorrect Password')
+    }
 }

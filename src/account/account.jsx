@@ -19,7 +19,7 @@ export function Account() {
   
 
   function updateInfo(text, infoFunc, closePopup) {
-    infoFunc(text, currentUser);
+    infoFunc(text, currentUser, password);
     closePopup(false);
   }
 
@@ -62,7 +62,7 @@ export function Account() {
         <lable for="cPasswordBox">Current Password: </lable>
         <input type="password" id="cPassowrdlBox" onChange={(e) => setPassword(e.target.value)} />
         <lable for="nPasswordBox">New Password: </lable>
-        <input type="text" id="nPasswordBox" onChange={(e) => setNewPassword(e.target.value)} />
+        <input type="password" id="nPasswordBox" onChange={(e) => setNewPassword(e.target.value)} />
         <p></p>
         <input type='button' value='Update' onClick={() => updateInfo(newPassword, updatePassword, setPopupOpenPassword)} />
       </Popup>
