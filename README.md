@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-This application allows creators to develop characters in a digital, organized space. It allows users to input information on their characters, an image of their characters, and share their characters with their friends.
+This application allows creators to develop characters in a digital, organized space. It allows users to input information on their characters, an image of their characters, and make friends.
 
 <!-- If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing. -->
 
@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
-Do you love to tell stories? Do you need a place to organize your thoughts? The Character Detail Organizer allows creators to insert character details in an organized fashion. What to share your character with a friend? No problem. In this application, creators can share their projects with their friends and even work on a project together. With the Character Detail Organizer, the only limit on character development is your imagination.
+Do you love to tell stories? Do you need a place to organize your thoughts? The Character Detail Organizer allows creators to insert character details in an organized fashion. You can create many projetcs with their own set of characters. With the Character Detail Organizer, the only limit on character development is your imagination.
 
 
 ### Design
@@ -35,10 +35,11 @@ sequenceDiagram
 
 ### Key features
 
-- Create projects and folders for additional organization
+- Create projects
+- Create characters
 - Insert character information and images
-- Share your work with friends
-- Collaberate on a project with friends
+- Make friends
+
 
 ### Technologies
 
@@ -49,7 +50,7 @@ I am going to use the required technologies in the following ways.
 - **React** - Uses React to add interactivity so users can switch among multiple characters or projects and interact with friends' projects
 - **Service** - Uses Services for storing and retrieving user character data, connecting with friends, and use https://randomuser.me/documentation for random name generation.    
 - **DB/Login** - Uses databases to hold login information and character information
-- **WebSocket** - Uses WebSocket to allow friends to edits characters together
+- **WebSocket** - Uses WebSocket to allow friends to send friend requests
 
 ## 🚀 AWS deliverable
 
