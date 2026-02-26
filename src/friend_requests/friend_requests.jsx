@@ -7,7 +7,8 @@ export function Friend_Requests() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const friendRequests = user.friendRequests;  
+    const friendRequests = user.friendRequests;
+    console.log(friendRequests);  
     
     return (
     <main>

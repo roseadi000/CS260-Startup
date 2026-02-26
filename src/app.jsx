@@ -14,12 +14,10 @@ import { getRandomName, saveFriendRequests } from './service';
 export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
-    const [friendRequests, setFriendRequests] = React.useState([]);
 
     React.useEffect(() => {
-        if (!currentUser) return;
         let count = 0;
-        const maxRequests = Math.floor(Math.random() * 5);
+        const maxRequests = Math.floor(Math.random() * 5) + 1;
 
         const interval = setInterval(() => {
             if (count >= maxRequests) {
@@ -30,6 +28,7 @@ export default function App() {
             const friendRequest = {
                 id: crypto.randomUUID(),
                 from: getRandomName('any'),
+                to: 'Test',
                 time: new Date().toLocaleDateString(),
             };
 
@@ -43,8 +42,7 @@ export default function App() {
     }, [currentUser]);
 
     function getFriendRequest(request) {
-        setFriendRequests(prev => [...prev, request]);
-        saveFriendRequests(friendRequests, currentUser);
+        saveFriendRequests(request);
     }
 
     return (
@@ -59,7 +57,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Login setUser={setUser} />} exact />
                     <Route path='/friends' element={<Friends />} />
-                    <Route path='/friend_requests' element={<Friend_Requests friendRequests={friendRequests} />} />
+                    <Route path='/friend_requests' element={<Friend_Requests />} />
                     <Route path='/account' element={<Account setUser={setUser} />} />
                     <Route path='/projects' element={<Projects />} />
                     <Route path='/projects/:projectName' element={<Characters />} />
