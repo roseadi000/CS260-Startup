@@ -15,56 +15,67 @@ export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
     const [friendRequests, setFriendRequests] = React.useState([]);
-        
-        React.useEffect(() => {
-            const interval = setInterval(() => {
-                const friendRequest = {
-                    id: crypto.randomUUID(),
-                    from: getRandomName('any'),
-                    time: new Date().toLocaleDateString(),
-                };
 
-                getFriendRequest(friendRequest);
-            }, 30000);
+    React.useEffect(() => {
+        if (!currentUser) return;
+        let count = 0;
+        const maxRequests = Math.floor(Math.random() * 5);
 
-            return () => clearInterval(interval);
+        const interval = setInterval(() => {
+            if (count >= maxRequests) {
+            clearInterval(interval);
+            return;
+            }
 
-        }, []);
+            const friendRequest = {
+                id: crypto.randomUUID(),
+                from: getRandomName('any'),
+                time: new Date().toLocaleDateString(),
+            };
 
-        function getFriendRequest(request) {
-            setFriendRequests(prev => [...prev, request]);
-            saveFriendRequests(friendRequests);
-        }
+            getFriendRequest(friendRequest);
+            count++;
 
-  return (
-    <BrowserRouter>
-        <div className="bodyDisplay">
-            <header>
-                <div id="Logo">Lore Legend</div>
-                <div id="Menu"><NavLink to="friends" id="menuLink">Friends</NavLink></div>
-                <div id="User"><NavLink to='account' id='menuLink'>{currentUser ? `${currentUser.username}` : 'Please log in'}</NavLink></div>           
-            </header>
+        }, 10000);
 
-            <Routes>
-                <Route path='/' element={<Login setUser={setUser} />} exact />
-                <Route path='/friends' element={<Friends />} />
-                <Route path='/friend_requests' element={<Friend_Requests friendRequests={friendRequests}/>} />
-                <Route path='/account' element={<Account setUser={setUser} />} />
-                <Route path='/projects' element={<Projects />} />
-                <Route path='/projects/:projectName' element={<Characters />} />
-                <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
+        return () => clearInterval(interval);
 
-            <footer>
-                <div id="myName">Adilyn Rose</div>
-                <a href="https://github.com/roseadi000/CS260-Startup.git" id="gitHub">GitHub</a>
-            </footer>
-        </div>
-    </BrowserRouter>
-  );
+    }, [currentUser]);
+
+    function getFriendRequest(request) {
+        setFriendRequests(prev => [...prev, request]);
+        saveFriendRequests(friendRequests, currentUser);
+    }
+
+    return (
+        <BrowserRouter>
+            <div className="bodyDisplay">
+                <header>
+                    <div id="Logo">Lore Legend</div>
+                    <div id="Menu"><NavLink to="friends" id="menuLink">Friends</NavLink></div>
+                    <div id="User"><NavLink to='account' id='menuLink'>{currentUser ? `${currentUser.username}` : 'Please log in'}</NavLink></div>
+                </header>
+
+                <Routes>
+                    <Route path='/' element={<Login setUser={setUser} />} exact />
+                    <Route path='/friends' element={<Friends />} />
+                    <Route path='/friend_requests' element={<Friend_Requests friendRequests={friendRequests} />} />
+                    <Route path='/account' element={<Account setUser={setUser} />} />
+                    <Route path='/projects' element={<Projects />} />
+                    <Route path='/projects/:projectName' element={<Characters />} />
+                    <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />
+                    <Route path='*' element={<NotFound />} />
+                </Routes>
+
+                <footer>
+                    <div id="myName">Adilyn Rose</div>
+                    <a href="https://github.com/roseadi000/CS260-Startup.git" id="gitHub">GitHub</a>
+                </footer>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 function NotFound() {
-  return <main className="container-fluid bg-secondary text-center">404: Unknown address.</main>;
+    return <main className="container-fluid bg-secondary text-center">404: Unknown address.</main>;
 }
