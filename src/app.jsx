@@ -15,7 +15,7 @@ export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
     const [friendRequests, setFriendRequests] = React.useState([]);
-
+        
         React.useEffect(() => {
             const interval = setInterval(() => {
                 const friendRequest = {
@@ -25,7 +25,7 @@ export default function App() {
                 };
 
                 getFriendRequest(friendRequest);
-            }, 10000);
+            }, 30000);
 
             return () => clearInterval(interval);
 

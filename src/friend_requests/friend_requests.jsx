@@ -8,12 +8,11 @@ export function Friend_Requests({ friendRequests }) {
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
         <p></p>
-        <div><NavLink to='/friends' id='fileLink'>Friends</NavLink> | Requests</div>
+        <div><NavLink to='/friends' id='fileLink'>Friends</NavLink> | <b>Requests</b></div>
         <div id="requestOrganizer">
             <div id="requestName"><b>Name</b></div>
             <div id="requestDate"><b>Date</b></div>
         </div>
-        {console.log(friendRequests)}
         {friendRequests.map(request => (
                     <div key={request.id} id='requestOrganizer'>
                         <div id="requestName">{request.from}</div>

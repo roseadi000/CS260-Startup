@@ -20,7 +20,7 @@ export function Friends() {
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
         <p></p>
-        <div>Friends | <NavLink to='/friend_requests' id='fileLink'>Requests</NavLink></div>
+        <div><b>Friends</b> | <NavLink to='/friend_requests' id='fileLink'>Requests</NavLink></div>
         <div id="friendOrganizer">
             <div id="Friends"><b>Name</b></div>
             <div id="Status"><b>Status</b></div>
