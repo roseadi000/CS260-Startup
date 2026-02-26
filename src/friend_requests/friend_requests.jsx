@@ -23,6 +23,8 @@ export function Friend_Requests() {
                     <div key={request.id} id='requestOrganizer'>
                         <div id="requestName">{request.from}</div>
                         <div id="requestDate">{request.time}</div>
+                        <input type='button' value='Accept' />
+                        <input type='button' value='Decline' />
                     </div>
                 ))}
     </main>
