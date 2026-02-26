@@ -47,6 +47,7 @@ Header {
 }
 Main {
     flex: 1;
+    background-color: #E8DCC2;
 }
 #fileHeaders {
     font-family: 'Times New Roman', Times, serif;
