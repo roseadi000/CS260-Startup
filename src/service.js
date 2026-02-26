@@ -8,6 +8,7 @@ export function registerUser(email, password, username) {
         username: username,
         projects: [],
         friends: [],
+        friendRequests: [],
     }
 
     users.push(newUser);
@@ -208,3 +209,14 @@ export function updatePassword(value, currentUser, password) {
         alert('Incorrect Password')
     }
 }
+
+//Friend Service
+/*export function addFriendRequest(request, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const requests = user.friendRequests;
+    console.log(requests);
+
+    requests.push(request);
+    localStorage.setItem('users', JSON.stringify(users));
+}*/

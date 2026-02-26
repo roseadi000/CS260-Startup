@@ -8,10 +8,29 @@ import { Characters } from './characters/characters';
 import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
 import { Account } from './account/account';
+import { getRandomName } from './service';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
     const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
+    const [friendRequests, setFriendRequests] = React.useState([]);
+
+        React.useEffect(() => {
+            setInterval(() => {
+                const friendRequest = {
+                    from: getRandomName('any'),
+                    time: new Date().toLocaleDateString(),
+                };
+                console.log(friendRequest);
+
+                getFriendRequest(friendRequest);
+            }, 10000);
+
+        }, []);
+
+        function getFriendRequest(request) {
+            setFriendRequests(prev => [...prev, request]);            
+        }
 
   return (
     <BrowserRouter>
