@@ -25,7 +25,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
-                <Route path='/account' element={<Account />} />
+                <Route path='/account' element={<Account setUser={setUser} />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
                 <Route path='/projects/:projectName/:characterName' element={<Character_Sheets />} />

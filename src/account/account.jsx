@@ -4,10 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { updateUsername, updateEmail, updatePassword } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
-export function Account() {
+export function Account({ setUser }) {
   const users = JSON.parse(localStorage.getItem('users'));
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const user = users.find((u) => u.username === currentUser.username);
+  const navigate = useNavigate();
 
   const [newUsername, setNewUsername] = React.useState(user.username);
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
@@ -21,6 +22,12 @@ export function Account() {
   function updateInfo(text, infoFunc, closePopup) {
     infoFunc(text, currentUser, password);
     closePopup(false);
+  }
+
+  function logout() {
+    localStorage.removeItem('currentUser');
+    setUser(null);
+    navigate('/');
   }
 
   return (
@@ -43,7 +50,7 @@ export function Account() {
         <input type='button' value='Change' id="changeButton" onClick={() => setPopupOpenPassword(true)}></input>
       </div>
       <p></p>
-      <input type='button' value='Logout'></input>
+      <input type='button' value='Logout' onClick={logout}></input>
 
       <Popup isOpen={isPopupOpenUsername} onClose={() => setPopupOpenUsername(false)}>
         <div id='fileHeaders'>Update Username</div>
