@@ -35,7 +35,7 @@ export function Characters() {
 
       <div id="characterOrganizer">
         <div id="Characters"><b>Name</b></div>
-        <div id="Date"><b>Date Modified</b></div>
+        <div id="Date"><b>Date Created</b></div>
       </div>
      {characterList.map(character => (
                  <div key={character.name} id='projectOrganizer'>

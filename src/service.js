@@ -38,7 +38,7 @@ export function createProject(name, currentUser) {
 
     const newProject = {
         name,
-        date: '1/1/1111',
+        date: new Date().toLocaleDateString(),
         characters: [],
     }
 
@@ -57,7 +57,7 @@ export function createCharacter(name, projectName, currentUser) {
 
     const newCharacter = {
         name,
-        date: '2/2/2222',
+        date: new Date().toLocaleDateString(),
         fullName: '',
         age: '',
         gender: '',

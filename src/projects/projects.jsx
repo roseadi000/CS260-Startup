@@ -32,7 +32,7 @@ export function Projects() {
         
         <div id="projectOrganizer">
             <div id="Projects"><b>Name</b></div>
-            <div id="Date"><b>Date Modified</b></div>
+            <div id="Date"><b>Date Created</b></div>
             <div id="numCharacters"><b>Characters</b></div>
         </div>
         {projects.map(project => (
