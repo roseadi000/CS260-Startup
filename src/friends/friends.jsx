@@ -3,7 +3,7 @@ import './friends.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 import { Popup } from '../scripts';
-import { checkSearch } from '../service';
+import { checkSearch, manageRequest } from '../service';
 
 export function Friends() {
     const [status, setStatus] = React.useState('Offline');
@@ -37,7 +37,8 @@ export function Friends() {
         }
     }
     function sendRequest(name) {
-        alert('Request sent');
+        setPopupOpenResult(false);
+        manageRequest(name, currentUser);
     }
 
   return (

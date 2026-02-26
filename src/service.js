@@ -222,9 +222,10 @@ export function saveFriendRequests(request) {
 export function addFriend(request, currentUser) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const newFriend = request.from;
+    const newFriend = users.find((ru) => ru.username === request.from);
 
-    user.friends.push(newFriend);
+    user.friends.push(newFriend.username);
+    newFriend.friends.push(currentUser.username);
 
     const updateRequests = user.friendRequests.filter((r) => r.id !== request.id); 
     user.friendRequests = updateRequests;
@@ -248,4 +249,23 @@ export function checkSearch(name) {
     else {
         alert('No user by that name');
     }
+}
+export function manageRequest(name, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const nameUser = users.find((u) => u.username === name);
+    console.log(nameUser);
+    const nameRequests = nameUser.friendRequests;
+    console.log(nameRequests);
+    console.log(currentUser.username);
+
+    const friendRequest = {
+        id: crypto.randomUUID(),
+        from: currentUser.username,
+        to: name,
+        time: new Date().toLocaleDateString(),
+    };
+
+    nameRequests.push(friendRequest);
+    console.log(nameRequests);
+    localStorage.setItem('users', JSON.stringify(users));
 }
