@@ -5,6 +5,10 @@ import { Projects } from '../projects/projects';
 
 export function Friends() {
     const [status, setStatus] = React.useState('Offline');
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const friends = user.friends;
 
         setInterval(() => {
             if (status === 'Online') {
@@ -25,14 +29,12 @@ export function Friends() {
             <div id="Friends"><b>Name</b></div>
             <div id="Status"><b>Status</b></div>
         </div>
-        <div id="friendOrganizer">
-            <div id="Friends">David</div>
-            <div id="Status">{status}</div>
-        </div>
-        <div id="friendOrganizer">
-            <div id="Friends">Claire</div>
-            <div id="Status">{status}</div>
-        </div>
+        {friends.map(friend => (
+            <div key={friend} id='requestOrganizer'>
+                <div id="Friends">{friend}</div>
+                <div id="Status">{status}</div>
+            </div>
+                ))}
     </main>
   );
 }
