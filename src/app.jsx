@@ -9,7 +9,7 @@ import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
 import { Account } from './account/account';
 import { Friend_Requests } from './friend_requests/friend_requests';
-import { getRandom, saveFriendRequests } from './service';
+import { getRandomName, saveFriendRequests } from './service';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
@@ -39,7 +39,7 @@ export default function App() {
 
         return () => clearInterval(interval);
 
-    }, [currentUser]);
+    }, []);
 
     function getFriendRequest(request) {
         saveFriendRequests(request);
