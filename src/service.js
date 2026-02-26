@@ -77,7 +77,7 @@ export function createCharacter(name, projectName, currentUser) {
 }
 
 //Character Sheets Service
-const names = [['Carl', 'John', 'Jack', 'Dave', 'Logan', 'Bob', 'John', 'Anthony'], ['Debra', 'Jenna', 'Grace', 'Megan', 'Ariel', 'Kamay', 'Charlotte']];
+const names = [['Carl', 'John', 'Jack', 'Dave', 'Logan', 'Bob', 'John', 'Anthony', 'Will'], ['Debra', 'Jenna', 'Grace', 'Megan', 'Ariel', 'Kamay', 'Charlotte', 'Tessa']];
 
 
 function findCharacter(users, projectName, characterName, currentUser){
