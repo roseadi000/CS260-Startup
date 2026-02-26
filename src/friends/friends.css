@@ -9,3 +9,14 @@
 #Status {
     flex: 1 1 60%;
 }
+
+#linkOrganizer {
+    display: flex;
+}
+#friend-request {
+    flex: 1 1 90%;
+}
+#findFriends {
+    flex: 1 1 20%;
+    text-decoration: underline;
+}
