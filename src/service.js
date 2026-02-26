@@ -243,7 +243,7 @@ export function checkSearch(name) {
     const findUser = users.find((u) => u.username === name);
     
     if (findUser) {
-        alert('Found');
+        return true;
     }
     else {
         alert('No user by that name');

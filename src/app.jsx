@@ -25,10 +25,11 @@ export default function App() {
             return;
             }
 
+            const recipient = JSON.parse((localStorage.getItem('currentUser') || null));
             const friendRequest = {
                 id: crypto.randomUUID(),
                 from: getRandomName('any'),
-                to: 'Test',
+                to: recipient.username,
                 time: new Date().toLocaleDateString(),
             };
 

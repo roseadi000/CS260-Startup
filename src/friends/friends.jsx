@@ -12,8 +12,10 @@ export function Friends() {
     const user = users.find((u) => u.username === currentUser.username);
     const friends = user.friends;
 
-    const [isPopupOpen, setPopupOpen] = React.useState(false);
+    const [isPopupOpenSearch, setPopupOpenSearch] = React.useState(false);
     const [searchName, setSearchName] = React.useState('');
+    const [isPopupOpenResult, setPopupOpenResult] = React.useState(false);
+
     
 
         setInterval(() => {
@@ -27,7 +29,15 @@ export function Friends() {
         }, Math.floor(Math.random() * 60000));
 
     function search(name) {
-        checkSearch(name);
+        const foundSearch = checkSearch(name);
+
+        if (foundSearch) {
+            setPopupOpenResult(true);
+            setPopupOpenSearch(false);
+        }
+    }
+    function sendRequest(name) {
+        alert('Request sent');
     }
 
   return (
@@ -36,14 +46,20 @@ export function Friends() {
         <p></p>
         <div id='linkOrganizer'>
             <div id='friend-request'><b>Friends</b> | <NavLink to='/friend_requests' id='fileLink'>Requests</NavLink></div>
-            <div id='findFriends' onClick={() => setPopupOpen(true)}>Find Friends</div>
+            <div id='findFriends' onClick={() => setPopupOpenSearch(true)}>Find Friends</div>
         </div>
 
-        <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+        <Popup isOpen={isPopupOpenSearch} onClose={() => setPopupOpenSearch(false)}>
             <div id='fileHeaders'>Find Friends</div>
             <input type ='text' placeholder='Search' onChange={(e) => setSearchName(e.target.value)}></input>
             <p></p>
             <input type='button' value='Search' onClick={() => search(searchName)}></input>
+        </Popup>
+        <Popup isOpen={isPopupOpenResult} onClose={() => setPopupOpenResult(false)}>
+            <div id='fileHeaders'>Results</div>
+            <div>{searchName}</div>
+            <p></p>
+            <input type='button' value='Send Request' onClick={() => sendRequest(searchName)}></input>
         </Popup>
 
         <div id="friendOrganizer">
