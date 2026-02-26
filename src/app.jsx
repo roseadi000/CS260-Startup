@@ -17,15 +17,17 @@ export default function App() {
     const [friendRequests, setFriendRequests] = React.useState([]);
 
         React.useEffect(() => {
-            setInterval(() => {
+            const interval = setInterval(() => {
                 const friendRequest = {
+                    id: crypto.randomUUID(),
                     from: getRandomName('any'),
                     time: new Date().toLocaleDateString(),
                 };
-                console.log(friendRequest);
 
                 getFriendRequest(friendRequest);
             }, 10000);
+
+            return () => clearInterval(interval);
 
         }, []);
 
@@ -45,7 +47,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
-                <Route path='/friend_requests' element={<Friend_Requests />} />
+                <Route path='/friend_requests' element={<Friend_Requests friendRequests={friendRequests}/>} />
                 <Route path='/account' element={<Account setUser={setUser} />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />

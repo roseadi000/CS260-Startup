@@ -1,9 +1,9 @@
-#friendOrganizer {
+#requestOrganizer {
     display: flex;
     padding: 5px;
     margin-left: 8px;
 }
-#Friends {
+#requestName {
     flex: 1 1 30%;
 }
 #requestDate {
