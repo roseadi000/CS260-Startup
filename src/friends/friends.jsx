@@ -3,6 +3,7 @@ import './friends.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 import { Popup } from '../scripts';
+import { checkSearch } from '../service';
 
 export function Friends() {
     const [status, setStatus] = React.useState('Offline');
@@ -26,7 +27,7 @@ export function Friends() {
         }, Math.floor(Math.random() * 60000));
 
     function search(name) {
-        checkUsername(name);
+        checkSearch(name);
     }
 
   return (
@@ -42,7 +43,7 @@ export function Friends() {
             <div id='fileHeaders'>Find Friends</div>
             <input type ='text' placeholder='Search' onChange={(e) => setSearchName(e.target.value)}></input>
             <p></p>
-            <input type='button' value='Create'></input>
+            <input type='button' value='Search' onClick={() => search(searchName)}></input>
         </Popup>
 
         <div id="friendOrganizer">

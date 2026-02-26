@@ -238,3 +238,14 @@ export function removeRequest(request, currentUser) {
     user.friendRequests = updateRequests;
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function checkSearch(name) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const findUser = users.find((u) => u.username === name);
+    
+    if (findUser) {
+        alert('Found');
+    }
+    else {
+        alert('No user by that name');
+    }
+}
