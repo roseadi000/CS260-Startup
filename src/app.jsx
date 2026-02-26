@@ -8,6 +8,7 @@ import { Characters } from './characters/characters';
 import { Character_Sheets } from './character_sheets/character_sheets';
 import { Friends } from './friends/friends';
 import { Account } from './account/account';
+import { Friend_Requests } from './friend_requests/friend_requests';
 import { getRandomName } from './service';
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Login setUser={setUser} />} exact />
                 <Route path='/friends' element={<Friends />} />
+                <Route path='/friend_requests' element={<Friend_Requests />} />
                 <Route path='/account' element={<Account setUser={setUser} />} />
                 <Route path='/projects' element={<Projects />} />
                 <Route path='/projects/:projectName' element={<Characters />} />
