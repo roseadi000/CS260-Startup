@@ -25,6 +25,8 @@ export function Account() {
 
   return (
     <main>
+      <NavLink to='projects' id='fileLink'>Back to Projects</NavLink>
+      <p></p>
       <div id="accountType"><b>Username</b></div>
       <div id="projectOrganizer">
         <div id='accountValue'>{user.username}</div>
