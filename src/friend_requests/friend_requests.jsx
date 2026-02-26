@@ -2,6 +2,7 @@ import React from 'react';
 import './friend_requests.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
+import { addFriend } from '../service';
 
 export function Friend_Requests() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -10,6 +11,10 @@ export function Friend_Requests() {
     const friendRequests = user.friendRequests;
     console.log(friendRequests);  
     
+    function accept(request) {
+        addFriend(request, currentUser);
+    }
+
     return (
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
@@ -23,7 +28,7 @@ export function Friend_Requests() {
                     <div key={request.id} id='requestOrganizer'>
                         <div id="requestName">{request.from}</div>
                         <div id="requestDate">{request.time}</div>
-                        <input type='button' value='Accept' />
+                        <input type='button' value='Accept' onClick={() => accept(request)}/>
                         <input type='button' value='Decline' />
                     </div>
                 ))}

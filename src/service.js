@@ -219,3 +219,11 @@ export function saveFriendRequests(request) {
     requests.push(request);
     localStorage.setItem('users', JSON.stringify(users));
 }
+export function addFriend(request, currentUser) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const newFriend = request.from;
+
+    user.friends.push(newFriend);
+    localStorage.setItem('users', JSON.stringify(user));
+}
