@@ -211,12 +211,10 @@ export function updatePassword(value, currentUser, password) {
 }
 
 //Friend Service
-/*export function addFriendRequest(request, currentUser) {
+export function saveFriendRequests(requests, currentUser) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const requests = user.friendRequests;
-    console.log(requests);
+    user.friendRequests = requests;
 
-    requests.push(request);
     localStorage.setItem('users', JSON.stringify(users));
-}*/
+}

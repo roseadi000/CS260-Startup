@@ -3,8 +3,13 @@ import './friend_requests.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 
-export function Friend_Requests({ friendRequests }) {
-  return (
+export function Friend_Requests() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);
+    const friendRequests = user.friendRequests;  
+    
+    return (
     <main>
         <NavLink to='/projects' id="fileLink">Back to Projects</NavLink>
         <p></p>
