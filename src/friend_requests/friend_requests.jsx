@@ -8,11 +8,16 @@ export function Friend_Requests() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const friendRequests = user.friendRequests;
-    console.log(friendRequests);  
+    const [friendRequests, setFriendRequests] = React.useState(user.friendRequests);
+
     
     function accept(request) {
         addFriend(request, currentUser);
+
+        const updatedUsers = JSON.parse(localStorage.getItem('users'));
+        const updatedUser = updatedUsers.find((u) => u.username === currentUser.username);
+
+        setFriendRequests(updatedUser.friendRequests);
     }
 
     return (
