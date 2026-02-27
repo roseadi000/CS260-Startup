@@ -222,10 +222,15 @@ export function saveFriendRequests(request) {
 export function addFriend(request, currentUser) {
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    const newFriend = users.find((ru) => ru.username === request.from);
+    const newFriend = (users.find((ru) => ru.username === request.from) || null);
 
+    if (newFriend) {
     user.friends.push(newFriend.username);
     newFriend.friends.push(currentUser.username);
+    }
+    else {
+        user.friends.push(request.from);
+    }
 
     const updateRequests = user.friendRequests.filter((r) => r.id !== request.id); 
     user.friendRequests = updateRequests;
