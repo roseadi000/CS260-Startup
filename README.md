@@ -95,8 +95,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [x] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I implemented out login/logout/sign up, project created, character creation, and saving character data. I mocked out generating a random name (third-party API call) and generating friend requests (websocket). I also used local storage to store everything.
+- [x] **Hooks** - I used useState and useEffect hooks.
 
 ## 🚀 Service deliverable
 
