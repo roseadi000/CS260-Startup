@@ -16,9 +16,23 @@ export function Login({ setUser }) {
     localStorage.removeItem('currentUser'); //Temporary logout
   }, [])
 
-  function register(event) {
+  async function register(event) {
     event.preventDefault();
-    registerUser(email, password, username);
+    //registerUser(email, password, username);
+
+    const response = await fetch('/api/auth/create', {
+      method: 'post',
+      body: JSON.stringify({ email: email, password: password, username: username }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('currentUser', username);
+    } else {
+      throw new Error('Failed to register user');
+    }
+
     setPopupOpen(false);
     login();
   }
