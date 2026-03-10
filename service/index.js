@@ -18,6 +18,22 @@ let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 //Login
+apiRouter.post('/auth/create', async (req, res) => {
+  if (await findUser('email', req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } 
+  else if (await findUser('username', req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  }
+  else {
+    const user = await registerUser(req.body.email, req.body.password, req.body.username);
+
+    setAuthCookie(res, user.token);
+    res.send({ currentUser: user.username });
+  }
+});
+
+//Login functions
 async function registerUser(email, password, username) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -35,20 +51,14 @@ async function registerUser(email, password, username) {
     return newUser;
 }
 
-apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
-    res.status(409).send({ msg: 'Existing user' });
-  } 
-  else if (await findUser('username', req.body.email)) {
-    res.status(409).send({ msg: 'Existing user' });
-  }
-  else {
-    const user = await registerUser(req.body.email, req.body.password, req.body.username);
-
-    setAuthCookie(res, user.token);
-    res.send({ currentUser: user.username });
-  }
-});
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 365,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
 
 async function findUser(field, value) {
   if (!value) return null;
