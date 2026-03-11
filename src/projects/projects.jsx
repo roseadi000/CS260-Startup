@@ -11,7 +11,15 @@ export function Projects() {
     const currentUser = localStorage.getItem('currentUser');
     /*const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
-    */const projects = [];
+    */const [projects, setProjects] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(`/api/projects/${currentUser}`)
+            .then((response) => response.json())
+            .then((projects) => {
+                setProjects(projects);
+            });
+    }, []);
 
     async function create() {
         const response = await fetch('/api/projects/create', {
@@ -22,7 +30,12 @@ export function Projects() {
             },
         });
         if (response?.status === 200) {
-            console.log('Neat');
+            console.log(projects);
+            fetch(`/api/projects/${currentUser}`)
+            .then((response) => response.json())
+            .then((projects) => {
+                setProjects(projects);
+            });
         } else {
             throw new Error('Failed to create project');
         }

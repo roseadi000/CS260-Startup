@@ -68,6 +68,12 @@ const verifyAuth = async (req, res, next) => {
 };
 
 //Projects
+//get projects
+apiRouter.get('/projects/:username', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.params.username);
+      const projects = user.projects;
+    res.send(projects);
+});
 //create project
 apiRouter.post('/projects/create', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
