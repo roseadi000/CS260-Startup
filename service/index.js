@@ -106,9 +106,18 @@ apiRouter.post('/characters/create', verifyAuth, async (req, res) => {
 //Character Sheets
 //get character infomation
 apiRouter.get('/character_sheets/:username/:project/:character', verifyAuth, async (req, res) => {
-    const user = await findUser('username', req.params.username);
-    const project = user.projects.find((p) => p.name === req.params.project);
-    const character = project.characters.find((c) => c.name === req.params.character);
+    const character = findCharacter(req.params.character, req.params.project, req.params.username);
+    res.send(character);
+});
+//save full name
+apiRouter.post('/character_sheets/fullName', verifyAuth, async (req, res) => {
+    const character = findCharacter(req.body.character, req.body.project, req.body.username);
+    character.fullName = req.body.fullName;
+    res.send(character);
+});
+apiRouter.post('/character_sheets/age', verifyAuth, async (req, res) => {
+    const character = findCharacter(req.body.character, req.body.project, req.body.username);
+    character.age = req.body.age;
     res.send(character);
 });
 
@@ -180,6 +189,14 @@ async function createCharacter(name, project, user) {
     return newCharacter;
 }
 
+//character_sheets functions
+async function findCharacter(name, project, user) {
+    const user = await findUser('username', user);
+    const project = user.projects.find((p) => p.name === project);
+    const character = project.characters.find((c) => c.name === name);
+
+    return character;
+}
 
 
 app.listen(port, () => {
