@@ -25,8 +25,24 @@ export function Characters() {
               });
       }, []);
 
-  function create() {
-    createCharacter(name, projectName, currentUser);
+  async function create() {
+    const response = await fetch('/api/characters/create', {
+            method: 'post',
+            body: JSON.stringify({ name: name, project: projectName, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log(characterList);
+            fetch(`/api/characters/${currentUser}/${projectName}`)
+              .then((response) => response.json())
+              .then((characters) => {
+                  setCharacters(characters);
+              });
+        } else {
+            throw new Error('Failed to create character');
+        }
     setPopupOpen(false);
   }
 

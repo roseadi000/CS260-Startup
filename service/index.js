@@ -100,8 +100,7 @@ apiRouter.post('/characters/create', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
     const project = user.projects.find((p) => p.name === req.body.project);
     createCharacter(req.body.name, project, user);
-    console.log(user.project.characters);
-    res.send(user.project.characters);
+    res.send(project.characters);
 });
 
 //Login functions
@@ -152,7 +151,7 @@ async function createProject(name, user) {
 
 //Character functions
 async function createCharacter(name, project, user) {
-    const characters = user.project.characters
+    const characters = project.characters
     const newCharacter = {
        name,
         date: new Date().toLocaleDateString(),
