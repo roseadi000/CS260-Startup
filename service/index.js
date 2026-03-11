@@ -108,17 +108,14 @@ apiRouter.get('/character_sheets/:username/:project/:character', verifyAuth, asy
     console.log(character);
     res.send(character);
 });
-//save full name
-apiRouter.post('/character_sheets/fullName', verifyAuth, async (req, res) => {
+//save info
+apiRouter.post('/character_sheets/save', verifyAuth, async (req, res) => {
     const character = await findCharacter(req.body.character, req.body.project, req.body.username);
-    character.fullName = req.body.value;
+    const item = req.body.item;
+    character[item] = req.body.value;
     res.send(character);
 });
-apiRouter.post('/character_sheets/age', verifyAuth, async (req, res) => {
-    const character = findCharacter(req.body.character, req.body.project, req.body.username);
-    character.age = req.body.age;
-    res.send(character);
-});
+
 
 //Login functions
 async function registerUser(email, password, username) {

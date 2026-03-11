@@ -37,6 +37,7 @@ export function Character_Sheets() {
                   .then((character) => {
                       setCharacter(character);
                       setFullName(character.fullName);
+                      setAge(character.age);
                   });
           }, []);
 
@@ -52,10 +53,10 @@ export function Character_Sheets() {
         reader.readAsDataURL(file);
     }
 
-    async function saveInfo(text, endpoint, setFunc, item) {
-        const response = await fetch(endpoint, {
+    async function saveInfo(text, setFunc, item) {
+        const response = await fetch('/api/character_sheets/save', {
             method: 'post',
-            body: JSON.stringify({ value: text, project: projectName, character: characterName, username: currentUser }),
+            body: JSON.stringify({ value: text, item: item, project: projectName, character: characterName, username: currentUser }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
@@ -68,7 +69,6 @@ export function Character_Sheets() {
                   setCharacter(character);
                   console.log(`After: ${character.fullName}`);
                     setFunc(character[item]);
-                                      console.log(`After: ${fullName}`);
 
               });
         } else {
@@ -108,10 +108,10 @@ export function Character_Sheets() {
                     </div>
                     <div id="mainInfo">
                         <lable for="fullNameBox">Full Name: </lable>
-                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={() => saveInfo(fullName, `/api/character_sheets/fullName`, setFullName, "fullName")} />
+                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={() => saveInfo(fullName, setFullName, "fullName")} />
                         <p></p>
                         <lable for="ageBox">Age: </lable>
-                        <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={() => saveInfo(age, saveAge)} />
+                        <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={() => saveInfo(age, setAge, "age")} />
                         <p></p>
                         <lable for="genderBox">Gender: </lable>
                         <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={() => saveInfo(gender, saveGender)} />
