@@ -47,6 +47,11 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
     res.status(401).send({ msg: 'Unauthorized' });
 });
+//get user
+apiRouter.get('/auth/:email', async (req, res) => {
+  const user = await findUser('email', req.params.email);
+    res.send(user.username);  
+})
 //logout user
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);

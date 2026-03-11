@@ -45,8 +45,14 @@ export function Login({ setUser }) {
       },
     });
     if (response?.status === 200) {
+      console.log(response);
+      fetch(`/api/auth/${email}`)
+            .then((response) => response.json())
+            .then((username) => {
+                setUsername(username.username);
+            });
+      console.log(username);
       localStorage.setItem('currentUser', username);
-      setUser(localStorage.getItem('currentUser'));
       navigate('/projects');
     } else {
       alert("Incorrect Username or Password");
