@@ -95,6 +95,14 @@ apiRouter.get('/characters/:username/:project', verifyAuth, async (req, res) => 
     const project = projects.find((p) => p.name === req.params.project);
     res.send(project.characters);
 });
+//create character
+apiRouter.post('/characters/create', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    const project = user.projects.find((p) => p.name === req.body.project);
+    createCharacter(req.body.name, project, user);
+    console.log(user.project.characters);
+    res.send(user.project.characters);
+});
 
 //Login functions
 async function registerUser(email, password, username) {
@@ -140,6 +148,28 @@ async function createProject(name, user) {
 
     projects.push(newProject);
     return newProject;
+}
+
+//Character functions
+async function createCharacter(name, project, user) {
+    const characters = user.project.characters
+    const newCharacter = {
+       name,
+        date: new Date().toLocaleDateString(),
+        fullName: '',
+        age: '',
+        gender: '',
+        height: '',
+        birthday: '',
+        species: '',
+        imageURL: '/character_placeholder.png',
+        personality: '',
+        strengths: '',
+        weaknesses: '', 
+    };
+
+    characters.push(newCharacter);
+    return newCharacter;
 }
 
 app.listen(port, () => {
