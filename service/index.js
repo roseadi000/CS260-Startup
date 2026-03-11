@@ -72,7 +72,7 @@ const verifyAuth = async (req, res, next) => {
 apiRouter.post('projects/create', async (req, res) => {
     const user = await findUser('username', req.body.username);
     if (user) {
-        registerUser(req.body.name, req.body.username);
+        registerUser(req.body.name, user);
         return;
     }
   res.status(401).send({ msg: 'Unauthorized' });
@@ -112,15 +112,16 @@ async function findUser(field, value) {
 }
 
 //Project functions
-async function createProject(name, currentUser) {
-    const newUser = {
+async function createProject(name, user) {
+    const projects = user.projects
+    const newProject = {
         name,
         date: new Date().toLocaleDateString(),
         characters: [],
     };
 
-    users.push(newUser);
-    return newUser;
+    projects.push(newProject);
+    return newProject;
 }
 
 app.listen(port, () => {
