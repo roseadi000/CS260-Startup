@@ -103,6 +103,15 @@ apiRouter.post('/characters/create', verifyAuth, async (req, res) => {
     res.send(project.characters);
 });
 
+//Character Sheets
+//get character infomation
+apiRouter.get('/character_sheets/:username/:project/:character', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.params.username);
+    const project = user.projects.find((p) => p.name === req.params.project);
+    const character = project.characters.find((c) => c.name === req.params.character);
+    res.send(character);
+});
+
 //Login functions
 async function registerUser(email, password, username) {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -170,6 +179,8 @@ async function createCharacter(name, project, user) {
     characters.push(newCharacter);
     return newCharacter;
 }
+
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

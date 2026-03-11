@@ -9,11 +9,12 @@ import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
     const { projectName, characterName } = useParams();
-    const users = JSON.parse(localStorage.getItem('users'));
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const user = users.find((u) => u.username === currentUser.username);
+    //const users = JSON.parse(localStorage.getItem('users'));
+    const currentUser = localStorage.getItem('currentUser');
+    /*const user = users.find((u) => u.username === currentUser.username);
     const project = user.projects.find(p => p.name === projectName);
-    const character = project.characters.find(c => c.name === characterName);
+    const character = project.characters.find(c => c.name === characterName);*/
+    const [character, setCharacter] = React.useState('');
 
     const [fullName, setFullName] = React.useState(character.fullName);
     const [age, setAge] = React.useState(character.age);
@@ -29,6 +30,14 @@ export function Character_Sheets() {
 
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [randomNameGender, setRandomNameGender] = React.useState('');    
+
+     React.useEffect(() => {
+              fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
+                  .then((response) => response.json())
+                  .then((character) => {
+                      setCharacter(character);
+                  });
+          }, []);
 
     function convertImage(e) {
         const file = e.target.files[0];
