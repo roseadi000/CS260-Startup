@@ -36,6 +36,7 @@ export function Character_Sheets() {
                   .then((response) => response.json())
                   .then((character) => {
                       setCharacter(character);
+                      setFullName(character.fullName);
                   });
           }, []);
 
@@ -51,8 +52,28 @@ export function Character_Sheets() {
         reader.readAsDataURL(file);
     }
 
-    function saveInfo(text, infoFunc) {
-        infoFunc(text, projectName, characterName, currentUser);
+    async function saveInfo(text, endpoint, setFunc, item) {
+        const response = await fetch(endpoint, {
+            method: 'post',
+            body: JSON.stringify({ value: text, project: projectName, character: characterName, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log(`Before: ${character.fullName}`);
+            fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
+              .then((response) => response.json())
+              .then((character) => {
+                  setCharacter(character);
+                  console.log(`After: ${character.fullName}`);
+                    setFunc(character[item]);
+                                      console.log(`After: ${fullName}`);
+
+              });
+        } else {
+            throw new Error('Failed to save info');
+        }
     }
 
     function generateName() {
@@ -87,7 +108,7 @@ export function Character_Sheets() {
                     </div>
                     <div id="mainInfo">
                         <lable for="fullNameBox">Full Name: </lable>
-                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={() => saveInfo(fullName, saveFullName)} />
+                        <input type="text" id="fullNameBox" className='textStyle' value={fullName} placeholder="Full Name" onChange={(e) => setFullName(e.target.value)} onBlur={() => saveInfo(fullName, `/api/character_sheets/fullName`, setFullName, "fullName")} />
                         <p></p>
                         <lable for="ageBox">Age: </lable>
                         <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={() => saveInfo(age, saveAge)} />

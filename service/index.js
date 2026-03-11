@@ -35,7 +35,6 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 //login user
 apiRouter.post('/auth/login', async (req, res) => {
-    console.log(users);
     const user = await findUser('email', req.body.email);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
@@ -83,7 +82,6 @@ apiRouter.get('/projects/:username', verifyAuth, async (req, res) => {
 apiRouter.post('/projects/create', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
     createProject(req.body.name, user);
-    console.log(user.projects);
     res.send(user.projects);
 });
 
@@ -106,13 +104,14 @@ apiRouter.post('/characters/create', verifyAuth, async (req, res) => {
 //Character Sheets
 //get character infomation
 apiRouter.get('/character_sheets/:username/:project/:character', verifyAuth, async (req, res) => {
-    const character = findCharacter(req.params.character, req.params.project, req.params.username);
+    const character = await findCharacter(req.params.character, req.params.project, req.params.username);
+    console.log(character);
     res.send(character);
 });
 //save full name
 apiRouter.post('/character_sheets/fullName', verifyAuth, async (req, res) => {
-    const character = findCharacter(req.body.character, req.body.project, req.body.username);
-    character.fullName = req.body.fullName;
+    const character = await findCharacter(req.body.character, req.body.project, req.body.username);
+    character.fullName = req.body.value;
     res.send(character);
 });
 apiRouter.post('/character_sheets/age', verifyAuth, async (req, res) => {
@@ -190,11 +189,11 @@ async function createCharacter(name, project, user) {
 }
 
 //character_sheets functions
-async function findCharacter(name, project, user) {
-    const user = await findUser('username', user);
-    const project = user.projects.find((p) => p.name === project);
+async function findCharacter(name, projectName, username) {
+    const user = await findUser('username', username);
+    const project = user.projects.find((p) => p.name === projectName);
     const character = project.characters.find((c) => c.name === name);
-
+    console.log(character);
     return character;
 }
 
