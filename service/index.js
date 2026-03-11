@@ -69,13 +69,11 @@ const verifyAuth = async (req, res, next) => {
 
 //Projects
 //create project
-apiRouter.post('projects/create', async (req, res) => {
+apiRouter.post('/projects/create', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
-    if (user) {
-        registerUser(req.body.name, user);
-        return;
-    }
-  res.status(401).send({ msg: 'Unauthorized' });
+    createProject(req.body.name, user);
+    console.log(user.projects);
+    res.send(user.projects);
 });
 
 //Login functions

@@ -25,7 +25,7 @@ export default function App() {
             return;
             }
 
-            const recipient = JSON.parse((localStorage.getItem('currentUser') || null));
+            const recipient = (localStorage.getItem('currentUser') || null);
             const friendRequest = {
                 id: crypto.randomUUID(),
                 from: getRandomName('any'),
