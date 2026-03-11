@@ -143,7 +143,7 @@ export function Character_Sheets() {
                             <Accordion.Body>
                                 <div className="accordion-body">
                                     <label for="personalityBox"></label>
-                                    <textarea id="personalityBox" className="textAreaInfo" value={personality} onChange={(e) => setPersonality(e.target.value)} onBlur={saveInfo(personality, savePersonality)}></textarea>
+                                    <textarea id="personalityBox" className="textAreaInfo" value={personality} onChange={(e) => setPersonality(e.target.value)} onBlur={() => saveInfo(personality, setPersonality, "personality")}></textarea>
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>
@@ -152,7 +152,7 @@ export function Character_Sheets() {
                             <Accordion.Body>
                                 <div className="accordion-body">
                                     <label for="strengthsBox"></label>
-                                    <textarea id="strengthsBox" className="textAreaInfo" value={strengths} onChange={(e) => setStrengths(e.target.value)} onBlur={saveInfo(strengths, saveStrengths)}></textarea>
+                                    <textarea id="strengthsBox" className="textAreaInfo" value={strengths} onChange={(e) => setStrengths(e.target.value)} onBlur={() => saveInfo(strengths, setStrengths, "strengths")}></textarea>
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>
@@ -161,7 +161,7 @@ export function Character_Sheets() {
                             <Accordion.Body>
                                 <div className="accordion-body">
                                     <label for="weaknessesBox"></label>
-                                    <textarea id="weaknessesBox" className="textAreaInfo" value={weaknesses} onChange={(e) => setWeaknesses(e.target.value)} onBlur={saveInfo(weaknesses, saveWeaknesses)}></textarea>
+                                    <textarea id="weaknessesBox" className="textAreaInfo" value={weaknesses} onChange={(e) => setWeaknesses(e.target.value)} onBlur={() => saveInfo(weaknesses, setWeaknesses, "weaknesses")}></textarea>
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>
