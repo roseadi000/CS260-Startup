@@ -35,7 +35,8 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 //login user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
+    console.log(users);
+    const user = await findUser('email', req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
@@ -65,6 +66,9 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
+
+//Projects
+
 
 //Login functions
 async function registerUser(email, password, username) {
@@ -97,6 +101,11 @@ async function findUser(field, value) {
   if (!value) return null;
 
   return users.find((u) => u[field] === value);
+}
+
+//Project functions
+async function createProject(name, currentUser) {
+    user = findUser('username', res)
 }
 
 app.listen(port, () => {

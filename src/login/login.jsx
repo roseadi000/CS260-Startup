@@ -29,22 +29,26 @@ export function Login({ setUser }) {
     });
     if (response?.status === 200) {
       localStorage.setItem('currentUser', username);
+      navigate('/projects');
     } else {
       throw new Error('Failed to register user');
     }
 
     setPopupOpen(false);
-    login();
   }
-  function login() {
-    checkLogin(email, password);
-    const foundUser = localStorage.getItem('currentUser') || null;
-
-    if (foundUser) {
-      setUser(foundUser);
+  async function login() {
+    const response = await fetch('/api/auth/login', {
+      method: 'post',
+      body: JSON.stringify({ email: email, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('currentUser', username);
+      setUser(localStorage.getItem('currentUser'));
       navigate('/projects');
-    }
-    else {
+    } else {
       alert("Incorrect Username or Password");
     }
   }

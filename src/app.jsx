@@ -13,7 +13,7 @@ import { getRandomName, saveFriendRequests } from './service';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
-    const currentUser = JSON.parse((localStorage.getItem('currentUser') || null));
+    const currentUser = (localStorage.getItem('currentUser') || null);
 
     React.useEffect(() => {
         let count = 0;

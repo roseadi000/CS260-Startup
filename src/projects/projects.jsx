@@ -8,7 +8,7 @@ import { createProject } from '../service.js';
 export function Projects() {
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [name, setName] = React.useState('Project Name');
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = localStorage.getItem('currentUser');
     const users = JSON.parse(localStorage.getItem('users'));
     const user = users.find((u) => u.username === currentUser.username);
     const projects = user.projects;
