@@ -87,6 +87,15 @@ apiRouter.post('/projects/create', verifyAuth, async (req, res) => {
     res.send(user.projects);
 });
 
+//Characteres
+//get characters
+apiRouter.get('/characters/:username/:project', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.params.username);
+    const projects = user.projects;
+    const project = projects.find((p) => p.name === req.params.project);
+    res.send(project.characters);
+});
+
 //Login functions
 async function registerUser(email, password, username) {
     const hashedPassword = await bcrypt.hash(password, 10);
