@@ -20,55 +20,63 @@ app.use(`/api`, apiRouter);
 //Login
 //create user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
-    res.status(409).send({ msg: 'Existing user' });
-  } 
-  else if (await findUser('username', req.body.email)) {
-    res.status(409).send({ msg: 'Existing user' });
-  }
-  else {
-    const user = await registerUser(req.body.email, req.body.password, req.body.username);
+    if (await findUser('email', req.body.email)) {
+        res.status(409).send({ msg: 'Existing user' });
+    }
+    else if (await findUser('username', req.body.email)) {
+        res.status(409).send({ msg: 'Existing user' });
+    }
+    else {
+        const user = await registerUser(req.body.email, req.body.password, req.body.username);
 
-    setAuthCookie(res, user.token);
-    res.send({ currentUser: user.username });
-  }
+        setAuthCookie(res, user.token);
+        res.send({ currentUser: user.username });
+    }
 });
 //login user
 apiRouter.post('/auth/login', async (req, res) => {
     console.log(users);
     const user = await findUser('email', req.body.email);
-  if (user) {
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      user.token = uuid.v4();
-      setAuthCookie(res, user.token);
-      res.send({ currentUser: user.username });
-      return;
+    if (user) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            user.token = uuid.v4();
+            setAuthCookie(res, user.token);
+            res.send({ currentUser: user.username });
+            return;
+        }
     }
-  }
-  res.status(401).send({ msg: 'Unauthorized' });
+    res.status(401).send({ msg: 'Unauthorized' });
 });
 //logout user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    delete user.token;
-  }
-  res.clearCookie(authCookieName);
-  res.status(204).end();
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if (user) {
+        delete user.token;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
 });
 
 // Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    next();
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if (user) {
+        next();
+    } else {
+        res.status(401).send({ msg: 'Unauthorized' });
+    }
 };
 
 //Projects
-
+//create project
+apiRouter.post('projects/create', async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    if (user) {
+        registerUser(req.body.name, req.body.username);
+        return;
+    }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
 
 //Login functions
 async function registerUser(email, password, username) {
@@ -89,25 +97,32 @@ async function registerUser(email, password, username) {
 }
 
 function setAuthCookie(res, authToken) {
-  res.cookie(authCookieName, authToken, {
-    maxAge: 1000 * 60 * 60 * 24 * 365,
-    secure: true,
-    httpOnly: true,
-    sameSite: 'strict',
-  });
+    res.cookie(authCookieName, authToken, {
+        maxAge: 1000 * 60 * 60 * 24 * 365,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict',
+    });
 }
 
 async function findUser(field, value) {
-  if (!value) return null;
+    if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+    return users.find((u) => u[field] === value);
 }
 
 //Project functions
 async function createProject(name, currentUser) {
-    user = findUser('username', res)
+    const newUser = {
+        name,
+        date: new Date().toLocaleDateString(),
+        characters: [],
+    };
+
+    users.push(newUser);
+    return newUser;
 }
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${port}`);
 });
