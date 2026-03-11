@@ -10,11 +10,20 @@ export function Characters() {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [name, setName] = React.useState('Character Name');
   const { projectName } = useParams();
-  const users = JSON.parse(localStorage.getItem('users'));
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  const user = users.find((u) => u.username === currentUser.username);
+  //const users = JSON.parse(localStorage.getItem('users'));
+  const currentUser = localStorage.getItem('currentUser');
+  /*const user = users.find((u) => u.username === currentUser.username);
   const project = user.projects.find(p => p.name === projectName);
-  const characterList = project.characters;
+  const characterList = project.characters;*/
+  const [characterList, setCharacters] = React.useState([]);
+
+  React.useEffect(() => {
+          fetch(`/api/characters/${currentUser}/${projectName}`)
+              .then((response) => response.json())
+              .then((characters) => {
+                  setCharacters(characters);
+              });
+      }, []);
 
   function create() {
     createCharacter(name, projectName, currentUser);
