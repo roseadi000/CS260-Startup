@@ -38,6 +38,14 @@ export function Character_Sheets() {
                       setCharacter(character);
                       setFullName(character.fullName);
                       setAge(character.age);
+                      setGender(character.gender);
+                      setHeight(character.height);
+                      setBirthday(character.birthday);
+                      setSpecies(character.species);
+                      setImage(character.imageURL);
+                      setPersonality(character.personality);
+                      setStrengths(character.strengths);
+                      setWeaknesses(character.weaknesses);
                   });
           }, []);
 
@@ -62,13 +70,11 @@ export function Character_Sheets() {
             },
         });
         if (response?.status === 200) {
-            console.log(`Before: ${character.fullName}`);
             fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
               .then((response) => response.json())
               .then((character) => {
                   setCharacter(character);
-                  console.log(`After: ${character.fullName}`);
-                    setFunc(character[item]);
+                   setFunc(character[item]);
 
               });
         } else {
@@ -114,16 +120,16 @@ export function Character_Sheets() {
                         <input type="text" id="ageBox" className='textStyle' value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} onBlur={() => saveInfo(age, setAge, "age")} />
                         <p></p>
                         <lable for="genderBox">Gender: </lable>
-                        <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={() => saveInfo(gender, saveGender)} />
+                        <input type="text" id="genderBox" className='textStyle' value={gender} placeholder="Gender" onChange={(e) => setGender(e.target.value)} onBlur={() => saveInfo(gender, setGender, "gender")} />
                         <p></p>
                         <lable for="heightBox">Height: </lable>
-                        <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={() => saveInfo(height, saveHeight)} />
+                        <input type="text" id="heightBox" className='textStyle' value={height} placeholder="Height" onChange={(e) => setHeight(e.target.value)} onBlur={() => saveInfo(height, setHeight, "height")} />
                         <p></p>
                         <lable for="birthdayBox">Birthday: </lable>
-                        <input type="text" id="birthdayBox" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={() => saveInfo(birthday, saveBirthday)} />
+                        <input type="text" id="birthdayBox" className='textStyle' value={birthday} placeholder="Birthday" onChange={(e) => setBirthday(e.target.value)} onBlur={() => saveInfo(birthday, setBirthday, "birthday")} />
                         <p></p>
                         <lable for="speciesBox">Species: </lable>
-                        <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={() => saveInfo(species, saveSpecies)} />
+                        <input type="text" id="speciesBox" className='textStyle' value={species} placeholder="Species" onChange={(e) => setSpecies(e.target.value)} onBlur={() => saveInfo(species, setSpecies, "species")} />
                         <p></p>
                         <p></p>
                         <div>Need help with a name? <input type='button' value='Generate Random Name' onClick={() => setPopupOpen(true)} ></input></div>
