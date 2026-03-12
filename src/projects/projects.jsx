@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import './projects.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Characters } from '../characters/characters';
 import { Popup } from '../scripts';
 import { createProject } from '../service.js';
 
 export function Projects() {
+    const navigate = useNavigate();
+
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [name, setName] = React.useState('Project Name');
     const currentUser = localStorage.getItem('currentUser');
@@ -15,10 +17,16 @@ export function Projects() {
 
     React.useEffect(() => {
         fetch(`/api/projects/${currentUser}`)
-            .then((response) => response.json())
-            .then((projects) => {
-                setProjects(projects);
-            });
+            .then( async (response) => {
+                if(response?.status === 200) {
+                    const projectRes = await response.json();
+                                    setProjects(projectRes);
+
+                }
+                else if (response?.status === 401) {
+                    navigate('/');
+                }
+            })
     }, []);
 
     async function create() {
