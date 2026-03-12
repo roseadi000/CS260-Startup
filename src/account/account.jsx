@@ -7,8 +7,8 @@ import { Popup } from '../scripts.jsx';
 export function Account({ setUser }) {
   //const users = JSON.parse(localStorage.getItem('users'));
   const currentUser = localStorage.getItem('currentUser');
-  /*const user = users.find((u) => u.username === currentUser.username);
-  const navigate = useNavigate();*/
+  /*const user = users.find((u) => u.username === currentUser.username);*/
+  const navigate = useNavigate();
 
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -61,6 +61,9 @@ export function Account({ setUser }) {
   }
 
   function logout() {
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
     localStorage.removeItem('currentUser');
     setUser(null);
     navigate('/');
