@@ -202,20 +202,20 @@ apiRouter.post('/friends/send', verifyAuth, async (req, res) => {
 //add friend
 apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
-    const newFriend = await findUser('username', request.from);
+    const newFriend = await findUser('username', req.body.request.from);
     
     if (newFriend) {
         user.friends.push(newFriend.username);
         newFriend.friends.push(user.username);
     }
     else {
-        user.friends.push(request.from);
+        user.friends.push(req.body.request.from);
     }    
     
     res.send(user.friends);
 });
 //delete friend request
-apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => {
+apiRouter.delete('/friendRequests/:username/:requestID', verifyAuth, async(req, res) => {
     const user = await findUser('username', req.params.username);
     const requestID = req.params.requestID;
     const updateRequests = user.friendRequests.filter((r) => r.id !== requestID); 

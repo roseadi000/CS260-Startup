@@ -19,7 +19,6 @@ export function Friend_Requests() {
             }, []);
 
     async function accept(request) {
-        addFriend(request, currentUser);
         const response = await fetch('/api/friends/add', {
             method: 'post',
             body: JSON.stringify({ request: request, username: currentUser }),
@@ -28,7 +27,7 @@ export function Friend_Requests() {
             },
         });
         if (response?.status === 200) {
-            console.log(friends);
+            console.log("Added");
         } else {
             throw new Error('Failed to create project');
         }
@@ -36,7 +35,7 @@ export function Friend_Requests() {
             method: 'delete',
         });
         if (response2?.status === 200) {
-            console.log(projects);
+            console.log(friendRequests);
             fetch(`/api/friendRequests/${currentUser}`)
             .then((response) => response.json())
             .then((requests) => {
@@ -49,12 +48,12 @@ export function Friend_Requests() {
     }
     
     async function decline(request) {
-        const response = await fetch(`/api/friends/${currentUser}/${request.id}`, {
+        const response = await fetch(`/api/friendRequests/${currentUser}/${request.id}`, {
             method: 'delete',
         });
         if (response?.status === 200) {
-            console.log(projects);
-            fetch(`/api/projects/${currentUser}`)
+            console.log(friendRequests);
+            fetch(`/api/friendRequests/${currentUser}`)
             .then((response) => response.json())
             .then((requests) => {
                 setFriendRequests(requests);

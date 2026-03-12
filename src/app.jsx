@@ -30,7 +30,7 @@ export default function App() {
             const friendRequest = {
                 id: crypto.randomUUID(),
                 from: getRandomName('any'),
-                to: recipient.username,
+                to: recipient,
                 time: new Date().toLocaleDateString(),
             };
 
