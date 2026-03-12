@@ -226,10 +226,12 @@ apiRouter.delete('/friendRequests/:username/:requestID', verifyAuth, async(req, 
 //save friend request
 apiRouter.post('/friends/save', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
+    if (user) {
     const requests = user.friendRequests;
 
     requests.push(req.body.request);
     res.send(requests);
+}
 });
 
 

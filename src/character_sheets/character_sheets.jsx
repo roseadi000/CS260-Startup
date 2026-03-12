@@ -18,17 +18,17 @@ export function Character_Sheets() {
     const character = project.characters.find(c => c.name === characterName);*/
     const [character, setCharacter] = React.useState('');
 
-    const [fullName, setFullName] = React.useState(character.fullName);
-    const [age, setAge] = React.useState(character.age);
-    const [gender, setGender] = React.useState(character.gender);
-    const [height, setHeight] = React.useState(character.height);
-    const [birthday, setBirthday] = React.useState(character.birthday);
-    const [species, setSpecies] = React.useState(character.species);
-    const [image, setImage] = React.useState("/character_placeholder.png");
+    const [fullName, setFullName] = React.useState('');
+    const [age, setAge] = React.useState('');
+    const [gender, setGender] = React.useState('');
+    const [height, setHeight] = React.useState('');
+    const [birthday, setBirthday] = React.useState('');
+    const [species, setSpecies] = React.useState('');
+    const [image, setImage] = React.useState('/character_placeholder.png');
 
-    const [personality, setPersonality] = React.useState(character.personality);
-    const [strengths, setStrengths] = React.useState(character.strengths);
-    const [weaknesses, setWeaknesses] = React.useState(character.weaknesses);
+    const [personality, setPersonality] = React.useState('');
+    const [strengths, setStrengths] = React.useState('');
+    const [weaknesses, setWeaknesses] = React.useState('');
 
     const [isPopupOpen, setPopupOpen] = React.useState(false);
     const [randomNameGender, setRandomNameGender] = React.useState('');
@@ -37,19 +37,19 @@ export function Character_Sheets() {
         fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
             .then(async (response) => {
             if (response?.status === 200) {
-                const res = await response.json()
-                setCharacter(character);
-                setFullName(character.fullName);
-                setAge(character.age);
-                setGender(character.gender);
-                setHeight(character.height);
-                setBirthday(character.birthday);
-                setSpecies(character.species);
-                setImage(character.imageURL);
-                setPersonality(character.personality);
-                setStrengths(character.strengths);
-                setWeaknesses(character.weaknesses);
-                setImage(character.imageURL);
+                const characterRes = await response.json()
+                setCharacter(characterRes);
+                setFullName(characterRes.fullName);
+                setAge(characterRes.age);
+                setGender(characterRes.gender);
+                setHeight(characterRes.height);
+                setBirthday(characterRes.birthday);
+                setSpecies(characterRes.species);
+                setImage(characterRes.imageURL);
+                setPersonality(characterRes.personality);
+                setStrengths(characterRes.strengths);
+                setWeaknesses(characterRes.weaknesses);
+                setImage(characterRes.imageURL);
             }
             else if (response?.status === 401) {
                     navigate('/');
