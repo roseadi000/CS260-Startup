@@ -2,12 +2,14 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './character_sheets.css';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { Characters } from '../characters/characters';
 import { saveFullName, saveAge, saveGender, saveHeight, saveBirthday, saveSpecies, savePersonality, saveStrengths, saveWeaknesses, getRandomName, saveImage } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
+    const navigate = useNavigate();
+    
     const { projectName, characterName } = useParams();
     //const users = JSON.parse(localStorage.getItem('users'));
     const currentUser = localStorage.getItem('currentUser');
@@ -33,8 +35,9 @@ export function Character_Sheets() {
 
     React.useEffect(() => {
         fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
-            .then((response) => response.json())
-            .then((character) => {
+            .then(async (response) => {
+            if (response?.status === 200) {
+                const res = await response.json()
                 setCharacter(character);
                 setFullName(character.fullName);
                 setAge(character.age);
@@ -47,7 +50,11 @@ export function Character_Sheets() {
                 setStrengths(character.strengths);
                 setWeaknesses(character.weaknesses);
                 setImage(character.imageURL);
-            });
+            }
+            else if (response?.status === 401) {
+                    navigate('/');
+                }
+            })
     }, []);
 
     async function convertImage(e) {
