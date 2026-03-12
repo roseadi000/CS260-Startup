@@ -5,22 +5,45 @@ import { updateUsername, updateEmail, updatePassword } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
 export function Account({ setUser }) {
-  const users = JSON.parse(localStorage.getItem('users'));
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  const user = users.find((u) => u.username === currentUser.username);
-  const navigate = useNavigate();
+  //const users = JSON.parse(localStorage.getItem('users'));
+  const currentUser = localStorage.getItem('currentUser');
+  /*const user = users.find((u) => u.username === currentUser.username);
+  const navigate = useNavigate();*/
 
-  const [newUsername, setNewUsername] = React.useState(user.username);
+  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [newUsername, setNewUsername] = React.useState('');
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
-  const [newEmail, setNewEmail] = React.useState(user.email);
+  const [newEmail, setNewEmail] = React.useState('');
   const [isPopupOpenEmail, setPopupOpenEmail] = React.useState(false);
-  const [password, setPassword] = React.useState('');
-  const [newPassword, setNewPassword] = React.useState(user.password);
+  const [newPassword, setNewPassword] = React.useState('');
   const [isPopupOpenPassword, setPopupOpenPassword] = React.useState(false);
   
+  React.useEffect(() => {
+    fetch(`/api/users/${currentUser}`)
+            .then((response) => response.json())
+            .then((username) => {
+                setUsername(username.username);
+                setEmail(username.email);
+            });
+  }, [])
 
-  function updateInfo(text, infoFunc, closePopup) {
-    infoFunc(text, currentUser, password);
+  async function updateInfo(text, endpoint, closePopup, item) {
+    const response = await fetch(endpoint, {
+            method: 'put',
+            body: JSON.stringify({ value: text, item: item, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+          if (item === 'username') {
+            localStorage.setItem('currentUser', newUsername);
+            setUsername(newUsername);
+          }
+        } else {
+            throw new Error('Failed to save info');
+        }
     closePopup(false);
   }
 
@@ -36,12 +59,12 @@ export function Account({ setUser }) {
       <p></p>
       <div id="accountType"><b>Username</b></div>
       <div id="projectOrganizer">
-        <div id='accountValue'>{user.username}</div>
+        <div id='accountValue'>{username}</div>
         <input type='button' value='Change' id="changeButton" onClick={() => setPopupOpenUsername(true)}></input>
       </div>
       <div id="accountType"><b>Email</b></div>
       <div id="projectOrganizer">
-        <div id='accountValue'>{user.email}</div>
+        <div id='accountValue'>{email}</div>
         <input type='button' value='Change' id="changeButton" onClick={() => setPopupOpenEmail(true)}></input>
       </div>
       <div id="accountType"><b>Password</b></div>
@@ -57,7 +80,7 @@ export function Account({ setUser }) {
         <lable for="usernameBox">New Username: </lable>
         <input type="text" id="usernameBox" onChange={(e) => setNewUsername(e.target.value)} />
         <p></p>
-        <input type='button' value='Update' onClick={() => updateInfo(newUsername, updateUsername, setPopupOpenUsername)} />
+        <input type='button' value='Update' onClick={() => updateInfo(newUsername, '/api/users/username', setPopupOpenUsername, "username")} />
       </Popup>
       <Popup isOpen={isPopupOpenEmail} onClose={() => setPopupOpenEmail(false)}>
         <div id='fileHeaders'>Update Email</div>

@@ -147,11 +147,18 @@ apiRouter.post('/upload', upload.single('file'), (req, res) => {
 
 //Account
 //change username
-apiRouter.put('/auth/username', verifyAuth, async (req, res) => {
+apiRouter.put('/users/username', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
-    user.username = req.body.value;
+    const item = req.body.item;
+    user[item] = req.body.value;
+    console.log(user);
     res.send(user);
 });
+//get user
+apiRouter.get('/users/:username', async (req, res) => {
+  const user = await findUser('username', req.params.username);
+    res.send(user);  
+})
 
 
 
