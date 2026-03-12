@@ -149,8 +149,7 @@ apiRouter.post('/upload', upload.single('file'), (req, res) => {
 //change username
 apiRouter.put('/users/username', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
-    const item = req.body.item;
-    user[item] = req.body.value;
+    user.username = req.body.value;
     console.log(user);
     res.send(user);
 });
@@ -159,7 +158,13 @@ apiRouter.get('/users/:username', async (req, res) => {
   const user = await findUser('username', req.params.username);
     res.send(user);  
 })
-
+//change email
+apiRouter.put('/users/email', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    user.email = req.body.value;
+    console.log(user);
+    res.send(user);
+});
 
 
 //Login functions

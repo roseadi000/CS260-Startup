@@ -31,7 +31,7 @@ export function Account({ setUser }) {
   async function updateInfo(text, endpoint, closePopup, item) {
     const response = await fetch(endpoint, {
             method: 'put',
-            body: JSON.stringify({ value: text, item: item, username: currentUser }),
+            body: JSON.stringify({ value: text, username: currentUser }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
@@ -40,6 +40,9 @@ export function Account({ setUser }) {
           if (item === 'username') {
             localStorage.setItem('currentUser', newUsername);
             setUsername(newUsername);
+          }
+          else if (item === 'email') {
+            setEmail(newEmail);
           }
         } else {
             throw new Error('Failed to save info');
@@ -87,7 +90,7 @@ export function Account({ setUser }) {
         <lable for="emailBox">New Email: </lable>
         <input type="text" id="emailBox" onChange={(e) => setNewEmail(e.target.value)} />
         <p></p>
-        <input type='button' value='Update' onClick={() => updateInfo(newEmail, updateEmail, setPopupOpenEmail)} />
+        <input type='button' value='Update' onClick={() => updateInfo(newEmail, '/api/users/email', setPopupOpenEmail, "email")} />
       </Popup>
       <Popup isOpen={isPopupOpenPassword} onClose={() => setPopupOpenPassword(false)}>
         <div id='fileHeaders'>Update Password</div>
