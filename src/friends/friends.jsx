@@ -15,6 +15,15 @@ export function Friends() {
     const [isPopupOpenSearch, setPopupOpenSearch] = React.useState(false);
     const [searchName, setSearchName] = React.useState('');
     const [isPopupOpenResult, setPopupOpenResult] = React.useState(false);
+    const [friends, setFriends] = React.useState([]);
+    
+        React.useEffect(() => {
+            fetch(`/api/friends/${currentUser}`)
+                .then((response) => response.json())
+                .then((friends) => {
+                    setFriends(friends);
+                });
+        }, []);
 
 
 
