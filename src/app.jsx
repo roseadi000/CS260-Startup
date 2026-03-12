@@ -26,6 +26,7 @@ export default function App() {
             }
 
             const recipient = (localStorage.getItem('currentUser') || null);
+            if (recipient) {
             const friendRequest = {
                 id: crypto.randomUUID(),
                 from: getRandomName('any'),
@@ -35,15 +36,26 @@ export default function App() {
 
             getFriendRequest(friendRequest);
             count++;
-
+        }
         }, 10000);
 
         return () => clearInterval(interval);
 
     }, []);
 
-    function getFriendRequest(request) {
-        saveFriendRequests(request);
+    async function getFriendRequest(request) {
+        const response = await fetch('/api/friends/save', {
+            method: 'post',
+            body: JSON.stringify({ request: request, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log(request);
+        } else {
+            throw new Error('Failed to create project');
+        }
     }
 
     return (

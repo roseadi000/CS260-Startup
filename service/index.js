@@ -185,11 +185,18 @@ apiRouter.get('/friends/:username', verifyAuth, async (req, res) => {
     const friends = user.friends;
     res.send(friends);
 });
+//get friend requests
+apiRouter.get('/friendRequests/:username', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.params.username);
+    const friendRequests = user.friendRequests;
+    res.send(friendRequests);
+});
 //create/send friend request
 apiRouter.post('/friends/send', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
     const toUser = await findUser('username', req.body.to);
-    manageFriendRequest(toUser, user);
+    const request = await manageFriendRequest(toUser, user);
+    toUser.friendRequests.push(request);
     res.send(toUser.friendsRequests);
 });
 //add friend
@@ -205,7 +212,7 @@ apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
         user.friends.push(request.from);
     }    
     
-    res.send(user.friendRequests);
+    res.send(user.friends);
 });
 //delete friend request
 apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => {
@@ -216,7 +223,14 @@ apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => 
 
     res.send(user.friendRequests);
 })
+//save friend request
+apiRouter.post('/friends/save', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    const requests = user.friendRequests;
 
+    requests.push(req.body.request);
+    res.send(requests);
+});
 
 
 //Login functions
@@ -304,16 +318,14 @@ app.listen(port, () => {
 //Friends functions
 //create/send friend request
 async function manageFriendRequest(name, user) {
-    const toUser = await findUser('username', name);
-    const toRequests = toUser.friendRequests;
+    const toRequests = name.friendRequests;
 
     const friendRequest = {
         id: crypto.randomUUID(),
         from: user.username,
-        to: name,
+        to: name.username,
         time: new Date().toLocaleDateString(),
     }
 
-    toRequests.push(friendRequest);
-    return toRequests;
+    return friendRequest;
 }

@@ -26,8 +26,8 @@ export function Friends() {
         }, []);
 
 
-
-    setInterval(() => {
+    React.useEffect(() => {
+        const interval = setInterval(() => {
         if (status === 'Online') {
             setStatus('Offline');
         }
@@ -36,21 +36,40 @@ export function Friends() {
         }
 
     }, Math.floor(Math.random() * 60000));
+    return () => clearInterval(interval);
+    }, []);
 
-    function search(name) {
+    async function search(name) {
         fetch(`/api/users/${name}`)
             .then((response) => response.json())
             .then((foundSearch) => {
-                if (foundSearch) {
+                if (foundSearch.username) {
                     setPopupOpenResult(true);
                     setPopupOpenSearch(false);
                 }
             });
 
     }
-    function sendRequest(name) {
+    async function sendRequest(name) {
         setPopupOpenResult(false);
-        manageRequest(name, currentUser);
+        const response = await fetch('/api/friends/send', {
+            method: 'post',
+            body: JSON.stringify({ to: name, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log(friends);
+            fetch(`/api/friends/${currentUser}`)
+            .then((response) => response.json())
+            .then((friends) => {
+                setFriends(friends);
+            });
+        } else {
+            throw new Error('Failed to create project');
+        }
+        
     }
 
     return (

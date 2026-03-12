@@ -5,12 +5,19 @@ import { Projects } from '../projects/projects';
 import { addFriend, removeRequest } from '../service';
 
 export function Friend_Requests() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const users = JSON.parse(localStorage.getItem('users'));
-    const user = users.find((u) => u.username === currentUser.username);
-    const [friendRequests, setFriendRequests] = React.useState(user.friendRequests);
+    const currentUser = localStorage.getItem('currentUser');
+    /*const users = JSON.parse(localStorage.getItem('users'));
+    const user = users.find((u) => u.username === currentUser.username);*/
+    const [friendRequests, setFriendRequests] = React.useState([]);
 
-    
+    React.useEffect(() => {
+                fetch(`/api/friendRequests/${currentUser}`)
+                    .then((response) => response.json())
+                    .then((requests) => {
+                        setFriendRequests(requests);
+                    });
+            }, []);
+
     async function accept(request) {
         addFriend(request, currentUser);
         const response = await fetch('/api/friends/add', {
@@ -25,12 +32,12 @@ export function Friend_Requests() {
         } else {
             throw new Error('Failed to create project');
         }
-        const response2 = await fetch(`/api/friends/${currentUser}/${request.id}`, {
+        const response2 = await fetch(`/api/friendRequests/${currentUser}/${request.id}`, {
             method: 'delete',
         });
-        if (response?.status === 200) {
+        if (response2?.status === 200) {
             console.log(projects);
-            fetch(`/api/projects/${currentUser}`)
+            fetch(`/api/friendRequests/${currentUser}`)
             .then((response) => response.json())
             .then((requests) => {
                 setFriendRequests(requests);
