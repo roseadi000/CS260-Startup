@@ -94,9 +94,16 @@ export function Character_Sheets() {
         }
     }
 
-    function generateName() {
+    async function generateName() {
         getGender();
-        setFullName(getRandomName(randomNameGender));
+        fetch(`https://randomuser.me/api/?gender=${randomNameGender}`)
+            .then((response) => response.json())
+            .then((data) => {
+                const nameResponse = data.results[0];
+                const newName = `${nameResponse.name.first} ${nameResponse.name.last}`;
+                setFullName(newName);
+            })
+            .catch();
         setPopupOpen(false);
     }
 
