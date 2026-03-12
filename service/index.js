@@ -204,7 +204,8 @@ apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
     else {
         user.friends.push(request.from);
     }    
-    res.send(user.friends);
+    
+    res.send(user.friendRequests);
 });
 //delete friend request
 apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => {
@@ -214,8 +215,8 @@ apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => 
     user.friendRequests = updateRequests;
 
     res.send(user.friendRequests);
-
 })
+
 
 
 //Login functions

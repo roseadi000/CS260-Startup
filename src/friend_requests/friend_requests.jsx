@@ -11,22 +11,51 @@ export function Friend_Requests() {
     const [friendRequests, setFriendRequests] = React.useState(user.friendRequests);
 
     
-    function accept(request) {
+    async function accept(request) {
         addFriend(request, currentUser);
+        const response = await fetch('/api/friends/add', {
+            method: 'post',
+            body: JSON.stringify({ request: request, username: currentUser }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            console.log(friends);
+        } else {
+            throw new Error('Failed to create project');
+        }
+        const response2 = await fetch(`/api/friends/${currentUser}/${request.id}`, {
+            method: 'delete',
+        });
+        if (response?.status === 200) {
+            console.log(projects);
+            fetch(`/api/projects/${currentUser}`)
+            .then((response) => response.json())
+            .then((requests) => {
+                setFriendRequests(requests);
 
-        const updatedUsers = JSON.parse(localStorage.getItem('users'));
-        const updatedUser = updatedUsers.find((u) => u.username === currentUser.username);
-
-        setFriendRequests(updatedUser.friendRequests);
+            });
+        } else {
+            throw new Error('Failed to delete request');
+        }
     }
     
-    function decline(request) {
-        removeRequest(request, currentUser);
+    async function decline(request) {
+        const response = await fetch(`/api/friends/${currentUser}/${request.id}`, {
+            method: 'delete',
+        });
+        if (response?.status === 200) {
+            console.log(projects);
+            fetch(`/api/projects/${currentUser}`)
+            .then((response) => response.json())
+            .then((requests) => {
+                setFriendRequests(requests);
 
-        const updatedUsers = JSON.parse(localStorage.getItem('users'));
-        const updatedUser = updatedUsers.find((u) => u.username === currentUser.username);
-
-        setFriendRequests(updatedUser.friendRequests);
+            });
+        } else {
+            throw new Error('Failed to delete request');
+        }
     }
 
     return (
