@@ -1,11 +1,13 @@
 import React from 'react';
 import './friends.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, useNavigate, Routes } from 'react-router-dom';
 import { Projects } from '../projects/projects';
 import { Popup } from '../scripts';
 import { checkSearch, manageRequest } from '../service';
 
 export function Friends() {
+    const navigate = useNavigate();
+
     const [status, setStatus] = React.useState('Offline');
     const currentUser = localStorage.getItem('currentUser');
     /*const users = JSON.parse(localStorage.getItem('users'));
@@ -16,27 +18,32 @@ export function Friends() {
     const [searchName, setSearchName] = React.useState('');
     const [isPopupOpenResult, setPopupOpenResult] = React.useState(false);
     const [friends, setFriends] = React.useState([]);
-    
-        React.useEffect(() => {
-            fetch(`/api/friends/${currentUser}`)
-                .then((response) => response.json())
-                .then((friends) => {
-                    setFriends(friends);
-                });
-        }, []);
+
+    React.useEffect(() => {
+        fetch(`/api/friends/${currentUser}`)
+            .then(async (response) => {
+                if (response?.status === 200) {
+                    const friendRes = await response.json();
+                    setFriends(friendRes);
+                }
+                else if (response?.status === 401) {
+                    navigate('/');
+                }
+            })
+    }, []);
 
 
     React.useEffect(() => {
         const interval = setInterval(() => {
-        if (status === 'Online') {
-            setStatus('Offline');
-        }
-        else {
-            setStatus('Online');
-        }
+            if (status === 'Online') {
+                setStatus('Offline');
+            }
+            else {
+                setStatus('Online');
+            }
 
-    }, Math.floor(Math.random() * 60000));
-    return () => clearInterval(interval);
+        }, Math.floor(Math.random() * 60000));
+        return () => clearInterval(interval);
     }, []);
 
     async function search(name) {
@@ -62,14 +69,15 @@ export function Friends() {
         if (response?.status === 200) {
             console.log(friends);
             fetch(`/api/friends/${currentUser}`)
-            .then((response) => response.json())
-            .then((friends) => {
-                setFriends(friends);
-            });
-        } else {
-            throw new Error('Failed to create project');
+                .then((response) => response.json())
+                .then((friends) => {
+                    setFriends(friends);
+                });
         }
-        
+        else {
+            throw new Error('Failed to generate friends');
+        }
+
     }
 
     return (
