@@ -185,12 +185,37 @@ apiRouter.get('/friends/:username', verifyAuth, async (req, res) => {
     const friends = user.friends;
     res.send(friends);
 });
-//save friend request
-apiRouter.put('/friends/save', verifyAuth, async (req, res) => {
+//create/send friend request
+apiRouter.post('/friends/send', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
-    manageFriendRequest(req.body.to, user);
-    res.send(user.friendsRequests);
+    const toUser = await findUser('username', req.body.to);
+    manageFriendRequest(toUser, user);
+    res.send(toUser.friendsRequests);
 });
+//add friend
+apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    const newFriend = await findUser('username', request.from);
+    
+    if (newFriend) {
+        user.friends.push(newFriend.username);
+        newFriend.friends.push(user.username);
+    }
+    else {
+        user.friends.push(request.from);
+    }    
+    res.send(user.friends);
+});
+//delete friend request
+apiRouter.delete('friends/:username/:requestID', verifyAuth, async(req, res) => {
+    const user = await findUser('username', req.params.username);
+    const requestID = req.params.requestID;
+    const updateRequests = user.friendRequests.filter((r) => r.id !== requestID); 
+    user.friendRequests = updateRequests;
+
+    res.send(user.friendRequests);
+
+})
 
 
 //Login functions
@@ -276,6 +301,7 @@ app.listen(port, () => {
 });
 
 //Friends functions
+//create/send friend request
 async function manageFriendRequest(name, user) {
     const toUser = await findUser('username', name);
     const toRequests = toUser.friendRequests;
