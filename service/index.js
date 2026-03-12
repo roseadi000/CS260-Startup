@@ -53,7 +53,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 //get user
 apiRouter.get('/auth/:email', async (req, res) => {
     const user = await findUser('email', req.params.email);
-    res.send(user.username);
+    res.send(user);
 })
 //logout user
 apiRouter.delete('/auth/logout', async (req, res) => {

@@ -12,10 +12,6 @@ export function Login({ setUser }) {
   const [username, setUsername] = React.useState('');
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    localStorage.removeItem('currentUser'); //Temporary logout
-  }, [])
-
   async function register(event) {
     event.preventDefault();
     //registerUser(email, password, username);
@@ -47,39 +43,46 @@ export function Login({ setUser }) {
     if (response?.status === 200) {
       console.log(response);
       fetch(`/api/auth/${email}`)
-            .then((response) => response.json())
-            .then((username) => {
-                setUsername(username.username);
-            });
-      console.log(username);
-      localStorage.setItem('currentUser', username);
+        .then((response) => response.json())
+        .then((user) => {
+          console.log(user)
+          localStorage.setItem('currentUser', user.username);
+          setUsername(user.username);
+          console.log(user.username);
+          console.log(username);
+          console.log("RAW USER:", user);
+console.log("keys:", Object.keys(user));
+console.log("stringified:", JSON.stringify(user));
       navigate('/projects');
+
+        });
+      console.log(username);
     } else {
       alert("Incorrect Username or Password");
     }
   }
 
   return (
-     <main id="Main">
-            <h2>Welcome to Lore Legend!</h2>
-            <p>Login here!</p>
-            <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
-            <p></p>
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-            <p></p>
-            <input type='button' value='Login' onClick={login}></input>
-            <input type='button' value='Sign Up' onClick={() => setPopupOpen(true)}></input>
+    <main id="Main">
+      <h2>Welcome to Lore Legend!</h2>
+      <p>Login here!</p>
+      <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <p></p>
+      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+      <p></p>
+      <input type='button' value='Login' onClick={login}></input>
+      <input type='button' value='Sign Up' onClick={() => setPopupOpen(true)}></input>
 
-            <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-              <div id='fileHeaders'>Create New Account</div>
-              <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
-              <p></p>
-              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-              <p></p>
-              <input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}></input>
-              <p></p>
-              <input type='button' value='Sign Up' onClick={register}></input>
-            </Popup>
+      <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
+        <div id='fileHeaders'>Create New Account</div>
+        <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <p></p>
+        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        <p></p>
+        <input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}></input>
+        <p></p>
+        <input type='button' value='Sign Up' onClick={register}></input>
+      </Popup>
     </main>
   );
 }

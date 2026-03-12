@@ -54,7 +54,7 @@ export default function App() {
         if (response?.status === 200) {
             console.log(request);
         } else {
-            throw new Error('Failed to create project');
+            throw new Error('Failed to create request');
         }
     }
 
