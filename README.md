@@ -102,12 +102,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Use Node.js to run backend locally and used Express in my backend code.
+- [x] **Static middleware for frontend** - I used the static middleware for frontend.
 - [x] **Calls to third party endpoints** - Random name generate calls to the random user third party API
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - I used backend service endpoints.
+- [x] **Frontend calls service endpoints** - My frontend calls my service endpoints.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Users can register, login, and logout. When a user tries to access a page besides login while unauthorized, they are taken back to the login page.
 
 ## 🚀 DB deliverable
 
