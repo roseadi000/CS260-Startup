@@ -1,12 +1,14 @@
 import React from 'react';
 import './characters.css';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { Character_Sheets } from '../character_sheets/character_sheets';
 import { Projects } from '../projects/projects';
 import { Popup } from '../scripts';
 import { createCharacter } from '../service.js';
 
 export function Characters() {
+  const navigate = useNavigate();
+
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [name, setName] = React.useState('Character Name');
   const { projectName } = useParams();
@@ -18,31 +20,38 @@ export function Characters() {
   const [characterList, setCharacters] = React.useState([]);
 
   React.useEffect(() => {
-          fetch(`/api/characters/${currentUser}/${projectName}`)
-              .then((response) => response.json())
-              .then((characters) => {
-                  setCharacters(characters);
-              });
-      }, []);
+    fetch(`/api/characters/${currentUser}/${projectName}`)
+      .then(async (response) => {
+        if (response?.status === 200) {
+          const characterRes = await response.json();
+          setCharacters(characterRes);
+
+        }
+        else if (response?.status === 401) {
+          navigate('/');
+        }
+
+      })
+  }, []);
 
   async function create() {
     const response = await fetch('/api/characters/create', {
-            method: 'post',
-            body: JSON.stringify({ name: name, project: projectName, username: currentUser }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+      method: 'post',
+      body: JSON.stringify({ name: name, project: projectName, username: currentUser }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      console.log(characterList);
+      fetch(`/api/characters/${currentUser}/${projectName}`)
+        .then((response) => response.json())
+        .then((characters) => {
+          setCharacters(characters);
         });
-        if (response?.status === 200) {
-            console.log(characterList);
-            fetch(`/api/characters/${currentUser}/${projectName}`)
-              .then((response) => response.json())
-              .then((characters) => {
-                  setCharacters(characters);
-              });
-        } else {
-            throw new Error('Failed to create character');
-        }
+    } else {
+      throw new Error('Failed to create character');
+    }
     setPopupOpen(false);
   }
 
@@ -62,12 +71,12 @@ export function Characters() {
         <div id="Characters"><b>Name</b></div>
         <div id="Date"><b>Date Created</b></div>
       </div>
-     {characterList.map(character => (
-                 <div key={character.name} id='projectOrganizer'>
-                     <div id="Projects"><NavLink to={character.name} id='fileLink'>{character.name}</NavLink></div>
-                     <div id="Date">{character.date}</div>
-                 </div>
-             ))}
+      {characterList.map(character => (
+        <div key={character.name} id='projectOrganizer'>
+          <div id="Projects"><NavLink to={character.name} id='fileLink'>{character.name}</NavLink></div>
+          <div id="Date">{character.date}</div>
+        </div>
+      ))}
     </main>
   );
 }
