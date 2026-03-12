@@ -5,7 +5,7 @@ import { Projects } from '../projects/projects';
 import { registerUser, checkLogin } from '../service.js';
 import { Popup } from '../scripts';
 
-export function Login({ setUser }) {
+export function Login({ setUser, setCurrentUser }) {
   const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -25,6 +25,7 @@ export function Login({ setUser }) {
     });
     if (response?.status === 200) {
       localStorage.setItem('currentUser', username);
+      setCurrentUser(username);
       navigate('/projects');
     } else {
       throw new Error('Failed to register user');
@@ -48,11 +49,7 @@ export function Login({ setUser }) {
           console.log(user)
           localStorage.setItem('currentUser', user.username);
           setUsername(user.username);
-          console.log(user.username);
-          console.log(username);
-          console.log("RAW USER:", user);
-console.log("keys:", Object.keys(user));
-console.log("stringified:", JSON.stringify(user));
+          setCurrentUser(user.username);
       navigate('/projects');
 
         });

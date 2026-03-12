@@ -13,7 +13,7 @@ import { getRandomName, saveFriendRequests } from './service';
 
 export default function App() {
     const [user, setUser] = React.useState(null);
-    const currentUser = (localStorage.getItem('currentUser') || null);
+    const [currentUser, setCurrentUser] = React.useState((localStorage.getItem('currentUser') || null));
 
     React.useEffect(() => {
         let count = 0;
@@ -68,7 +68,7 @@ export default function App() {
                 </header>
 
                 <Routes>
-                    <Route path='/' element={<Login setUser={setUser} />} exact />
+                    <Route path='/' element={<Login setUser={setUser} setCurrentUser={setCurrentUser}/>} exact />
                     <Route path='/friends' element={<Friends />} />
                     <Route path='/friend_requests' element={<Friend_Requests />} />
                     <Route path='/account' element={<Account setUser={setUser} />} />

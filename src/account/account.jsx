@@ -71,6 +71,7 @@ export function Account({ setUser }) {
     })
     localStorage.removeItem('currentUser');
     setUser(null);
+    setCurrentUser(null);
     navigate('/');
   }
 
