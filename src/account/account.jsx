@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { updateUsername, updateEmail, updatePassword } from '../service.js';
 import { Popup } from '../scripts.jsx';
 
-export function Account({ setUser }) {
+export function Account({ setUser, setCurrentUser }) {
   //const users = JSON.parse(localStorage.getItem('users'));
   const currentUser = localStorage.getItem('currentUser');
   /*const user = users.find((u) => u.username === currentUser.username);*/
