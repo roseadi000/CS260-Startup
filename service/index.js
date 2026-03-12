@@ -145,6 +145,14 @@ apiRouter.post('/upload', upload.single('file'), (req, res) => {
  }
 });
 
+//Account
+//change username
+apiRouter.put('/auth/username', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    user.username = req.body.value;
+    res.send(user);
+});
+
 
 
 //Login functions
