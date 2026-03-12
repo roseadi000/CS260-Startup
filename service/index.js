@@ -178,6 +178,20 @@ apiRouter.put('/users/password', verifyAuth, async (req, res) => {
     res.status(401).send({ msg: 'Unauthorized' });
 });
 
+//Friends
+//get friends
+apiRouter.get('/friends/:username', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.params.username);
+    const friends = user.friends;
+    res.send(friends);
+});
+//save friend request
+apiRouter.put('/friends/save', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    manageFriendRequest(req.body.to, user);
+    res.send(user.friendsRequests);
+});
+
 
 //Login functions
 async function registerUser(email, password, username) {
@@ -260,3 +274,19 @@ async function findCharacter(name, projectName, username) {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+//Friends functions
+async function manageFriendRequest(name, user) {
+    const toUser = await findUser('username', name);
+    const toRequests = toUser.friendRequests;
+
+    const friendRequest = {
+        id: crypto.randomUUID(),
+        from: user.username,
+        to: name,
+        time: new Date().toLocaleDateString(),
+    }
+
+    toRequests.push(friendRequest);
+    return toRequests;
+}
