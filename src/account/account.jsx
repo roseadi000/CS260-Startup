@@ -12,42 +12,51 @@ export function Account({ setUser }) {
 
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.userState('');
+  const [password, setPassword] = React.useState('');
   const [newUsername, setNewUsername] = React.useState('');
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
   const [newEmail, setNewEmail] = React.useState('');
   const [isPopupOpenEmail, setPopupOpenEmail] = React.useState(false);
   const [newPassword, setNewPassword] = React.useState('');
   const [isPopupOpenPassword, setPopupOpenPassword] = React.useState(false);
-  
+
   React.useEffect(() => {
     fetch(`/api/users/${currentUser}`)
-            .then((response) => response.json())
-            .then((username) => {
-                setUsername(username.username);
-                setEmail(username.email);
-            });
+      .then((response) => response.json())
+      .then((username) => {
+        setUsername(username.username);
+        setEmail(username.email);
+      });
   }, [])
 
   async function updateInfo(text, endpoint, closePopup, item) {
     const response = await fetch(endpoint, {
-            method: 'put',
-            body: JSON.stringify({ value: text, username: currentUser }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        if (response?.status === 200) {
-          if (item === 'username') {
-            localStorage.setItem('currentUser', newUsername);
-            setUsername(newUsername);
-          }
-          else if (item === 'email') {
-            setEmail(newEmail);
-          }
-        } else {
-            throw new Error('Failed to save info');
-        }
+      method: 'put',
+      body: JSON.stringify({ value: text, username: currentUser, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      if (item === 'username') {
+        localStorage.setItem('currentUser', newUsername);
+        setUsername(newUsername);
+      }
+      else if (item === 'email') {
+        setEmail(newEmail);
+      }
+      else {
+        setPassword('');
+        setNewPassword('');
+      }
+
+    }
+    else if (response?.status === 401) {
+      alert("Incorrect Password");
+    }
+    else {
+      throw new Error('Failed to save info');
+    }
     closePopup(false);
   }
 
@@ -100,7 +109,7 @@ export function Account({ setUser }) {
         <lable for="nPasswordBox">New Password: </lable>
         <input type="password" id="nPasswordBox" onChange={(e) => setNewPassword(e.target.value)} />
         <p></p>
-        <input type='button' value='Update' onClick={() => updateInfo(newPassword, updatePassword, setPopupOpenPassword)} />
+        <input type='button' value='Update' onClick={() => updateInfo(newPassword, '/api/users/password', setPopupOpenPassword, "password")} />
       </Popup>
     </main>
   );

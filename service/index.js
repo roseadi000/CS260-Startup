@@ -166,7 +166,7 @@ apiRouter.put('/users/email', verifyAuth, async (req, res) => {
     res.send(user);
 });
 //change password
-apiRouter.put('/users/email', verifyAuth, async (req, res) => {
+apiRouter.put('/users/password', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.body.username);
     if (await bcrypt.compare(req.body.password, user.password)) {
         const newPassword = await bcrypt.hash(req.body.password, 10);
