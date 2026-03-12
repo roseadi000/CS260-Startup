@@ -9,7 +9,7 @@ import { Popup } from '../scripts.jsx';
 
 export function Character_Sheets() {
     const navigate = useNavigate();
-    
+
     const { projectName, characterName } = useParams();
     //const users = JSON.parse(localStorage.getItem('users'));
     const currentUser = localStorage.getItem('currentUser');
@@ -36,22 +36,22 @@ export function Character_Sheets() {
     React.useEffect(() => {
         fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
             .then(async (response) => {
-            if (response?.status === 200) {
-                const characterRes = await response.json()
-                setCharacter(characterRes);
-                setFullName(characterRes.fullName);
-                setAge(characterRes.age);
-                setGender(characterRes.gender);
-                setHeight(characterRes.height);
-                setBirthday(characterRes.birthday);
-                setSpecies(characterRes.species);
-                setImage(characterRes.imageURL);
-                setPersonality(characterRes.personality);
-                setStrengths(characterRes.strengths);
-                setWeaknesses(characterRes.weaknesses);
-                setImage(characterRes.imageURL);
-            }
-            else if (response?.status === 401) {
+                if (response?.status === 200) {
+                    const characterRes = await response.json()
+                    setCharacter(characterRes);
+                    setFullName(characterRes.fullName);
+                    setAge(characterRes.age);
+                    setGender(characterRes.gender);
+                    setHeight(characterRes.height);
+                    setBirthday(characterRes.birthday);
+                    setSpecies(characterRes.species);
+                    setImage(characterRes.imageURL);
+                    setPersonality(characterRes.personality);
+                    setStrengths(characterRes.strengths);
+                    setWeaknesses(characterRes.weaknesses);
+                    setImage(characterRes.imageURL);
+                }
+                else if (response?.status === 401) {
                     navigate('/');
                 }
             })
@@ -109,6 +109,8 @@ export function Character_Sheets() {
                 const nameResponse = data.results[0];
                 const newName = `${nameResponse.name.first} ${nameResponse.name.last}`;
                 setFullName(newName);
+                console.log(fullName);
+                saveInfo(newName, setFullName, "fullName");
             })
             .catch();
         setPopupOpen(false);
