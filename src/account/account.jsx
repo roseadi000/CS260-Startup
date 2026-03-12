@@ -22,11 +22,16 @@ export function Account({ setUser }) {
 
   React.useEffect(() => {
     fetch(`/api/users/${currentUser}`)
-      .then((response) => response.json())
-      .then((username) => {
-        setUsername(username.username);
-        setEmail(username.email);
-      });
+      .then(async (response) => {
+        if (response?.status === 200) {
+          const usernameRes = await response.json();
+          setUsername(usernameRes.username);
+          setEmail(usernameRes.email);
+        }
+        else if (response?.status === 401) {
+          navigate('/');
+        }
+      })
   }, [])
 
   async function updateInfo(text, endpoint, closePopup, item) {

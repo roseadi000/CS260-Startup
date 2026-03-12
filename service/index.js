@@ -154,7 +154,7 @@ apiRouter.put('/users/username', verifyAuth, async (req, res) => {
     res.send(user);
 });
 //get user
-apiRouter.get('/users/:username', async (req, res) => {
+apiRouter.get('/users/:username', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.params.username);
     res.send(user);
 })
