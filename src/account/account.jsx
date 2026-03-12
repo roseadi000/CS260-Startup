@@ -12,6 +12,7 @@ export function Account({ setUser }) {
 
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.userState('');
   const [newUsername, setNewUsername] = React.useState('');
   const [isPopupOpenUsername, setPopupOpenUsername] = React.useState(false);
   const [newEmail, setNewEmail] = React.useState('');

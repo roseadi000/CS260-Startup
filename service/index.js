@@ -52,8 +52,8 @@ apiRouter.post('/auth/login', async (req, res) => {
 });
 //get user
 apiRouter.get('/auth/:email', async (req, res) => {
-  const user = await findUser('email', req.params.email);
-    res.send(user.username);  
+    const user = await findUser('email', req.params.email);
+    res.send(user.username);
 })
 //logout user
 apiRouter.delete('/auth/logout', async (req, res) => {
@@ -79,7 +79,7 @@ const verifyAuth = async (req, res, next) => {
 //get projects
 apiRouter.get('/projects/:username', verifyAuth, async (req, res) => {
     const user = await findUser('username', req.params.username);
-      const projects = user.projects;
+    const projects = user.projects;
     res.send(projects);
 });
 //create project
@@ -121,28 +121,28 @@ apiRouter.post('/character_sheets/save', verifyAuth, async (req, res) => {
 });
 //save image
 const upload = multer({
- storage: multer.diskStorage({
-   destination: 'uploads/',
-   filename: (req, file, cb) => {
-     const filetype = file.originalname.split('.').pop();
-     const id = Math.round(Math.random() * 1e9);
-     const filename = `${id}.${filetype}`;
-     cb(null, filename);
-   },
- }),
- limits: { fileSize: 1000000 },
+    storage: multer.diskStorage({
+        destination: 'uploads/',
+        filename: (req, file, cb) => {
+            const filetype = file.originalname.split('.').pop();
+            const id = Math.round(Math.random() * 1e9);
+            const filename = `${id}.${filetype}`;
+            cb(null, filename);
+        },
+    }),
+    limits: { fileSize: 1000000 },
 });
 
 apiRouter.post('/upload', upload.single('file'), (req, res) => {
- if (req.file) {
-   res.send({
-     message: 'Uploaded succeeded',
-     file: req.file.filename,
-   });
+    if (req.file) {
+        res.send({
+            message: 'Uploaded succeeded',
+            file: req.file.filename,
+        });
 
- } else {
-   res.status(400).send({ message: 'Upload failed' });
- }
+    } else {
+        res.status(400).send({ message: 'Upload failed' });
+    }
 });
 
 //Account
@@ -155,8 +155,8 @@ apiRouter.put('/users/username', verifyAuth, async (req, res) => {
 });
 //get user
 apiRouter.get('/users/:username', async (req, res) => {
-  const user = await findUser('username', req.params.username);
-    res.send(user);  
+    const user = await findUser('username', req.params.username);
+    res.send(user);
 })
 //change email
 apiRouter.put('/users/email', verifyAuth, async (req, res) => {
@@ -164,6 +164,18 @@ apiRouter.put('/users/email', verifyAuth, async (req, res) => {
     user.email = req.body.value;
     console.log(user);
     res.send(user);
+});
+//change password
+apiRouter.put('/users/email', verifyAuth, async (req, res) => {
+    const user = await findUser('username', req.body.username);
+    if (await bcrypt.compare(req.body.password, user.password)) {
+        const newPassword = await bcrypt.hash(req.body.password, 10);
+        user.password = newPassword;
+        console.log(user);
+        res.send(user);
+        return;
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
 });
 
 
@@ -217,7 +229,7 @@ async function createProject(name, user) {
 async function createCharacter(name, project, user) {
     const characters = project.characters
     const newCharacter = {
-       name,
+        name,
         date: new Date().toLocaleDateString(),
         fullName: '',
         age: '',
@@ -228,7 +240,7 @@ async function createCharacter(name, project, user) {
         imageURL: '/character_placeholder.png',
         personality: '',
         strengths: '',
-        weaknesses: '', 
+        weaknesses: '',
     };
 
     characters.push(newCharacter);
