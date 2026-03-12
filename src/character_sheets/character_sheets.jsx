@@ -22,43 +22,55 @@ export function Character_Sheets() {
     const [height, setHeight] = React.useState(character.height);
     const [birthday, setBirthday] = React.useState(character.birthday);
     const [species, setSpecies] = React.useState(character.species);
-    const [image, setImage] = React.useState(character.imageURL);
+    const [image, setImage] = React.useState("/character_placeholder.png");
 
     const [personality, setPersonality] = React.useState(character.personality);
     const [strengths, setStrengths] = React.useState(character.strengths);
     const [weaknesses, setWeaknesses] = React.useState(character.weaknesses);
 
     const [isPopupOpen, setPopupOpen] = React.useState(false);
-    const [randomNameGender, setRandomNameGender] = React.useState('');    
+    const [randomNameGender, setRandomNameGender] = React.useState('');
 
-     React.useEffect(() => {
-              fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
-                  .then((response) => response.json())
-                  .then((character) => {
-                      setCharacter(character);
-                      setFullName(character.fullName);
-                      setAge(character.age);
-                      setGender(character.gender);
-                      setHeight(character.height);
-                      setBirthday(character.birthday);
-                      setSpecies(character.species);
-                      setImage(character.imageURL);
-                      setPersonality(character.personality);
-                      setStrengths(character.strengths);
-                      setWeaknesses(character.weaknesses);
-                  });
-          }, []);
+    React.useEffect(() => {
+        fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
+            .then((response) => response.json())
+            .then((character) => {
+                setCharacter(character);
+                setFullName(character.fullName);
+                setAge(character.age);
+                setGender(character.gender);
+                setHeight(character.height);
+                setBirthday(character.birthday);
+                setSpecies(character.species);
+                setImage(character.imageURL);
+                setPersonality(character.personality);
+                setStrengths(character.strengths);
+                setWeaknesses(character.weaknesses);
+                setImage(character.imageURL);
+            });
+    }, []);
 
-    function convertImage(e) {
+    async function convertImage(e) {
         const file = e.target.files[0];
         if (!file) return;
 
-        const reader = new FileReader();
-        reader.onload = () => {setImage(reader.result)
-            saveImage(reader.result, projectName, characterName, currentUser);
-        };
-        
-        reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            const imageFile = `/uploads/${data.file}`;
+            console.log(imageFile);
+            saveInfo(imageFile, setImage, "imageURL");
+        } else {
+            alert(data.message);
+        }
+
     }
 
     async function saveInfo(text, setFunc, item) {
@@ -71,12 +83,12 @@ export function Character_Sheets() {
         });
         if (response?.status === 200) {
             fetch(`/api/character_sheets/${currentUser}/${projectName}/${characterName}`)
-              .then((response) => response.json())
-              .then((character) => {
-                  setCharacter(character);
-                   setFunc(character[item]);
+                .then((response) => response.json())
+                .then((character) => {
+                    setCharacter(character);
+                    setFunc(character[item]);
 
-              });
+                });
         } else {
             throw new Error('Failed to save info');
         }
@@ -105,9 +117,9 @@ export function Character_Sheets() {
                 <div id="mainOrganizer">
                     <div id="headInfo">
                         <div id="imageBox">
-                            <img src={image} width="200px"></img>
+                            <img src={image} alt="Image" width="200px"></img>
                         </div>
-                        <input type="file" accept=".image/*" onChange={convertImage}/>
+                        <input type="file" accept=".image/*" onChange={convertImage} />
                         <div id="nameBox">
                             <div id='nameTextBox'>{characterName}</div>
                         </div>

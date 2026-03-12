@@ -2,6 +2,8 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
+const multer = require('multer');
+
 const app = express();
 
 const authCookieName = 'token';
@@ -13,6 +15,8 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
+
 
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -115,6 +119,32 @@ apiRouter.post('/character_sheets/save', verifyAuth, async (req, res) => {
     character[item] = req.body.value;
     res.send(character);
 });
+//save image
+const upload = multer({
+ storage: multer.diskStorage({
+   destination: 'uploads/',
+   filename: (req, file, cb) => {
+     const filetype = file.originalname.split('.').pop();
+     const id = Math.round(Math.random() * 1e9);
+     const filename = `${id}.${filetype}`;
+     cb(null, filename);
+   },
+ }),
+ limits: { fileSize: 1000000 },
+});
+
+apiRouter.post('/upload', upload.single('file'), (req, res) => {
+ if (req.file) {
+   res.send({
+     message: 'Uploaded succeeded',
+     file: req.file.filename,
+   });
+
+ } else {
+   res.status(400).send({ message: 'Upload failed' });
+ }
+});
+
 
 
 //Login functions
